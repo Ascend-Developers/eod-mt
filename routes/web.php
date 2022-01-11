@@ -4,6 +4,10 @@ use App\Http\Controllers\InventoryController;
 use App\Http\Controllers\ItemController;
 use App\Http\Controllers\RegionController;
 use App\Http\Controllers\SiteController;
+use App\Http\Controllers\UserController;
+use App\Http\Controllers\WaitingTimeController;
+use App\Http\Controllers\ModuleController;
+
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -27,16 +31,8 @@ Auth::routes(['register' => false]);
 
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
 
-Route::get('user/list', [App\Http\Controllers\UserController::class, 'index'])->name('user.list');
-Route::get('user/create', [App\Http\Controllers\UserController::class, 'create'])->name('user.create');
-Route::post('user/store', [App\Http\Controllers\UserController::class, 'store'])->name('user.store');
-Route::get('user/edit/{id}', [App\Http\Controllers\UserController::class, 'edit'])->name('user.edit');
-Route::PATCH('user/update/{id}', [App\Http\Controllers\UserController::class, 'update'])->name('user.update');
-Route::delete('user/delete/{id}', [App\Http\Controllers\UserController::class, 'destroy'])->name('user.destroy');
-
-
+Route::resource('user', UserController::class);
 Route::resource('region', RegionController::class);
-
 Route::resource('site', SiteController::class);
 
 Route::resource('item', ItemController::class);
@@ -49,3 +45,5 @@ Route::get('eod/site', [InventoryController::class, 'site'])->name('eod.site');
 
 Route::resource('module', 'ModuleController');
 Route::get('module/delete/{module}', 'ModuleController@moduleDelete')->name('module.delete');
+Route::resource('waiting', WaitingTimeController::class);
+Route::resource('module', ModuleController::class);

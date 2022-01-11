@@ -5,12 +5,12 @@
     <div class="row justify-content-center">
         <div class="col-md-12">
             <div class="card">
-                <div class="card-header">{{ __('Add User') }}</div>
+                <div class="card-header">{{ __('Add Waiting Time') }}</div>
 
                 <div class="card-body">
-                    <form action="{{route('user.store')}}" method="POST">
+                    <form action="{{route('waiting.store')}}" method="POST">
                         @csrf
-                            @include('users.form')
+                            @include('waiting.form')
                     </form>
                 </div>
             </div>

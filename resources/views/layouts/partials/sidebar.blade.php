@@ -20,7 +20,7 @@
                    <ul class="menu-content">
                        <li><a class="d-flex align-items-center" href="{{route('user.create')}}"><i data-feather="circle"></i><span class="menu-item" data-i18n="Shop">Add</span></a>
                        </li>
-                       <li><a class="d-flex align-items-center" href="{{route('user.list')}}"><i data-feather="circle"></i><span class="menu-item" data-i18n="Details">List</span></a>
+                       <li><a class="d-flex align-items-center" href="{{route('user.index')}}"><i data-feather="circle"></i><span class="menu-item" data-i18n="Details">List</span></a>
                        </li>
                    </ul>
                </li>
@@ -73,6 +73,15 @@
                    </li>
                </ul>
            </li>
+            {{-- EOD --}}
+            <li class=" nav-item"><a class="d-flex align-items-center" href="#"><i data-feather="x-circle"></i><span class="menu-title text-truncate" data-i18n="Dashboards">Wating time</span></a>
+                <ul class="menu-content">
+                    <li><a class="d-flex align-items-center" href="{{route('waiting.create')}}"><i data-feather="circle"></i><span class="menu-item" data-i18n="Shop">Add</span></a>
+                    </li>
+                    <li><a class="d-flex align-items-center" href="{{route('waiting.index')}}"><i data-feather="circle"></i><span class="menu-item" data-i18n="Details">List</span></a>
+                    </li>
+                </ul>
+            </li>
            </ul>
        </div>
    </div>
