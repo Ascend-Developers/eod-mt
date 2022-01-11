@@ -39,11 +39,11 @@ class MakeAdmin extends Command
     public function handle()
     {
         $data = [
-            'name' => 'Hassan Aamir',
-            'email' => 'hassan.aamir@ascend.com.sa',
+            'name' => 'Danial',
+            'email' => 'danial.ghazali@ascend.com.sa',
             'password' => Hash::make('eod777'),
             'type' => 'admin',
-            'phone' => '923054769045'
+            'phone' => '966562860255'
         ];
 
         User::create($data);

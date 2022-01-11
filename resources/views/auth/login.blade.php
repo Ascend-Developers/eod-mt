@@ -91,7 +91,7 @@
                                 <h4 class="card-title mb-1">Welcome to Acsend Portal! 👋</h4>
                                 <p class="card-text mb-2">Please sign-in to your account and start the adventure</p>
 
-                                <form class="auth-login-form mt-2" method="POST" action="{{ route('loginCheck') }}">
+                                <form class="auth-login-form mt-2" method="POST" action="{{ route('login') }}">
                                     @csrf
                                     @if(\Session::has('access'))
                                         <div class="alert alert-danger p-1">
@@ -106,7 +106,7 @@
                                     <div class="form-group">
                                         <label for="login-email" class="form-label">Email</label>
                                         <input type="email" class="form-control @error('email') error @enderror" id="login-email"  name="email" value="{{ old('email') }}" placeholder="john@example.com" aria-describedby="login-email" tabindex="1" autofocus  required/>
-                                        @error('email') 
+                                        @error('email')
                                             <span id="login-email-error" class="error">{{ $message }}</span>
                                         @enderror
                                     </div>
@@ -124,7 +124,7 @@
                                                 <span class="input-group-text cursor-pointer"><i data-feather="eye"></i></span>
                                             </div>
                                         </div>
-                                        @error('password') 
+                                        @error('password')
                                         <span id="login-email-error" class="error">{{ $message }}</span>
                                         @enderror
                                     </div>
@@ -137,7 +137,7 @@
                                     <button class="btn btn-primary btn-block" tabindex="4">Sign in</button>
                                 </form>
 
-                              
+
                             </div>
                         </div>
                         <!-- /Login v1 -->

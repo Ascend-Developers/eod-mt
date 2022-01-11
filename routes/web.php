@@ -18,6 +18,10 @@ Route::get('/', function () {
 });
 
 Auth::routes(['register' => false]);
+// Auth::routes();
+// Route::get('/login', 'LoginController@login')->name('login');
+// Route::post('/loginCheck', 'LoginController@loginCheck')->name('loginCheck');
+// Route::get('/logout', 'LoginController@getLogout')->name('logout');
 
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
 
