@@ -19,7 +19,8 @@
 
 <div class="form-group">
     <label for="">Site</label>
-    <select name="site_id" class="select2" id="large-select-multi">
+    <select name="site_id" class="select2 select2" id="large-select-multi">
+        <option value="{{null}}" selected="selected">Select Options</option>
         @foreach($sites as $site)
         <option value="{{$site->id}}" @if( (isset($wt->site_id)) || (old('site_id') && in_array($site->id, old('site_id')) ) )selected="selected" @endif > {{$site->name}} </option>
         @endforeach
