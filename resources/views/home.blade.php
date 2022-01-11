@@ -27,7 +27,7 @@
                             <i data-feather="users" class="font-medium-5"></i>
                         </div>
                     </div>
-                    <h2 class="font-weight-bolder mt-1">{{ $allUsers }}</h2>
+                    {{-- <h2 class="font-weight-bolder mt-1">{{ $allUsers }}</h2> --}}
                     <p class="card-text">Total Users</p>
                 </div>
                 <div id="line-area-chart-1"></div>
@@ -41,7 +41,7 @@
                             <i data-feather="circle" class="font-medium-5"></i>
                         </div>
                     </div>
-                    <h2 class="font-weight-bolder mt-1">{{ $allRegions }}</h2>
+                    {{-- <h2 class="font-weight-bolder mt-1">{{ $allRegions }}</h2> --}}
                     <p class="card-text">Total Regions</p>
                 </div>
                 <div id="line-area-chart-2"></div>
@@ -55,7 +55,7 @@
                             <i data-feather="thermometer" class="font-medium-5"></i>
                         </div>
                     </div>
-                    <h2 class="font-weight-bolder mt-1">{{ $allVac }}</h2>
+                    {{-- <h2 class="font-weight-bolder mt-1">{{ $allVac }}</h2> --}}
                     <p class="card-text">Total Vaccine Sites</p>
                 </div>
                 <div id="line-area-chart-3"></div>
@@ -69,7 +69,7 @@
                             <i data-feather="x-circle" class="font-medium-5"></i>
                         </div>
                     </div>
-                    <h2 class="font-weight-bolder mt-1">{{ $allModule }}</h2>
+                    {{-- <h2 class="font-weight-bolder mt-1">{{ $allModule }}</h2> --}}
                     <p class="card-text">Total Module</p>
                 </div>
                 <div id="line-area-chart-4"></div>
