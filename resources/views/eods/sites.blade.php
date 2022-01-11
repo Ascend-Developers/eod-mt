@@ -5,9 +5,8 @@
     <div class="row justify-content-center">
         <div class="col-md-12">
             <div class="card">
-                <div class="row">
-                    <div class="card-header col-md-10">{{ __('Items') }}</div>
-                    {{-- <div class="card-header col-md-2"><a class="btn btn-primary" href="{{action('VaccineSiteController@export')}}">Export</a></div> --}}
+                <div class="card-header">
+                    <h4 class="card-title">{{ __('Site Inventory') }}</h4>
                 </div>
                 <div class="card-body table-responsive w-100">
                     @php

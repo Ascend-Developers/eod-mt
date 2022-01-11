@@ -14,6 +14,8 @@ class InventoryTransaction extends Model
             'test',
             'newStockRec',
             'eodStock',
+            'shift',
+            'user_id'
     ];
 
     public function inventory()
@@ -29,5 +31,10 @@ class InventoryTransaction extends Model
     public function item()
     {
         return $this->belongsTo(Item::class, 'item_id');
+    }
+
+    public function user()
+    {
+        return $this->belongsTo(User::class, 'user_id');
     }
 }

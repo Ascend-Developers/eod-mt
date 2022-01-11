@@ -17,7 +17,7 @@
     </div>
 </div>
 <!-- Greetings Card ends -->
-<div class="container-fluid">
+{{-- <div class="container-fluid">
     <div class="row justify-content-center">
         <div class="col-lg-4 col-sm-4 col-12">
             <div class="card">
@@ -62,7 +62,7 @@
             </div>
         </div>
     </div>
-</div>
+</div> --}}
 <!-- Greetings Card ends -->
 <div class="container-fluid">
     <div class="row justify-content-center">

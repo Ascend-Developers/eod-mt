@@ -5,9 +5,8 @@
     <div class="row justify-content-center">
         <div class="col-md-12">
             <div class="card">
-                <div class="row">
-                    <div class="card-header col-md-10">{{ __('Items') }}</div>
-                    {{-- <div class="card-header col-md-2"><a class="btn btn-primary" href="{{action('VaccineSiteController@export')}}">Export</a></div> --}}
+                <div class="card-header">
+                    <h4 class="card-title">{{ __('EOD Submissions') }}</h4>
                 </div>
                 <div class="card-body table-responsive w-100">
                     <table class="table responsive " id="site-table">
@@ -16,8 +15,11 @@
                                 <th scope="col">Site Name</th>
                                 <th scope="col">Item</th>
                                 <th scope="col">New Stock Received</th>
+                                <th scope="col">Test Taken</th>
                                 <th scope="col">Stock Before Submission</th>
                                 <th scope="col">Stock After Submission</th>
+                                <th scope="col">Submitted By</th>
+                                <th scope="col">Shift</th>
 
                         </thead>
                         <tbody>
@@ -26,8 +28,11 @@
                                 <td>{{$sub->site ? $sub->site->name : '--'}}</td>
                                 <td>{{$sub->item ? $sub->item->name : '--'}}</td>
                                 <td>{{$sub->newStockRec}}</td>
+                                <td>{{$sub->test}}</td>
                                 <td>{{$sub->intialStock}}</td>
                                 <td>{{$sub->eodStock}}</td>
+                                <td>{{$sub->user ? $sub->user->name : '--'}}</td>
+                                <td>{{$sub->shift}}</td>
                             </tr>
                             @endforeach
                             <tr>

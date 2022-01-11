@@ -31,8 +31,8 @@ class User extends Authenticatable
         'password'
     ];
 
-    public function site(){
-        return $this->belongsToMany(Site::class, 'site_ids');
+    public function sites(){
+        return $this->belongsToMany(Site::class);
     }
 
     public function modules(){

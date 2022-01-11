@@ -5,8 +5,8 @@
     <div class="row justify-content-center">
         <div class="col-md-12">
             <div class="card">
-                <div class="row">
-                    <div class="card-header col-md-10">{{ __('Waiting Time') }}</div>
+                <div class="card-header">
+                    <h4 class="card-title">{{ __('Waiting Time') }}</h4>
                 </div>
                 <div class="card-body table-responsive w-100">
                     <table class="table responsive " id="user-table">
@@ -16,7 +16,10 @@
                                 <th scope="col">t1</th>
                                 <th scope="col">t2</th>
                                 <th scope="col">t3</th>
-                                <th scope="col">Action</th>
+                                <th scope="col">Status</th>
+                                <th scope="col">Submitted By</th>
+                                <th scope="col">Date of Report</th>
+                                {{-- <th scope="col">Action</th> --}}
                             </tr>
                         </thead>
                         <tbody>
@@ -27,6 +30,16 @@
                                 <th>{{$wt->t2}}</th>
                                 <th>{{$wt->t3}}</th>
                                 <th>
+                                    @if($wt->t3 < 20)
+                                        <span class="badge badge-success" >Green</span>
+                                    @else
+                                        <span class="badge badge-danger" >Red</span>
+                                    @endif
+                                </th>
+
+                                <th>{{$wt->user ? $wt->user->name: "--"}}</th>
+                                <th>{{ $wt->created_at }}</th>
+                                {{-- <th>
                                     <a href="{{route('waiting.edit', $wt->id)}}">Edit</a>
                                     |
                                     <form action="{{ route('waiting.destroy', $wt->id) }}" method="POST" style="display: inline" class="macros-delete" id="delete-macros-{{$wt->_id}}">
@@ -34,7 +47,7 @@
                                         @method('delete')
                                         <button class="text-danger selectDelBtn" type="submit" style="background: none; border:none; display:inline">Delete</button>
                                     </form>
-                                </th>
+                                </th> --}}
                             </tr>
                             @endforeach
                         </tbody>

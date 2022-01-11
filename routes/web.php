@@ -26,6 +26,7 @@ Route::get('/', function () {
 });
 
 Auth::routes(['register' => false]);
+// Auth::routes(['register' => false]);
 
 // Route::get('/logout', 'LoginController@getLogout')->name('logout');
 

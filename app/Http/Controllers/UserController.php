@@ -75,7 +75,7 @@ class UserController extends Controller
         $user = User::create($data);
 
         if($request->input('site_ids')){
-            $user->site()->sync($request->input('site_ids'));
+            $user->sites()->sync($request->input('site_ids'));
         }
 
         if($request->input('module_ids')){
@@ -144,7 +144,7 @@ class UserController extends Controller
         $user->save();
 
         if($request->input('site_ids')){
-            $user->site()->sync($request->input('site_ids'));
+            $user->sites()->sync($request->input('site_ids'));
         }
 
         if($request->input('module_ids')){

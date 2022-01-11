@@ -5,8 +5,8 @@
     <div class="row justify-content-center">
         <div class="col-md-12">
             <div class="card">
-                <div class="row">
-                    <div class="card-header col-md-10">{{ __('User') }}</div>
+                <div class="card-header">
+                    <h4 class="card-title">{{ __('Users') }}</h4>
                 </div>
                 <div class="card-body table-responsive w-100">
                     <table class="table responsive " id="user-table">
@@ -15,7 +15,7 @@
                                 <th scope="col">Name</th>
                                 <th scope="col">Email</th>
                                 <th scope="col">Type</th>
-                                <th scope="col">Vaccine Site</th>
+                                <th scope="col"> Site</th>
                                 <th scope="col">Phone no</th>
                                 <th scope="col">Module</th>
                                 <th scope="col">Category</th>
@@ -28,9 +28,10 @@
                                 <th>{{$user->name}}</th>
                                 <th>{{$user->email}}</th>
                                 <th>{{$user->type}}</th>
-                                <th>{{implode($user->site_ids)}}</th>
+                                <th>{{$user->sites ? $user->sites->pluck('name') : "--"}}</th>
+                                {{-- <th>{{$user->sites ? implode($user->sites->pluck('name')) : "--"}}</th> --}}
                                 <th>{{$user->phone}}</th>
-                                <th>{{implode($user->module_ids)}}</th>
+                                <th>{{$user->module_ids ? implode($user->module_ids) : "--"}}</th>
                                 <th>{{$user->category}}</th>
                                 <th>
                                     <a href="{{route('user.edit', $user->id)}}">Edit</a>

@@ -6,8 +6,8 @@
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=0, minimal-ui">
-    <meta name="description" content="Vuexy admin is super flexible, powerful, clean &amp; modern responsive bootstrap 4 admin template with unlimited possibilities.">
-    <meta name="keywords" content="admin template, Vuexy admin template, dashboard template, flat admin template, responsive admin template, web app">
+    {{-- <meta name="description" content="Vuexy admin is super flexible, powerful, clean &amp; modern responsive bootstrap 4 admin template with unlimited possibilities."> --}}
+    {{-- <meta name="keywords" content="admin template, Vuexy admin template, dashboard template, flat admin template, responsive admin template, web app"> --}}
     <meta name="author" content="PIXINVENT">
     <title>Ascend Dashboards</title>
     <link rel="apple-touch-icon" href="/app-assets/images/ico/apple-icon-120.png">
@@ -44,7 +44,24 @@
     <link rel="stylesheet" href="//cdn.datatables.net/1.10.7/css/jquery.dataTables.min.css">
     <link rel="stylesheet" href="//cdn.datatables.net/responsive/2.2.7/css/responsive.dataTables.min.css">
     <!-- END: Custom CSS-->
+    <style>
+        .select2-container--default .select2-results__option--highlighted[aria-selected] {
+            background-color: #5897fb !important;
+            color: white;
+        }
+        .select2-container--default .select2-selection--multiple .select2-selection__choice {
+            background-color: #144593;
+        }
 
+        .card .card-header{
+            background:linear-gradient(118deg, #175998, rgba(23,89,152, 0.7));
+            margin-bottom: 20px
+        }
+
+        .card-header h4 ,h2{
+            color:white;
+        }
+    </style>
 </head>
 <!-- END: Head-->
 
@@ -77,7 +94,7 @@
 
     <!-- BEGIN: Footer-->
     <footer class="footer footer-static footer-light">
-      <p class="clearfix mb-0"><span class="float-md-left d-block d-md-inline-block mt-25">COPYRIGHT &copy; 2021<a class="ml-25" href="https://training.digitum.com.sa/" target="_blank">ASCEND</a><span class="d-none d-sm-inline-block">Healthcare Solution, All rights Reserved</span></span><span class="float-md-right d-block d-md-inline-block mt-25">v1.0.0</span></p>
+      <p class="clearfix mb-0"><span class="float-md-left d-block d-md-inline-block mt-25">COPYRIGHT &copy; 2021<a class="ml-25" href="https://training.digitum.com.sa/" target="_blank">ASCEND Healthcare Solution</a><span class="d-none d-sm-inline-block">, All rights Reserved</span></span><span class="float-md-right d-block d-md-inline-block mt-25">v1.0.0</span></p>
     </footer>
     <button class="btn btn-primary btn-icon scroll-top" type="button"><i data-feather="arrow-up"></i></button>
     <!-- END: Footer-->

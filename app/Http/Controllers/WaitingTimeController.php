@@ -17,7 +17,7 @@ class WaitingTimeController extends Controller
     public function index()
     {
         //
-        $wts = WaitingTime::all();
+        $wts = WaitingTime::whereIn('site_id', Auth::user()->site_ids)->get();
         return view('waiting.index', compact('wts'));
     }
 
@@ -29,9 +29,7 @@ class WaitingTimeController extends Controller
     public function create()
     {
         //
-        $user = Auth::user();
-        $sites = Site::whereIn("_id", $user->site_ids)->get();
-        return view('waiting.create', compact('sites'));
+        return view('waiting.create');
     }
 
     /**
@@ -52,7 +50,8 @@ class WaitingTimeController extends Controller
             't1' => $request->input('t1'),
             't2' => $request->input('t2'),
             't3' => $request->input('t1')+$request->input('t2'),
-            'site_id' => $request->input('site_id')
+            'site_id' => $request->input('site_id'),
+            'user_id' => Auth::user()->_id
         ];
         $wt = WaitingTime::create($data);
 
