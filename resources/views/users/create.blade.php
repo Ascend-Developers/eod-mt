@@ -18,31 +18,3 @@
     </div>
 </div>
 @endsection
-
-@push('script')
-<script>
-    $('.select2').select2({
-        placeholder: 'Select an option'
-    });
-    $("#user-sertor").hide()
-    $(document).on('change','#user-type',function(e){
-        $val = $("#user-type").val()
-
-        if($val === "agent"){
-            $("#user-sertor").hide()
-        }
-        if($val === "region_head"){
-            $("#user-sertor").hide()
-        }
-        if($val === "admin"){
-            $("#user-sertor").hide()
-        }
-        if($val === "sector_head"){
-            $("#user-sertor").show()
-        }
-        if($val === "null"){
-            $("#user-sertor").hide()
-        }
-    })
-</script>
-@endpush

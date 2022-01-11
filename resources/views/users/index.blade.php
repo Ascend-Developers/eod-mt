@@ -7,7 +7,6 @@
             <div class="card">
                 <div class="row">
                     <div class="card-header col-md-10">{{ __('User') }}</div>
-                    <div class="card-header col-md-2"><a class="btn btn-primary" href="{{action('UserController@export')}}">Export</a></div>
                 </div>
                 <div class="card-body table-responsive w-100">
                     <table class="table responsive " id="user-table">
@@ -23,7 +22,27 @@
                                 <th scope="col">Action</th>
                             </tr>
                         </thead>
-
+                        <tbody>
+                            @foreach ($users as $user)
+                            <tr>
+                                <th>{{$user->name}}</th>
+                                <th>{{$user->email}}</th>
+                                <th>{{$user->type}}</th>
+                                <th>{{$user->name}}</th>
+                                <th>{{$user->name}}</th>
+                                <th>{{$user->phone}}</th>
+                                <th>{{$user->name}}</th>
+                                <th>
+                                    <a href="{{route('user.edit', $user->id)}}" class="btn btn-xs btn-primary"><i class="glyphicon glyphicon-edit"></i> Edit</a>
+                                    <form action="{{route('user.destroy', $user->id)}}" method="POST" style="display: inline" class="macros-delete" id="delete-macros-{{$user->_id}}">
+                                        <input type="hidden" name="_method" value="delete">
+                                        <input type="hidden" name="_token" value="'.csrf_token().'">
+                                        <button class="text-danger selectDelBtn" type="submit" style="background: none; border:none; display:inline">Delete</button>
+                                    </form>
+                                </th>
+                            </tr>
+                            @endforeach
+                        </tbody>
                     </table>
                 </div>
                 {{-- {{$users->appends(Request::all())->links()}} --}}
@@ -38,60 +57,40 @@
 <script src="https://cdnjs.cloudflare.com/ajax/libs/sweetalert/2.1.2/sweetalert.min.js"></script>
 <script src="//cdn.datatables.net/responsive/2.2.7/js/dataTables.responsive.min.js"></script>
 
-    <script>
-        $(document).ready(function(){
-            $('.select2').select2({
-                placeholder: 'Select an option'
-            });
-        $(document).on('submit','.macros-delete',function(e){
-            e.preventDefault();
-            console.log("submit sections");
-                // return false;
-                let form = $(this).attr('id');
-                var delete_id =$(this).closest("").find('.serDelValu').val();
-                //alert(delete_id);
-                swal({
+<script>
+    $(document).ready(function(){
+        $('.select2').select2({
+            placeholder: 'Select an option'
+        });
+    $(document).on('submit','.macros-delete',function(e){
+        e.preventDefault();
+        console.log("submit sections");
+            // return false;
+            let form = $(this).attr('id');
+            var delete_id =$(this).closest("").find('.serDelValu').val();
+            //alert(delete_id);
+            swal({
+                    position: 'top-end',
+                    title: "Are you sure?",
+                    text: "Once deleted, you will not be able to recover User!",
+                    icon: "warning",
+                    buttons: true,
+                    dangerMode: true,
+                })
+                .then((willDelete) => {
+                if (willDelete) {
+                    e.currentTarget.submit();
+                    swal({
                         position: 'top-end',
-                        title: "Are you sure?",
-                        text: "Once deleted, you will not be able to recover User!",
-                        icon: "warning",
-                        buttons: true,
-                        dangerMode: true,
-                    })
-                    .then((willDelete) => {
-                    if (willDelete) {
-                        e.currentTarget.submit();
-                        swal({
-                            position: 'top-end',
-                            title: "User",
-                            text: "User is deleted successfully",
-                            icon: "success",
-                        });
-                    }else{
-
-                    }
+                        title: "User",
+                        text: "User is deleted successfully",
+                        icon: "success",
                     });
-            });
-            });
+                }else{
 
-
-            $(function() {
-                $('#user-table').DataTable({
-                    processing: true,
-                    serverSide: false,
-                    responsive: true,
-                    ajax: '{!! route('user.datatable') !!}',
-                    columns: [
-                        { data: 'name', name: 'name' ,searchable: true},
-                        { data: 'email', name: 'email' ,searchable: true},
-                        { data: 'type', name: 'type',searchable: true },
-                        { data: 'vaccineSite', name: 'vaccine site' ,searchable: true},
-                        { data: 'region', name: 'region',searchable: true },
-                        { data: 'phone', name: 'phone' ,searchable: true},
-                        { data: 'module', name: 'module' ,searchable: true},
-                        { data: 'action', name: 'action' },
-                    ]
+                }
                 });
-            });
-    </script>
+        });
+        });
+</script>
 @endpush
