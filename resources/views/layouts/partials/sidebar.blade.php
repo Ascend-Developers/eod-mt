@@ -33,7 +33,7 @@
                    </li>
                </ul>
            </li>
-           {{-- Vacine Site --}}
+           {{--  Site --}}
            <li class=" nav-item"><a class="d-flex align-items-center" href="#"><i data-feather="thermometer"></i><span class="menu-title text-truncate" data-i18n="Dashboards"> Site</span></a>
                <ul class="menu-content">
                    <li><a class="d-flex align-items-center" href="{{route('site.create')}}"><i data-feather="circle"></i><span class="menu-item" data-i18n="Shop">Add</span></a>
@@ -42,6 +42,28 @@
                    </li>
                </ul>
            </li>
+
+              {{--  Item --}}
+              <li class=" nav-item"><a class="d-flex align-items-center" href="#"><i data-feather="thermometer"></i><span class="menu-title text-truncate" data-i18n="Dashboards"> Item</span></a>
+                <ul class="menu-content">
+                    <li><a class="d-flex align-items-center" href="{{route('item.create')}}"><i data-feather="circle"></i><span class="menu-item" data-i18n="Shop">Add</span></a>
+                    </li>
+                    <li><a class="d-flex align-items-center" href="{{route('item.index')}}"><i data-feather="circle"></i><span class="menu-item" data-i18n="Details">List</span></a>
+                    </li>
+                </ul>
+            </li>
+
+            {{--  Submission --}}
+            <li class=" nav-item"><a class="d-flex align-items-center" href="#"><i data-feather="thermometer"></i><span class="menu-title text-truncate" data-i18n="Dashboards"> EOD</span></a>
+                <ul class="menu-content">
+                    <li><a class="d-flex align-items-center" href="{{route('eod.create')}}"><i data-feather="circle"></i><span class="menu-item" data-i18n="Shop">Add</span></a>
+                    </li>
+                    <li><a class="d-flex align-items-center" href="{{route('eod.index')}}"><i data-feather="circle"></i><span class="menu-item" data-i18n="Details">Submissions</span></a>
+                    </li>
+                    <li><a class="d-flex align-items-center" href="{{route('eod.site')}}"><i data-feather="circle"></i><span class="menu-item" data-i18n="Details">Site View</span></a>
+                    </li>
+                </ul>
+            </li>
            {{-- Module --}}
            <li class=" nav-item"><a class="d-flex align-items-center" href="#"><i data-feather="x-circle"></i><span class="menu-title text-truncate" data-i18n="Dashboards">Module</span></a>
                <ul class="menu-content">

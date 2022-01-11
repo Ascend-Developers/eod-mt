@@ -1,5 +1,7 @@
 <?php
 
+use App\Http\Controllers\InventoryController;
+use App\Http\Controllers\ItemController;
 use App\Http\Controllers\RegionController;
 use App\Http\Controllers\SiteController;
 use Illuminate\Support\Facades\Route;
@@ -36,6 +38,14 @@ Route::delete('user/delete/{id}', [App\Http\Controllers\UserController::class, '
 Route::resource('region', RegionController::class);
 
 Route::resource('site', SiteController::class);
+
+Route::resource('item', ItemController::class);
+
+Route::get('eod/create', [InventoryController::class, 'create'])->name('eod.create');
+Route::post('eod/store', [InventoryController::class, 'store'])->name('eod.store');
+Route::get('eod/index', [InventoryController::class, 'submissions'])->name('eod.index');
+Route::get('eod/site', [InventoryController::class, 'site'])->name('eod.site');
+
 
 Route::resource('module', 'ModuleController');
 Route::get('module/delete/{module}', 'ModuleController@moduleDelete')->name('module.delete');
