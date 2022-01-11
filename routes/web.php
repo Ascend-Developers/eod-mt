@@ -18,3 +18,20 @@ Route::get('/', function () {
 });
 
 Auth::routes(['register' => false]);
+
+Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
+
+Route::resource('user', 'UserController');
+Route::get('userExport', 'UserController@export');
+Route::get('userGetDataTables', 'UserController@DataTables')->name('user.datatable');
+
+Route::resource('region', 'RegionController');
+
+Route::resource('vaccineSite', 'VaccineSiteController');
+Route::get('submition', 'VaccineSiteController@submition');
+Route::get('vaccineGetDataTables', 'VaccineSiteController@DataTables')->name('vaccine.datatable');
+Route::get('vaccineSubmitionGetDataTable', 'VaccineSiteController@DataTablesSubmition')->name('vaccine.submitiondatatable');
+Route::get('vaccineSiteExport', 'VaccineSiteController@export');
+
+Route::resource('module', 'ModuleController');
+Route::get('module/delete/{module}', 'ModuleController@moduleDelete')->name('module.delete');
