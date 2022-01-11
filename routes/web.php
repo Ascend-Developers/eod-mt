@@ -3,6 +3,8 @@
 use App\Http\Controllers\RegionController;
 use App\Http\Controllers\SiteController;
 use App\Http\Controllers\UserController;
+use App\Http\Controllers\WaitingTimeController;
+use App\Http\Controllers\ModuleController;
 
 use Illuminate\Support\Facades\Route;
 
@@ -28,10 +30,7 @@ Auth::routes(['register' => false]);
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
 
 Route::resource('user', UserController::class);
-
 Route::resource('region', RegionController::class);
-
 Route::resource('site', SiteController::class);
-
-Route::resource('module', 'ModuleController');
-Route::get('module/delete/{module}', 'ModuleController@moduleDelete')->name('module.delete');
+Route::resource('waiting', WaitingTimeController::class);
+Route::resource('module', ModuleController::class);

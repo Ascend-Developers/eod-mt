@@ -43,9 +43,7 @@ class SiteController extends Controller
         $this->validate($request, [
             'name' => ['required'],
             'region_id' => ['required'],
-            'type' => ['required'],
         ]);
-            // dd($request->input('nvr_id'));
         $data = [
             'name' => $request->input('name'),
             'region_id' => $request->input('region_id'),

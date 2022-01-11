@@ -19,7 +19,7 @@ class User extends Authenticatable
      * @var array
      */
     protected $fillable = [
-        'name', 'email', 'password', 'type', 'phone', 'category'
+        'name', 'email', 'password', 'type', 'phone', 'category', 'module_ids', 'site_ids', 'category'
     ];
 
     /**
@@ -30,4 +30,12 @@ class User extends Authenticatable
     protected $hidden = [
         'password'
     ];
+
+    public function site(){
+        return $this->belongsToMany(Site::class, 'site_ids');
+    }
+
+    public function modules(){
+        return $this->belongsToMany(Module::class, 'module_ids');
+    }
 }

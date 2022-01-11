@@ -6,36 +6,30 @@
         <div class="col-md-12">
             <div class="card">
                 <div class="row">
-                    <div class="card-header col-md-10">{{ __('User') }}</div>
+                    <div class="card-header col-md-10">{{ __('Waiting Time') }}</div>
                 </div>
                 <div class="card-body table-responsive w-100">
                     <table class="table responsive " id="user-table">
                         <thead>
                             <tr>
-                                <th scope="col">Name</th>
-                                <th scope="col">Email</th>
-                                <th scope="col">Type</th>
-                                <th scope="col">Vaccine Site</th>
-                                <th scope="col">Phone no</th>
-                                <th scope="col">Module</th>
-                                <th scope="col">Category</th>
+                                <th scope="col">Site Name</th>
+                                <th scope="col">t1</th>
+                                <th scope="col">t2</th>
+                                <th scope="col">t3</th>
                                 <th scope="col">Action</th>
                             </tr>
                         </thead>
                         <tbody>
-                            @foreach ($users as $user)
+                            @foreach ($wts as $wt)
                             <tr>
-                                <th>{{$user->name}}</th>
-                                <th>{{$user->email}}</th>
-                                <th>{{$user->type}}</th>
-                                <th>{{implode($user->site_ids)}}</th>
-                                <th>{{$user->phone}}</th>
-                                <th>{{implode($user->module_ids)}}</th>
-                                <th>{{$user->category}}</th>
+                                <th>{{$wt->site ? $wt->site->name : "--"}}</th>
+                                <th>{{$wt->t1}}</th>
+                                <th>{{$wt->t2}}</th>
+                                <th>{{$wt->t3}}</th>
                                 <th>
-                                    <a href="{{route('user.edit', $user->id)}}">Edit</a>
+                                    <a href="{{route('waiting.edit', $wt->id)}}">Edit</a>
                                     |
-                                    <form action="{{ route('user.destroy', $user->id) }}" method="POST" style="display: inline" class="macros-delete" id="delete-macros-{{$user->_id}}">
+                                    <form action="{{ route('waiting.destroy', $wt->id) }}" method="POST" style="display: inline" class="macros-delete" id="delete-macros-{{$wt->_id}}">
                                         @csrf
                                         @method('delete')
                                         <button class="text-danger selectDelBtn" type="submit" style="background: none; border:none; display:inline">Delete</button>
@@ -73,7 +67,7 @@
             swal({
                     position: 'top-end',
                     title: "Are you sure?",
-                    text: "Once deleted, you will not be able to recover User!",
+                    text: "Once deleted, you will not be able to recover EOD!",
                     icon: "warning",
                     buttons: true,
                     dangerMode: true,
@@ -83,8 +77,8 @@
                     e.currentTarget.submit();
                     swal({
                         position: 'top-end',
-                        title: "User",
-                        text: "User is deleted successfully",
+                        title: "EOD",
+                        text: "EOD is deleted successfully",
                         icon: "success",
                     });
                 }else{

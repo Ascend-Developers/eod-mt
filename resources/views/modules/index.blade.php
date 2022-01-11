@@ -27,8 +27,8 @@
                                         @method('delete')
                                         <button class="text-danger selectDelBtn" type="submit" style="background: none; border:none; display:inline">Delete</button>
                                     </form>
-                                    |
-                                    <a href="{{ route('module.show', $module->id) }}">Show </a>
+                                    {{-- |
+                                    <a href="{{ route('module.show', $module->id) }}">Show </a> --}}
                                 </td>
                             </tr>
                             @endforeach

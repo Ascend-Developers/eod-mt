@@ -3,6 +3,8 @@
 namespace App\Http\Controllers;
 
 use App\Models\User;
+use App\Models\Site;
+use App\Models\Module;
 use Illuminate\Http\Request;
 use Hash;
 use Illuminate\Validation\Rule;
@@ -39,7 +41,9 @@ class UserController extends Controller
     public function create()
     {
         //
-        return view('users.create');
+        $sites = Site::all();
+        $modules = Module::all();
+        return view('users.create', compact('sites', 'modules'));
     }
 
     /**
@@ -69,6 +73,14 @@ class UserController extends Controller
             'category' => $request->input('category'),
         ];
         $user = User::create($data);
+
+        if($request->input('site_ids')){
+            $user->site()->sync($request->input('site_ids'));
+        }
+
+        if($request->input('module_ids')){
+            $user->modules()->sync($request->input('module_ids'));
+        }
         return redirect()->route('user.index')->with('success','User is created successfully');
     }
 
@@ -93,7 +105,9 @@ class UserController extends Controller
     {
         //
         $users = User::find($id);
-        return view('users.edit', compact('users'));
+        $sites = Site::all();
+        $modules = Module::all();
+        return view('users.edit', compact('users', 'sites', 'modules'));
     }
 
     /**
@@ -120,6 +134,7 @@ class UserController extends Controller
         $user->email =  strtolower(trim($request->input('email')));
         $user->type =  $request->input('type');
         $user->phone =  $request->input('phone');
+        $user->category =  $request->input('category');
 
         if($request->input('password')){
             $pass = $request->input('password');
@@ -127,6 +142,15 @@ class UserController extends Controller
         }
 
         $user->save();
+
+        if($request->input('site_ids')){
+            $user->site()->sync($request->input('site_ids'));
+        }
+
+        if($request->input('module_ids')){
+            $user->modules()->sync($request->input('module_ids'));
+        }
+
         return redirect()->route('user.index')->with('success','User is Updated successfully');
     }
 
@@ -139,7 +163,6 @@ class UserController extends Controller
     public function destroy($id)
     {
         //
-        dd($id);
         $user = User::find($id);
         $user->delete();
         return redirect()->route('user.index');

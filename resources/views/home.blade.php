@@ -19,7 +19,7 @@
 <!-- Greetings Card ends -->
 <div class="container-fluid">
     <div class="row justify-content-center">
-        <div class="col-lg-3 col-sm-6 col-12">
+        <div class="col-lg-4 col-sm-4 col-12">
             <div class="card">
                 <div class="card-header flex-column align-items-start pb-0">
                     <div class="avatar bg-light-primary p-50 m-0">
@@ -27,13 +27,13 @@
                             <i data-feather="users" class="font-medium-5"></i>
                         </div>
                     </div>
-                    {{-- <h2 class="font-weight-bolder mt-1">{{ $allUsers }}</h2> --}}
-                    <p class="card-text">Total Users</p>
+                    <h2 class="font-weight-bolder mt-1">{{ $t1 }}</h2>
+                    <p class="card-text">T1</p>
                 </div>
                 <div id="line-area-chart-1"></div>
             </div>
         </div>
-        <div class="col-lg-3 col-sm-6 col-12">
+        <div class="col-lg-4 col-sm-4 col-12">
             <div class="card">
                 <div class="card-header flex-column align-items-start pb-0">
                     <div class="avatar bg-light-success p-50 m-0">
@@ -41,13 +41,13 @@
                             <i data-feather="circle" class="font-medium-5"></i>
                         </div>
                     </div>
-                    {{-- <h2 class="font-weight-bolder mt-1">{{ $allRegions }}</h2> --}}
-                    <p class="card-text">Total Regions</p>
+                    <h2 class="font-weight-bolder mt-1">{{ $t2 }}</h2>
+                    <p class="card-text">T2</p>
                 </div>
                 <div id="line-area-chart-2"></div>
             </div>
         </div>
-        <div class="col-lg-3 col-sm-6 col-12">
+        <div class="col-lg-4 col-sm-4 col-12">
             <div class="card">
                 <div class="card-header flex-column align-items-start pb-0">
                     <div class="avatar bg-light-danger p-50 m-0">
@@ -55,26 +55,19 @@
                             <i data-feather="thermometer" class="font-medium-5"></i>
                         </div>
                     </div>
-                    {{-- <h2 class="font-weight-bolder mt-1">{{ $allVac }}</h2> --}}
-                    <p class="card-text">Total Vaccine Sites</p>
+                    <h2 class="font-weight-bolder mt-1">{{ $t3 }}</h2>
+                    <p class="card-text">T3</p>
                 </div>
                 <div id="line-area-chart-3"></div>
             </div>
         </div>
-        <div class="col-lg-3 col-sm-6 col-12">
-            <div class="card">
-                <div class="card-header flex-column align-items-start pb-0">
-                    <div class="avatar bg-light-warning p-50 m-0">
-                        <div class="avatar-content">
-                            <i data-feather="x-circle" class="font-medium-5"></i>
-                        </div>
-                    </div>
-                    {{-- <h2 class="font-weight-bolder mt-1">{{ $allModule }}</h2> --}}
-                    <p class="card-text">Total Module</p>
-                </div>
-                <div id="line-area-chart-4"></div>
-            </div>
-        </div>
     </div>
 </div>
+<!-- Greetings Card ends -->
+<div class="container-fluid">
+    <div class="row justify-content-center">
+        <div id="chart"></div>
+    </div>
+</div>
+
 @endsection
