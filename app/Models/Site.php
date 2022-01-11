@@ -17,4 +17,8 @@ class Site extends Model
     public function region(){
         return $this->belongsTo(Region::class, 'region_id');
     }
+
+    public function inventories(){
+        return $this->hasMany(Inventory::class, 'site_id');
+    }
 }
