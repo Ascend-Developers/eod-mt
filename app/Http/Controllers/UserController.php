@@ -69,7 +69,7 @@ class UserController extends Controller
             'category' => $request->input('category'),
         ];
         $user = User::create($data);
-        return redirect()->route('user.list')->with('success','User is created successfully');
+        return redirect()->route('user.index')->with('success','User is created successfully');
     }
 
     /**
@@ -127,7 +127,7 @@ class UserController extends Controller
         }
 
         $user->save();
-        return redirect()->route('user.list')->with('success','User is Updated successfully');
+        return redirect()->route('user.index')->with('success','User is Updated successfully');
     }
 
     /**
@@ -142,6 +142,6 @@ class UserController extends Controller
         dd($id);
         $user = User::find($id);
         $user->delete();
-        return redirect()->route('user.list');
+        return redirect()->route('user.index');
     }
 }

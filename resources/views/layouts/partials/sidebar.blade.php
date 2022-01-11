@@ -20,7 +20,7 @@
                    <ul class="menu-content">
                        <li><a class="d-flex align-items-center" href="{{route('user.create')}}"><i data-feather="circle"></i><span class="menu-item" data-i18n="Shop">Add</span></a>
                        </li>
-                       <li><a class="d-flex align-items-center" href="{{route('user.list')}}"><i data-feather="circle"></i><span class="menu-item" data-i18n="Details">List</span></a>
+                       <li><a class="d-flex align-items-center" href="{{route('user.index')}}"><i data-feather="circle"></i><span class="menu-item" data-i18n="Details">List</span></a>
                        </li>
                    </ul>
                </li>
