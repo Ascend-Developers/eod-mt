@@ -1,5 +1,7 @@
 <?php
 
+use App\Http\Controllers\RegionController;
+use App\Http\Controllers\SiteController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -30,19 +32,10 @@ Route::get('user/edit/{id}', [App\Http\Controllers\UserController::class, 'edit'
 Route::PATCH('user/update/{id}', [App\Http\Controllers\UserController::class, 'update'])->name('user.update');
 Route::delete('user/delete/{id}', [App\Http\Controllers\UserController::class, 'destroy'])->name('user.destroy');
 
-// Route::resource('user', 'UserController');
-// Route::get('user/list', [App\Http\Controllers\UserController::class, 'index'])->name('userList');
-// Route::get('user/list', [App\Http\Controllers\UserController::class, 'index'])->name('userList');
-// Route::get('userExport', 'UserController@export');
-// Route::get('userGetDataTables', 'UserController@DataTables')->name('user.datatable');
 
-// Route::resource('region', 'RegionController');
+Route::resource('region', RegionController::class);
 
-// Route::resource('vaccineSite', 'VaccineSiteController');
-// Route::get('submition', 'VaccineSiteController@submition');
-// Route::get('vaccineGetDataTables', 'VaccineSiteController@DataTables')->name('vaccine.datatable');
-// Route::get('vaccineSubmitionGetDataTable', 'VaccineSiteController@DataTablesSubmition')->name('vaccine.submitiondatatable');
-// Route::get('vaccineSiteExport', 'VaccineSiteController@export');
+Route::resource('site', SiteController::class);
 
-// Route::resource('module', 'ModuleController');
-// Route::get('module/delete/{module}', 'ModuleController@moduleDelete')->name('module.delete');
+Route::resource('module', 'ModuleController');
+Route::get('module/delete/{module}', 'ModuleController@moduleDelete')->name('module.delete');

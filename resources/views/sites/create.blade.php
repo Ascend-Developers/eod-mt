@@ -6,13 +6,13 @@
         <div class="col-md-12">
             <div class="card">
                 <div class="card-header">
-                    <h4 class="card-title">{{ __('Add Vaccine Site') }}</h4>
+                    <h4 class="card-title">{{ __('Add Site') }}</h4>
                 </div>
 
                 <div class="card-body">
-                    <form action="{{route('vaccineSite.store')}}" method="POST">
+                    <form action="{{route('site.store')}}" method="POST">
                         @csrf
-                            @include('vaccineSites.form')
+                            @include('sites.form')
                             <button type="submit" class="btn btn-outline-primary">Submit</button>
                     </form>
                 </div>

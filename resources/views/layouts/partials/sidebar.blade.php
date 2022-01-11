@@ -24,33 +24,33 @@
                        </li>
                    </ul>
                </li>
-            {{-- Regions --}}
-            {{-- <li class=" nav-item"><a class="d-flex align-items-center" href="#"><i data-feather="circle"></i><span class="menu-title text-truncate" data-i18n="Dashboards">Regions</span></a>
-                <ul class="menu-content">
-                    <li><a class="d-flex align-items-center" href="{{route('region.create')}}"><i data-feather="circle"></i><span class="menu-item" data-i18n="Shop">Add</span></a>
-                    </li>
-                    <li><a class="d-flex align-items-center" href="{{route('region.index')}}"><i data-feather="circle"></i><span class="menu-item" data-i18n="Details">List</span></a>
-                    </li>
-                </ul>
-            </li> --}}
-            {{-- Vacine Site --}}
-            {{-- <li class=" nav-item"><a class="d-flex align-items-center" href="#"><i data-feather="thermometer"></i><span class="menu-title text-truncate" data-i18n="Dashboards">Vaccine Site</span></a>
-                <ul class="menu-content">
-                    <li><a class="d-flex align-items-center" href="{{route('vaccineSite.create')}}"><i data-feather="circle"></i><span class="menu-item" data-i18n="Shop">Add</span></a>
-                    </li>
-                    <li><a class="d-flex align-items-center" href="{{route('vaccineSite.index')}}"><i data-feather="circle"></i><span class="menu-item" data-i18n="Details">List</span></a>
-                    </li>
-                </ul>
-            </li> --}}
-            {{-- Module --}}
-            {{-- <li class=" nav-item"><a class="d-flex align-items-center" href="#"><i data-feather="x-circle"></i><span class="menu-title text-truncate" data-i18n="Dashboards">Module</span></a>
-                <ul class="menu-content">
-                    <li><a class="d-flex align-items-center" href="{{route('module.create')}}"><i data-feather="circle"></i><span class="menu-item" data-i18n="Shop">Add</span></a>
-                    </li>
-                    <li><a class="d-flex align-items-center" href="{{route('module.index')}}"><i data-feather="circle"></i><span class="menu-item" data-i18n="Details">List</span></a>
-                    </li>
-                </ul>
-            </li> --}}
+           {{-- Regions --}}
+           <li class=" nav-item"><a class="d-flex align-items-center" href="#"><i data-feather="circle"></i><span class="menu-title text-truncate" data-i18n="Dashboards">Regions</span></a>
+               <ul class="menu-content">
+                   <li><a class="d-flex align-items-center" href="{{route('region.create')}}"><i data-feather="circle"></i><span class="menu-item" data-i18n="Shop">Add</span></a>
+                   </li>
+                   <li><a class="d-flex align-items-center" href="{{route('region.index')}}"><i data-feather="circle"></i><span class="menu-item" data-i18n="Details">List</span></a>
+                   </li>
+               </ul>
+           </li>
+           {{-- Vacine Site --}}
+           <li class=" nav-item"><a class="d-flex align-items-center" href="#"><i data-feather="thermometer"></i><span class="menu-title text-truncate" data-i18n="Dashboards"> Site</span></a>
+               <ul class="menu-content">
+                   <li><a class="d-flex align-items-center" href="{{route('site.create')}}"><i data-feather="circle"></i><span class="menu-item" data-i18n="Shop">Add</span></a>
+                   </li>
+                   <li><a class="d-flex align-items-center" href="{{route('site.index')}}"><i data-feather="circle"></i><span class="menu-item" data-i18n="Details">List</span></a>
+                   </li>
+               </ul>
+           </li>
+           {{-- Module --}}
+           <li class=" nav-item"><a class="d-flex align-items-center" href="#"><i data-feather="x-circle"></i><span class="menu-title text-truncate" data-i18n="Dashboards">Module</span></a>
+               <ul class="menu-content">
+                   <li><a class="d-flex align-items-center" href="{{route('module.create')}}"><i data-feather="circle"></i><span class="menu-item" data-i18n="Shop">Add</span></a>
+                   </li>
+                   <li><a class="d-flex align-items-center" href="{{route('module.index')}}"><i data-feather="circle"></i><span class="menu-item" data-i18n="Details">List</span></a>
+                   </li>
+               </ul>
+           </li>
            </ul>
        </div>
    </div>
