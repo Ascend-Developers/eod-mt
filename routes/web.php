@@ -2,6 +2,8 @@
 
 use App\Http\Controllers\RegionController;
 use App\Http\Controllers\SiteController;
+use App\Http\Controllers\UserController;
+
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -25,13 +27,7 @@ Auth::routes(['register' => false]);
 
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
 
-Route::get('user/list', [App\Http\Controllers\UserController::class, 'index'])->name('user.list');
-Route::get('user/create', [App\Http\Controllers\UserController::class, 'create'])->name('user.create');
-Route::post('user/store', [App\Http\Controllers\UserController::class, 'store'])->name('user.store');
-Route::get('user/edit/{id}', [App\Http\Controllers\UserController::class, 'edit'])->name('user.edit');
-Route::PATCH('user/update/{id}', [App\Http\Controllers\UserController::class, 'update'])->name('user.update');
-Route::delete('user/delete/{id}', [App\Http\Controllers\UserController::class, 'destroy'])->name('user.destroy');
-
+Route::resource('user', UserController::class);
 
 Route::resource('region', RegionController::class);
 
