@@ -14,7 +14,7 @@ class WaitingTime extends Model
     ];
 
     public function site(){
-        return $this->belongsTo(Site::class, 'site_id');
+        return $this->belongsTo(Site::class, 'site_id')->select('name');
     }
 
     public function user(){

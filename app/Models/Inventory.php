@@ -17,11 +17,11 @@ class Inventory extends Model
 
     public function item()
     {
-        return $this->belongsTo(Ißtem::class, 'item_id');
+        return $this->belongsTo(Item::class, 'item_id');
     }
 
     public function site()
     {
-        return $this->belongsTo(Site::class, 'site_id');
+        return $this->belongsTo(Site::class, 'site_id')->select('name');
     }
 }
