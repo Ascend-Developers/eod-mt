@@ -16,6 +16,7 @@
 
     <!-- BEGIN: Vendor CSS-->
     <link rel="stylesheet" type="text/css" href="/app-assets/vendors/css/vendors.min.css">
+    <link rel="stylesheet" type="text/css" href="/app-assets/vendors/css/forms/select/select2.min.css">
     <!-- END: Vendor CSS-->
 
     <!-- BEGIN: Theme CSS-->
@@ -56,57 +57,67 @@
                         <div class="card mb-0">
                             <div class="card-body">
                                 <a href="javascript:void(0);" class="brand-logo">
-                                    
                                     <img src="/app-assets/images/logo/org-logo.jpg"  alt="Ascend" width="30%">
                                 </a>
 
-                                <h4 class="card-title mb-1">Welcome to EOD-MT Portal! 👋</h4>
-                                <p class="card-text mb-2">Please sign-in to your account and start the adventure</p>
+                                <h4 class="card-title mb-1">EOD-MT Registration Portal! 👋</h4>
+                                <p class="card-text mb-2">Please Register your account and start the adventure</p>
 
-                                <form class="auth-login-form mt-2" method="POST" action="{{ route('login') }}">
+                                <form class="auth-login-form mt-2" method="POST" action="{{ route('registerData') }}">
                                     @csrf
-                                    @if(\Session::has('access'))
-                                        <div class="alert alert-danger p-1">
-                                            {!! \Session::get('access') !!}
-                                        </div>
-                                    @endif
-                                    @if(\Session::has('invalid'))
-                                        <div class="alert alert-danger p-1">
-                                            {!! \Session::get('invalid') !!}
-                                        </div>
-                                    @endif
+                                    <div class="form-group">
+                                        <label for="login-email" class="form-label">Name</label>
+                                        <input type="text" class="form-control" id="login-email"  name="name" value="{{ old('name') }}" placeholder="Jon" aria-describedby="login-email" tabindex="1" autofocus  required/>
+                                    </div>
+
                                     <div class="form-group">
                                         <label for="login-email" class="form-label">Email</label>
-                                        <input type="email" class="form-control @error('email') error @enderror" id="login-email"  name="email" value="{{ old('email') }}" placeholder="john@example.com" aria-describedby="login-email" tabindex="1" autofocus  required/>
-                                        @error('email')
-                                            <span id="login-email-error" class="error">{{ $message }}</span>
-                                        @enderror
+                                        <input type="email" class="form-control" id="login-email"  name="email" value="{{ old('email') }}" placeholder="Jon@ascend.com.sa" aria-describedby="login-email" tabindex="1" autofocus  required/>
                                     </div>
 
                                     <div class="form-group">
-                                        <div class="input-group input-group-merge form-password-toggle">
-                                            <input type="password" class="form-control form-control-merge @error('password') error @enderror" id="login-password" name="password" tabindex="2" placeholder="&#xb7;&#xb7;&#xb7;&#xb7;&#xb7;&#xb7;&#xb7;&#xb7;&#xb7;&#xb7;&#xb7;&#xb7;" aria-describedby="login-password" required />
-                                            <div class="input-group-append">
-                                                <span class="input-group-text cursor-pointer"><i data-feather="eye"></i></span>
-                                            </div>
-                                        </div>
-                                        @error('password')
-                                        <span id="login-email-error" class="error">{{ $message }}</span>
-                                        @enderror
+                                        <label for="login-email" class="form-label">Password</label>
+                                        <input type="password" class="form-control" id="login-email"  name="password" value="{{ old('password') }}" placeholder="********" aria-describedby="login-email" tabindex="1" autofocus  required/>
                                     </div>
+
+                                    <input type="hidden" name="type" value="agent" required/>
+
+                                    <div class="form-group" id="user-sertor">
+                                        <label for="">Category</label>
+                                        <select name="category" class="form-control select2">
+                                            <option value="{{null}}" selected="selected">Select Options</option>
+                                            <option value="PMO" @if( (isset($users) && $users->category == "PMO") || old('PMO') == "PMO" ) selected="selected" @endif>PMO</option>
+                                            <option value="Operational" @if( (isset($users) && $users->category == "Operational") || old('Operational') == "Operational" ) selected="selected" @endif>Operational</option>
+                                        </select>
+                                    </div>
+
                                     <div class="form-group">
-                                        <div class="custom-control custom-checkbox">
-                                            <input class="custom-control-input" type="checkbox" id="remember-me" tabindex="3" />
-                                            <label class="custom-control-label" for="remember-me"> Remember Me </label>
-                                        </div>
+                                        <label for="">Phone No</label>
+                                        <input type="text" class="form-control" name="phone" value="{{ old('phone') }}" placeholder="96000000000" aria-describedby="login-email" tabindex="1" autofocus  required />
                                     </div>
-                                    <button class="btn btn-primary btn-block" tabindex="4">Sign in</button>
+
+                                    <div class="form-group">
+                                        <label for="">Site</label>
+                                        <select name="site_ids[]" class="form-control select2" required>
+                                            <option value="{{null}}" selected="selected">Select Options</option>
+                                            @foreach($sites as $site)
+                                                <option value="{{$site->id}}" selected="selected"> {{$site->name}} </option>
+                                            @endforeach
+                                        </select>
+                                    </div>
+                                    
+                                    <div class="form-group">
+                                        <label for="">Modules</label>
+                                        <select name="module_ids[]" class="form-control select2" required>
+                                            <option value="{{null}}" selected="selected">Select Options</option>
+                                            @foreach($modules as $module)
+                                                <option value="{{$module->id}}" selected="selected" > {{$module->name}} </option>
+                                            @endforeach
+                                        </select>
+                                    </div>
+
+                                    <button class="btn btn-success btn-block" tabindex="4">Register</button>
                                 </form>
-                                <div class="card mb-0">
-                                    <div class="card-body">
-                                        <a href="{{route('register')}}" class="btn btn-success btn-block" tabindex="4">Register</a>
-                                    </div>
-                                </div>
                             </div>
                         </div>
                         <!-- /Login v1 -->
@@ -117,15 +128,13 @@
         </div>
     </div>
     <!-- END: Content-->
-
-
     <!-- BEGIN: Vendor JS-->
     <script src="/app-assets/vendors/js/vendors.min.js"></script>
     <!-- BEGIN Vendor JS-->
 
     <!-- BEGIN: Page Vendor JS-->
     <script src="/app-assets/vendors/js/forms/validation/jquery.validate.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/sweetalert/2.1.2/sweetalert.min.js"></script>
+    <script src="/app-assets/vendors/js/extensions/sweetalert2.all.min.js"></script>
 
     <!-- END: Page Vendor JS-->
 
@@ -139,6 +148,10 @@
     <!-- END: Page JS-->
 
     <script>
+        @include('sweetalert::alert')
+        $('.select2').select2({
+            placeholder: 'Select an option'
+        });
         $(window).on('load', function() {
             if (feather) {
                 feather.replace({
@@ -146,7 +159,7 @@
                     height: 14
                 });
             }
-        })
+        });
     </script>
 </body>
 <!-- END: Body-->

@@ -7,6 +7,7 @@ use App\Http\Controllers\SiteController;
 use App\Http\Controllers\UserController;
 use App\Http\Controllers\WaitingTimeController;
 use App\Http\Controllers\ModuleController;
+use App\Http\Controllers\HelperController;
 
 use Illuminate\Support\Facades\Route;
 
@@ -26,9 +27,9 @@ Route::get('/', function () {
 });
 
 Auth::routes(['register' => false]);
-// Auth::routes(['register' => false]);
 
-// Route::get('/logout', 'LoginController@getLogout')->name('logout');
+Route::get('reg', [HelperController::class, 'registerPage'])->name('register');
+Route::post('reg/data', [HelperController::class, 'register'])->name('registerData');
 
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
 
@@ -43,8 +44,5 @@ Route::post('eod/store', [InventoryController::class, 'store'])->name('eod.store
 Route::get('eod/index', [InventoryController::class, 'submissions'])->name('eod.index')->middleware('auth');
 Route::get('eod/site', [InventoryController::class, 'site'])->name('eod.site')->middleware('auth');
 
-
-Route::resource('module', 'ModuleController')->middleware('auth');
-Route::get('module/delete/{module}', 'ModuleController@moduleDelete')->name('module.delete')->middleware('auth');
 Route::resource('waiting', WaitingTimeController::class)->middleware('auth');
 Route::resource('module', ModuleController::class)->middleware('auth');
