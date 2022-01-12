@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Module;
 use Illuminate\Http\Request;
+use Illuminate\Validation\Rule;
 
 class ModuleController extends Controller
 {
@@ -44,7 +45,7 @@ class ModuleController extends Controller
     {
         //
         $this->validate($request, [
-            'name'=> ['required'],
+            'name'=> ['required', Rule::unique('modules','name')->whereNull('deleted_at')],
         ]);
         $data = [
             'name' => $request->input('name'),

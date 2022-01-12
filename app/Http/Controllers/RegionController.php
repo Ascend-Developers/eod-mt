@@ -3,7 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-
+use Illuminate\Validation\Rule;
 use App\Models\Region;
 
 class RegionController extends Controller
@@ -47,7 +47,7 @@ class RegionController extends Controller
     {
         //
         $this->validate($request, [
-            'name'=> ['required'],
+            'name'=> ['required', Rule::unique('regions','name')->whereNull('deleted_at')],
         ]);
         $data = [
             'name' => $request->input('name'),

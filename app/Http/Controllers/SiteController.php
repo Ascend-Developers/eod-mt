@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\Region;
 use App\Models\Site;
 use Illuminate\Http\Request;
+use Illuminate\Validation\Rule;
 
 class SiteController extends Controller
 {
@@ -41,7 +42,7 @@ class SiteController extends Controller
     public function store(Request $request)
     {
         $this->validate($request, [
-            'name' => ['required'],
+            'name' => ['required', Rule::unique('sites','name')->whereNull('deleted_at')],
             // 'region_id' => ['required'],
         ]);
         $data = [
