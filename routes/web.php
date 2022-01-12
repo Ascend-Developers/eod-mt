@@ -32,19 +32,19 @@ Auth::routes(['register' => false]);
 
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
 
-Route::resource('user', UserController::class);
-Route::resource('region', RegionController::class);
-Route::resource('site', SiteController::class);
+Route::resource('user', UserController::class)->middleware('auth');
+Route::resource('region', RegionController::class)->middleware('auth');
+Route::resource('site', SiteController::class)->middleware('auth');
 
-Route::resource('item', ItemController::class);
+Route::resource('item', ItemController::class)->middleware('auth');
 
-Route::get('eod/create', [InventoryController::class, 'create'])->name('eod.create');
-Route::post('eod/store', [InventoryController::class, 'store'])->name('eod.store');
-Route::get('eod/index', [InventoryController::class, 'submissions'])->name('eod.index');
-Route::get('eod/site', [InventoryController::class, 'site'])->name('eod.site');
+Route::get('eod/create', [InventoryController::class, 'create'])->name('eod.create')->middleware('auth');
+Route::post('eod/store', [InventoryController::class, 'store'])->name('eod.store')->middleware('auth');
+Route::get('eod/index', [InventoryController::class, 'submissions'])->name('eod.index')->middleware('auth');
+Route::get('eod/site', [InventoryController::class, 'site'])->name('eod.site')->middleware('auth');
 
 
-Route::resource('module', 'ModuleController');
-Route::get('module/delete/{module}', 'ModuleController@moduleDelete')->name('module.delete');
-Route::resource('waiting', WaitingTimeController::class);
-Route::resource('module', ModuleController::class);
+Route::resource('module', 'ModuleController')->middleware('auth');
+Route::get('module/delete/{module}', 'ModuleController@moduleDelete')->name('module.delete')->middleware('auth');
+Route::resource('waiting', WaitingTimeController::class)->middleware('auth');
+Route::resource('module', ModuleController::class)->middleware('auth');
