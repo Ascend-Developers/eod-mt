@@ -42,11 +42,11 @@ class SiteController extends Controller
     {
         $this->validate($request, [
             'name' => ['required'],
-            'region_id' => ['required'],
+            // 'region_id' => ['required'],
         ]);
         $data = [
             'name' => $request->input('name'),
-            'region_id' => $request->input('region_id'),
+            // 'region_id' => $request->input('region_id'),
             'type' => $request->input('type') == true ? 'mega' : 'minor',
         ];
         $site = Site::create($data);
