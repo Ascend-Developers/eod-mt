@@ -2,12 +2,12 @@
 
 namespace App\Models;
 
-use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Jenssegers\Mongodb\Eloquent\Model;
+use Jenssegers\Mongodb\Eloquent\SoftDeletes;
 
 class WaitingTime extends Model
 {
-    use HasFactory;
+    use SoftDeletes;
 
     protected $fillable = [
         'site_id', 't1', 't2', 't3', 'user_id'

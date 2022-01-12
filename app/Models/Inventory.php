@@ -3,9 +3,11 @@
 namespace App\Models;
 
 use Jenssegers\Mongodb\Eloquent\Model;
+use Jenssegers\Mongodb\Eloquent\SoftDeletes;
 
 class Inventory extends Model
 {
+    use SoftDeletes;
 
     protected $fillable = [
         'site_id',
