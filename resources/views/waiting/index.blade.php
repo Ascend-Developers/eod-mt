@@ -13,9 +13,9 @@
                         <thead>
                             <tr>
                                 <th scope="col">Site Name</th>
-                                <th scope="col">t1</th>
-                                <th scope="col">t2</th>
-                                <th scope="col">t3</th>
+                                <th scope="col" data-toggle="tooltip" data-placement="bottom" title="Arrival to cabinet">t1</th>
+                                <th scope="col" data-toggle="tooltip" data-placement="bottom" title="At cabinet">t2</th>
+                                <th scope="col" data-toggle="tooltip" data-placement="bottom" title="Total TAT">t3</th>
                                 <th scope="col">Status</th>
                                 <th scope="col">Submitted By</th>
                                 <th scope="col">Date of Report</th>

@@ -8,12 +8,12 @@
 </div>
 @endif
 <div class="form-group">
-    <label for="">T1</label>
+    <label for="" data-toggle="tooltip" data-placement="top" title="Arrival to cabinet">T1</label>
     <input type="number" min=0 class="form-control" name="t1" @if(isset($wt)) value="{{$wt->t1}}" @else value="{{ old('t1') }}" @endif>
 </div>
 
 <div class="form-group">
-    <label for="">T2</label>
+    <label for="" data-toggle="tooltip" data-placement="top" title="At cabinet">T2</label>
     <input type="number" min=0 class="form-control" name="t2" @if(isset($wt)) value="{{$wt->t2}}" @else value="{{ old('t2') }}" @endif>
 </div>
 

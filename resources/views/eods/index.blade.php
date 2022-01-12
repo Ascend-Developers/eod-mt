@@ -20,6 +20,7 @@
                                 <th scope="col">Stock After Submission</th>
                                 <th scope="col">Submitted By</th>
                                 <th scope="col">Shift</th>
+                                <th scope="col">Created At</th>
 
                         </thead>
                         <tbody>
@@ -33,6 +34,7 @@
                                 <td>{{$sub->eodStock}}</td>
                                 <td>{{$sub->user ? $sub->user->name : '--'}}</td>
                                 <td>{{$sub->shift}}</td>
+                                <td>{{$sub->created_at}}</td>
                             </tr>
                             @endforeach
                             <tr>
