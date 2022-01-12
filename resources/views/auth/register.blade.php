@@ -37,6 +37,25 @@
     <link rel="stylesheet" type="text/css" href="/assets/css/style.css">
     <!-- END: Custom CSS-->
 
+    <style>
+        .select2-container--default .select2-results__option--highlighted[aria-selected] {
+            background-color: #5897fb !important;
+            color: white;
+        }
+        .select2-container--default .select2-selection--multiple .select2-selection__choice {
+            background-color: #144593;
+        }
+
+        .card .card-header{
+            background:linear-gradient(118deg, #175998, rgba(23,89,152, 0.7));
+            margin-bottom: 20px
+        }
+
+        .card-header h4 ,h2{
+            color:white;
+        }
+    </style>
+
 </head>
 <!-- END: Head-->
 
@@ -98,20 +117,18 @@
 
                                     <div class="form-group">
                                         <label for="">Site</label>
-                                        <select name="site_ids[]" class="form-control select2" required>
-                                            <option value="{{null}}" selected="selected">Select Options</option>
+                                        <select name="site_ids[]" class="form-control select2" multiple="multiple">
                                             @foreach($sites as $site)
-                                                <option value="{{$site->id}}" selected="selected"> {{$site->name}} </option>
+                                            <option value="{{$site->id}}" @if( (isset($users->site_ids) && in_array($site->id,$users->site_ids) ) || (old('site_ids') && in_array($site->id, old('site_ids')) ) )selected="selected" @endif > {{$site->name}} </option>
                                             @endforeach
                                         </select>
                                     </div>
                                     
                                     <div class="form-group">
                                         <label for="">Modules</label>
-                                        <select name="module_ids[]" class="form-control select2" required>
-                                            <option value="{{null}}" selected="selected">Select Options</option>
+                                        <select name="module_ids[]" class="form-control select2" multiple="multiple">
                                             @foreach($modules as $module)
-                                                <option value="{{$module->id}}" selected="selected" > {{$module->name}} </option>
+                                            <option value="{{$module->id}}" @if( (isset($users->module_ids) && in_array($module->id,$users->module_ids) ) || (old('module_ids') && in_array($module->id, old('module_ids')) ) )selected="selected" @endif > {{$module->name}} </option>
                                             @endforeach
                                         </select>
                                     </div>
@@ -134,6 +151,7 @@
 
     <!-- BEGIN: Page Vendor JS-->
     <script src="/app-assets/vendors/js/forms/validation/jquery.validate.min.js"></script>
+    <script src="/app-assets/vendors/js/forms/select/select2.full.min.js"></script>
     <script src="/app-assets/vendors/js/extensions/sweetalert2.all.min.js"></script>
 
     <!-- END: Page Vendor JS-->
