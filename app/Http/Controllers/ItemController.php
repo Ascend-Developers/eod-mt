@@ -40,11 +40,10 @@ class ItemController extends Controller
         $this->validate($request, [
             'name' => ['required'],
         ]);
-            // dd($request->input('nvr_id'));
         $data = [
             'name' => $request->input('name'),
         ];
-        $site = Item::create($data);
+        $item = Item::create($data);
 
         return redirect()->route('item.index')->with('success', 'Item is created successfully');
     }
@@ -55,9 +54,11 @@ class ItemController extends Controller
      * @param  \App\Models\Site  $site
      * @return \Illuminate\Http\Response
      */
-    public function show(Site $site)
+    public function show($id)
     {
         //
+        $item = Item::find($id);
+        return view('items.Show', compact('item'));
     }
 
     /**
@@ -66,9 +67,11 @@ class ItemController extends Controller
      * @param  \App\Models\Site  $site
      * @return \Illuminate\Http\Response
      */
-    public function edit(Site $site)
+    public function edit($id)
     {
         //
+        $item = Item::find($id);
+        return view('items.edit', compact('item'));
     }
 
     /**
@@ -78,9 +81,20 @@ class ItemController extends Controller
      * @param  \App\Models\Site  $site
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Site $site)
+    public function update(Request $request, $id)
     {
         //
+        $this->validate($request, [
+            'name'=> ['required'],
+        ]);
+
+        $item = Item::find($id);
+
+        $item->name =  $request->input('name');
+
+        $item->save();
+
+        return redirect()->route('item.index')->with('success','Item is Updated successfully');
     }
 
     /**
@@ -89,8 +103,11 @@ class ItemController extends Controller
      * @param  \App\Models\Site  $site
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Site $site)
+    public function destroy($id)
     {
         //
+        $item = Item::find($id);
+        $item->delete();
+        return redirect()->route('item.index');
     }
 }

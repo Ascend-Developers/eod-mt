@@ -5,8 +5,9 @@
     <div class="row justify-content-center">
         <div class="col-md-12">
             <div class="card">
-                <div class="card-header">{{ __('Modules') }}</div>
-
+                <div class="card-header">
+                    <h4 class="card-title">{{ __('Modules') }}</h4>
+                </div>
                 <div class="card-body">
                     <table class="table">
                         <thead>
@@ -20,15 +21,15 @@
                             <tr>
                                 <td>{{ $module->name }}</td>
                                 <td>
-                                    <a href="{{route('module.edit', $module->id)}}">Edit</a>
+                                    <a href="{{route('module.edit', $module->id)}}"><i data-feather='edit'></i></a>
                                     |
                                     <form action="{{ route('module.destroy', $module->id) }}" method="POST" style="display: inline" class="macros-delete" id="delete-macros-{{$module->_id}}">
                                         @csrf
                                         @method('delete')
-                                        <button class="text-danger selectDelBtn" type="submit" style="background: none; border:none; display:inline">Delete</button>
+                                        <button class="text-danger selectDelBtn" type="submit" style="background: none; border:none; display:inline"><i data-feather='delete'></i></button>
                                     </form>
-                                    {{-- |
-                                    <a href="{{ route('module.show', $module->id) }}">Show </a> --}}
+                                    |
+                                    <a href="{{ route('module.show', $module->id) }}"><i data-feather='eye'></i></a>
                                 </td>
                             </tr>
                             @endforeach

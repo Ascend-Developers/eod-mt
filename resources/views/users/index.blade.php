@@ -28,19 +28,20 @@
                                 <th>{{$user->name}}</th>
                                 <th>{{$user->email}}</th>
                                 <th>{{$user->type}}</th>
-                                <th>{{$user->sites ? $user->sites->pluck('name') : "--"}}</th>
-                                {{-- <th>{{$user->sites ? implode($user->sites->pluck('name')) : "--"}}</th> --}}
+                                <th>{{$user->sites ? preg_replace('/[["]/', '',$user->sites->pluck('name')) : "--"}}</th>
                                 <th>{{$user->phone}}</th>
-                                <th>{{$user->module_ids ? implode($user->module_ids) : "--"}}</th>
+                                <th>{{$user->modules ? preg_replace('/[["]/', '',$user->modules->pluck('name')) : "--"}}</th>
                                 <th>{{$user->category}}</th>
                                 <th>
-                                    <a href="{{route('user.edit', $user->id)}}">Edit</a>
+                                    <a href="{{route('user.edit', $user->id)}}"><i data-feather='edit'></i></a>
                                     |
                                     <form action="{{ route('user.destroy', $user->id) }}" method="POST" style="display: inline" class="macros-delete" id="delete-macros-{{$user->_id}}">
                                         @csrf
                                         @method('delete')
-                                        <button class="text-danger selectDelBtn" type="submit" style="background: none; border:none; display:inline">Delete</button>
+                                        <button class="text-danger selectDelBtn" type="submit" style="background: none; border:none; display:inline"><i data-feather='delete'></i></button>
                                     </form>
+                                    |
+                                    <a style="color: green;" href="{{route('user.show', $user->_id)}}"><i data-feather='eye'></i></a>
                                 </th>
                             </tr>
                             @endforeach

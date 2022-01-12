@@ -5,8 +5,9 @@
     <div class="row justify-content-center">
         <div class="col-md-12">
             <div class="card">
-                <div class="card-header">{{ __('Edit Wating Time') }}</div>
-
+                <div class="card-header">
+                    <h4 class="card-title">{{ __('Edit Wating Time') }}</h4>
+                </div>
                 <div class="card-body">
                     <div class="p-5">
                         <form action="{{route('waiting.update', $wt->id)}}" method="POST">

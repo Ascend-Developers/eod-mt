@@ -44,7 +44,7 @@
                     </ul>
                 </li>
                 {{--  Item --}}
-                <li class=" nav-item"><a class="d-flex align-items-center" href="#"><i data-feather="thermometer"></i><span class="menu-title text-truncate" data-i18n="Dashboards"> Item</span></a>
+                <li class=" nav-item"><a class="d-flex align-items-center" href="#"><i data-feather="archive"></i><span class="menu-title text-truncate" data-i18n="Dashboards"> Item</span></a>
                     <ul class="menu-content">
                         <li><a class="d-flex align-items-center" href="{{route('item.create')}}"><i data-feather="circle"></i><span class="menu-item" data-i18n="Shop">Add</span></a>
                         </li>
@@ -62,14 +62,9 @@
                         </li>
                     </ul>
                 </li>
-
                @endif
-
-
-
-
             {{--  Submission --}}
-            <li class=" nav-item"><a class="d-flex align-items-center" href="#"><i data-feather="thermometer"></i><span class="menu-title text-truncate" data-i18n="Dashboards"> EOD</span></a>
+            <li class=" nav-item"><a class="d-flex align-items-center" href="#"><i data-feather="file"></i><span class="menu-title text-truncate" data-i18n="Dashboards"> EOD</span></a>
                 <ul class="menu-content">
                     <li><a class="d-flex align-items-center" href="{{route('eod.create')}}"><i data-feather="circle"></i><span class="menu-item" data-i18n="Shop">Add</span></a>
                     </li>
@@ -81,7 +76,7 @@
             </li>
 
             {{-- Waiting Time --}}
-            <li class=" nav-item"><a class="d-flex align-items-center" href="#"><i data-feather="x-circle"></i><span class="menu-title text-truncate" data-i18n="Dashboards">Wating time</span></a>
+            <li class=" nav-item"><a class="d-flex align-items-center" href="#"><i data-feather="layers"></i><span class="menu-title text-truncate" data-i18n="Dashboards">Wating time</span></a>
                 <ul class="menu-content">
                     <li><a class="d-flex align-items-center" href="{{route('waiting.create')}}"><i data-feather="circle"></i><span class="menu-item" data-i18n="Shop">Add</span></a>
                     </li>

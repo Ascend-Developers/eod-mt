@@ -5,8 +5,9 @@
     <div class="row justify-content-center">
         <div class="col-md-12">
             <div class="card">
-                <div class="card-header">{{ __('Regions') }}</div>
-
+                <div class="card-header">
+                    <h4 class="card-title">{{ __('Region') }}</h4>
+                </div>
                 <div class="card-body">
                     <table class="table">
                         <thead>
@@ -18,17 +19,17 @@
                         <tbody>
                             @foreach($regions as $region)
                             <tr>
-                                <td>{{ $region->name }} | {{ $region->stock }}</td>
+                                <td>{{ $region->name }}</td>
                                 <td>
-                                    <a href="{{route('region.edit', $region->id)}}">Edit</a>
+                                    <a href="{{route('region.edit', $region->id)}}"><i data-feather='edit'></i></a>
                                     |
                                     <form action="{{ route('region.destroy', $region->id) }}" method="POST" style="display: inline" class="macros-delete" id="delete-macros-{{$region->_id}}">
                                         @csrf
                                         @method('delete')
-                                        <button class="text-danger selectDelBtn" type="submit" style="background: none; border:none; display:inline">Delete</button>
+                                        <button class="text-danger selectDelBtn" type="submit" style="background: none; border:none; display:inline"><i data-feather='delete'></i></button>
                                     </form>
                                     |
-                                    <a href="{{ route('region.show', $region->id) }}">Show </a>
+                                    <a href="{{ route('region.show', $region->id) }}"><i data-feather='eye'></i></a>
                                 </td>
                             </tr>
                             @endforeach

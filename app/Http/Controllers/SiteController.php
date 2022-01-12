@@ -46,7 +46,7 @@ class SiteController extends Controller
         ]);
         $data = [
             'name' => $request->input('name'),
-            // 'region_id' => $request->input('region_id'),
+            'region_id' => $request->input('region_id'),
             'type' => $request->input('type') == true ? 'mega' : 'minor',
         ];
         $site = Site::create($data);
@@ -60,9 +60,11 @@ class SiteController extends Controller
      * @param  \App\Models\Site  $site
      * @return \Illuminate\Http\Response
      */
-    public function show(Site $site)
+    public function show($id)
     {
         //
+        $site = Site::find($id);
+        return view('sites.Show', compact('site'));
     }
 
     /**
@@ -71,9 +73,12 @@ class SiteController extends Controller
      * @param  \App\Models\Site  $site
      * @return \Illuminate\Http\Response
      */
-    public function edit(Site $site)
+    public function edit($id)
     {
         //
+        $site = Site::find($id);
+        $regions = Region::all();
+        return view('sites.edit', compact('regions', 'site'));
     }
 
     /**
@@ -83,9 +88,23 @@ class SiteController extends Controller
      * @param  \App\Models\Site  $site
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Site $site)
+    public function update(Request $request, $id)
     {
         //
+        $this->validate($request, [
+            'name' => ['required'],
+            // 'region_id' => ['required'],
+        ]);
+
+        $site = Site::find($id);
+
+        $site->name =  $request->input('name');
+        $site->region_id =  $request->input('region_id');
+        $site->type =  $request->input('type') == true ? 'mega' : 'minor';
+
+        $site->save();
+
+        return redirect()->route('site.index')->with('success', 'Site is updated successfully');
     }
 
     /**
@@ -94,8 +113,11 @@ class SiteController extends Controller
      * @param  \App\Models\Site  $site
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Site $site)
+    public function destroy($id)
     {
         //
+        $site = Site::find($id);
+        $site->delete();
+        return redirect()->route('site.index');
     }
 }

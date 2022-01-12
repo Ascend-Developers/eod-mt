@@ -5,9 +5,8 @@
     <div class="row justify-content-center">
         <div class="col-md-12">
             <div class="card">
-                <div class="row">
-                    <div class="card-header col-md-10">{{ __('Sites') }}</div>
-                    {{-- <div class="card-header col-md-2"><a class="btn btn-primary" href="{{action('VaccineSiteController@export')}}">Export</a></div> --}}
+                <div class="card-header">
+                    <h4 class="card-title">{{ __('Site') }}</h4>
                 </div>
                 <div class="card-body table-responsive w-100">
                     <table class="table responsive " id="site-table">
@@ -16,6 +15,7 @@
                                 <th scope="col">Name</th>
                                 <th scope="col">Type</th>
                                 <th scope="col">Region</th>
+                                <th scope="col">Action</th>
                             </tr>
                         </thead>
                         <tbody>
@@ -24,6 +24,17 @@
                                 <td>{{$site->name}}</td>
                                 <td>{{$site->type}}</td>
                                 <td>{{$site->region ? $site->region->name : "--"}}</td>
+                                <td>
+                                    <a href="{{route('site.edit', $site->id)}}"><i data-feather='edit'></i></a>
+                                    |
+                                    <form action="{{ route('site.destroy', $site->id) }}" method="POST" style="display: inline" class="macros-delete" id="delete-macros-{{$site->_id}}">
+                                        @csrf
+                                        @method('delete')
+                                        <button class="text-danger selectDelBtn" type="submit" style="background: none; border:none; display:inline"><i data-feather='delete'></i></button>
+                                    </form>
+                                    |
+                                    <a href="{{ route('site.show', $site->id) }}"><i data-feather='eye'></i></a>
+                                </td>
                             </tr>
                             @endforeach
                             <tr>
@@ -59,7 +70,7 @@
                 swal({
                         position: 'top-end',
                         title: "Are you sure?",
-                        text: "Once deleted, you will not be able to recover Vaccine Site!",
+                        text: "Once deleted, you will not be able to recover Site!",
                         icon: "warning",
                         buttons: true,
                         dangerMode: true,
@@ -69,8 +80,8 @@
                         e.currentTarget.submit();
                         swal({
                             position: 'top-end',
-                            title: "Vaccine Site",
-                            text: "Vaccine Site is deleted successfully",
+                            title: "Site",
+                            text: "Site is deleted successfully",
                             icon: "success",
                         });
                     }else{

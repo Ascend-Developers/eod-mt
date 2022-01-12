@@ -5,8 +5,9 @@
     <div class="row justify-content-center">
         <div class="col-md-12">
             <div class="card">
-                <div class="card-header">{{ __('Edit Module') }}</div>
-
+                <div class="card-header">
+                    <h4 class="card-title">{{ __('Edit Module') }}</h4>
+                </div>
                 <div class="card-body">
                     <form action="{{route('module.update', $module->id)}}" method="POST">
                         @method('PATCH')

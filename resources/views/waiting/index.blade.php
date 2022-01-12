@@ -40,13 +40,15 @@
                                 <th>{{$wt->user ? $wt->user->name: "--"}}</th>
                                 <th>{{ $wt->created_at }}</th>
                                 {{-- <th>
-                                    <a href="{{route('waiting.edit', $wt->id)}}">Edit</a>
+                                    <a href="{{route('waiting.edit', $wt->id)}}"><i data-feather='edit'></i></a>
                                     |
                                     <form action="{{ route('waiting.destroy', $wt->id) }}" method="POST" style="display: inline" class="macros-delete" id="delete-macros-{{$wt->_id}}">
                                         @csrf
                                         @method('delete')
-                                        <button class="text-danger selectDelBtn" type="submit" style="background: none; border:none; display:inline">Delete</button>
+                                        <button class="text-danger selectDelBtn" type="submit" style="background: none; border:none; display:inline"><i data-feather='delete'></i></button>
                                     </form>
+                                    |
+                                    <a style="color: green;" href="{{route('waiting.show', $wt->_id)}}"><i data-feather='eye'></i></a>
                                 </th> --}}
                             </tr>
                             @endforeach

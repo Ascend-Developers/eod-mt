@@ -63,7 +63,7 @@ class ModuleController extends Controller
     {
         //
         $module = Module::find($id);
-        return view('modules.Show', compact('module'));
+        return view('modules.details', compact('module'));
     }
 
     /**
