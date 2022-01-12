@@ -34,7 +34,7 @@
                                 <td>{{$sub->eodStock}}</td>
                                 <td>{{$sub->user ? $sub->user->name : '--'}}</td>
                                 <td>{{$sub->shift}}</td>
-                                <td>{{$sub->created_at}}</td>
+                                <td>{{$sub->created_at->format('d/m/Y')}}</td>
                             </tr>
                             @endforeach
                             <tr>
