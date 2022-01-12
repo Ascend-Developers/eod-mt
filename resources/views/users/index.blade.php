@@ -17,7 +17,7 @@
                                 <th scope="col">Type</th>
                                 <th scope="col"> Site</th>
                                 <th scope="col">Phone no</th>
-                                <th scope="col">Module</th>
+                                {{-- <th scope="col">Module</th> --}}
                                 <th scope="col">Category</th>
                                 <th scope="col">Action</th>
                             </tr>
@@ -30,7 +30,7 @@
                                 <th>{{$user->type}}</th>
                                 <th>{{$user->sites ? preg_replace('/[["]/', '',$user->sites->pluck('name')) : "--"}}</th>
                                 <th>{{$user->phone}}</th>
-                                <th>{{$user->modules ? preg_replace('/[["]/', '',$user->modules->pluck('name')) : "--"}}</th>
+                                {{-- <th>{{$user->modules ? preg_replace('/[["]/', '',$user->modules->pluck('name')) : "--"}}</th> --}}
                                 <th>{{$user->category}}</th>
                                 <th>
                                     <a href="{{route('user.edit', $user->id)}}"><i data-feather='edit'></i></a>

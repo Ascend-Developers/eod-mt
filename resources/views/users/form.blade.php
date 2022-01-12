@@ -49,13 +49,13 @@
     </select>
 </div>
 
-<div class="form-group">
+{{-- <div class="form-group">
     <label for="">Modules</label>
     <select name="module_ids[]" class="select2" multiple="multiple" id="large-select-multi">
         @foreach($modules as $module)
         <option value="{{$module->id}}" @if( (isset($users->module_ids) && in_array($module->id,$users->module_ids) ) || (old('module_ids') && in_array($module->id, old('module_ids')) ) )selected="selected" @endif > {{$module->name}} </option>
         @endforeach
     </select>
-</div>
+</div> --}}
 
 <button type="submit" class="btn btn-primary mr-2">Submit</button>
