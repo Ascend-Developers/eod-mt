@@ -38,7 +38,7 @@
                                 </th>
 
                                 <th>{{$wt->user ? $wt->user->name: "--"}}</th>
-                                <th>{{ $wt->created_at }}</th>
+                                <th>{{ $wt->created_at->format('F j, Y, g:i a') }}</th>
                                 {{-- <th>
                                     <a href="{{route('waiting.edit', $wt->id)}}"><i data-feather='edit'></i></a>
                                     |
