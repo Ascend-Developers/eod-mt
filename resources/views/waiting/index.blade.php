@@ -13,9 +13,9 @@
                         <thead>
                             <tr>
                                 <th scope="col">Site Name</th>
-                                <th scope="col" data-toggle="tooltip" data-placement="bottom" title="Arrival to cabinet">t1</th>
-                                <th scope="col" data-toggle="tooltip" data-placement="bottom" title="At cabinet">t2</th>
-                                <th scope="col" data-toggle="tooltip" data-placement="bottom" title="Total TAT">t3</th>
+                                <th scope="col" data-toggle="tooltip" data-placement="bottom" title="Arrival to cabinet">t1(Arrival to cabinet)</th>
+                                <th scope="col" data-toggle="tooltip" data-placement="bottom" title="At cabinet">t2(At cabinet)</th>
+                                <th scope="col" data-toggle="tooltip" data-placement="bottom" title="Total TAT">t3(Total TIme)</th>
                                 <th scope="col">Status</th>
                                 <th scope="col">Submitted By</th>
                                 <th scope="col">Date of Report</th>
@@ -38,7 +38,7 @@
                                 </th>
 
                                 <th>{{$wt->user ? $wt->user->name: "--"}}</th>
-                                <th>{{ $wt->created_at->format('d/m/Y') }}</th>
+                                <th>{{ $wt->created_at }}</th>
                                 {{-- <th>
                                     <a href="{{route('waiting.edit', $wt->id)}}"><i data-feather='edit'></i></a>
                                     |
