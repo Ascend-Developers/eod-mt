@@ -17,7 +17,12 @@ class WaitingTimeController extends Controller
     public function index()
     {
         //
-        $wts = WaitingTime::whereIn('site_id', Auth::user()->site_ids)->get();
+        if(Auth::user()->type == "admin"){
+            $wts = WaitingTime::all();
+        }else{
+            $wts = WaitingTime::whereIn('site_id', Auth::user()->site_ids)->get();
+        }
+        
         return view('waiting.index', compact('wts'));
     }
 
@@ -29,7 +34,8 @@ class WaitingTimeController extends Controller
     public function create()
     {
         //
-        return view('waiting.create');
+        $sites = Site::all();
+        return view('waiting.create', compact('sites'));
     }
 
     /**
@@ -81,7 +87,7 @@ class WaitingTimeController extends Controller
     {
         //
         $wt = WaitingTime::find($id);
-        $sites = Site::whereIn("_id", $user->site_ids)->get();
+        $sites = Site::all();
         return view('waiting.edit', compact('wt','sites'));
     }
 

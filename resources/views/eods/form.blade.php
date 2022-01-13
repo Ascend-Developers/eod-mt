@@ -8,15 +8,24 @@
     </ul>
 </div>
 @endif
+
 <div class="form-group">
     <label for="">Site</label>
     <select name="site_id" class="form-control form-control-lg select2"  id="site_id" required>
         <option value="{{null}}" selected="selected">Select Options</option>
-        @foreach (Auth::user()->sites as $site)
-            <option value="{{$site->_id}}" >
-                {{$site->name}}
-            </option>
-        @endforeach
+        @if(Auth::user()->type == "agent")
+            @foreach (Auth::user()->sites as $site)
+                <option value="{{$site->_id}}" >
+                    {{$site->name}}
+                </option>
+            @endforeach
+        @else
+            @foreach ($sites as $site)
+                <option value="{{$site->_id}}" >
+                    {{$site->name}}
+                </option>
+            @endforeach
+        @endif
     </select>
 </div>
 

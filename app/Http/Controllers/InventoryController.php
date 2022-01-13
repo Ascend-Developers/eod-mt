@@ -15,7 +15,12 @@ class InventoryController extends Controller
     public function submissions(Request $request)
     {
         $size = $request->per_page ? (int)$request->per_page : 20;
-        $submissions = InventoryTransaction::whereIn('site_id', Auth::user()->site_ids)->get();
+        if(Auth::user()->type == "admin"){
+            $submissions = InventoryTransaction::all();
+        }else{
+            $submissions = InventoryTransaction::whereIn('site_id', Auth::user()->site_ids)->get();
+        }
+        
         return view('eods.index', compact('submissions'));
     }
 
