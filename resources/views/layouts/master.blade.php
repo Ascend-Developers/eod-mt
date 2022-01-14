@@ -94,7 +94,7 @@
 
     <!-- BEGIN: Footer-->
     <footer class="footer footer-static footer-light">
-      <p class="clearfix mb-0"><span class="float-md-left d-block d-md-inline-block mt-25">COPYRIGHT &copy; 2021<a class="ml-25" href="https://training.digitum.com.sa/" target="_blank">ASCEND Healthcare Solution</a><span class="d-none d-sm-inline-block">, All rights Reserved</span></span><span class="float-md-right d-block d-md-inline-block mt-25">v1.0.0</span></p>
+      <p class="clearfix mb-0"><span class="float-md-left d-block d-md-inline-block mt-25">COPYRIGHT &copy; 2022<a class="ml-25" href="https://ascend.com.sa/" target="_blank">ASCEND Healthcare Solution</a><span class="d-none d-sm-inline-block">, All rights Reserved</span></span><span class="float-md-right d-block d-md-inline-block mt-25">v1.0.0</span></p>
     </footer>
     <button class="btn btn-primary btn-icon scroll-top" type="button"><i data-feather="arrow-up"></i></button>
     <!-- END: Footer-->
