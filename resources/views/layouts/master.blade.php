@@ -18,7 +18,7 @@
     <link rel="stylesheet" type="text/css" href="/app-assets/vendors/css/pickers/flatpickr/flatpickr.min.css">
     <link rel="stylesheet" type="text/css" href="/app-assets/vendors/css/forms/select/select2.min.css">
     <link rel="stylesheet" type="text/css" href="/app-assets/vendors/css/vendors.min.css">
-    <link rel="stylesheet" type="text/css" href="/app-assets/vendors/css/charts/apexcharts.css">
+    {{-- <link rel="stylesheet" type="text/css" href="/app-assets/vendors/css/charts/apexcharts.css"> --}}
     <link rel="stylesheet" type="text/css" href="/app-assets/vendors/css/extensions/toastr.min.css">
     <!-- END: Vendor CSS-->
 
@@ -34,15 +34,15 @@
 
     <!-- BEGIN: Page CSS-->
     <link rel="stylesheet" type="text/css" href="/app-assets/css/core/menu/menu-types/vertical-menu.css">
-    <link rel="stylesheet" type="text/css" href="/app-assets/css/pages/dashboard-ecommerce.css">
-    <link rel="stylesheet" type="text/css" href="/app-assets/css/plugins/charts/chart-apex.css">
+    {{-- <link rel="stylesheet" type="text/css" href="/app-assets/css/pages/dashboard-ecomme rce.css"> --}}
+    {{-- <link rel="stylesheet" type="text/css" href="/app-assets/css/plugins/charts/chart-apex.css"> --}}
     <link rel="stylesheet" type="text/css" href="/app-assets/css/plugins/extensions/ext-component-toastr.css">
     <!-- END: Page CSS-->
 
     <!-- BEGIN: Custom CSS-->
     <link rel="stylesheet" type="text/css" href="/assets/css/style.css">
-    <link rel="stylesheet" href="//cdn.datatables.net/1.10.7/css/jquery.dataTables.min.css">
-    <link rel="stylesheet" href="//cdn.datatables.net/responsive/2.2.7/css/responsive.dataTables.min.css">
+    {{-- <link rel="stylesheet" href="//cdn.datatables.net/1.10.7/css/jquery.dataTables.min.css"> --}}
+    {{-- <link rel="stylesheet" href="//cdn.datatables.net/responsive/2.2.7/css/responsive.dataTables.min.css"> --}}
     <!-- END: Custom CSS-->
     <style>
         .select2-container--default .select2-results__option--highlighted[aria-selected] {
@@ -106,7 +106,7 @@
 
     <!-- BEGIN: Page Vendor JS-->
     <script src="/app-assets/vendors/js/pickers/flatpickr/flatpickr.min.js"></script>
-    <script src="/app-assets/vendors/js/charts/apexcharts.min.js"></script>
+    {{-- <script src="/app-assets/vendors/js/charts/apexcharts.min.js"></script> --}}
     <script src="/app-assets/vendors/js/forms/select/select2.full.min.js"></script>
     <!-- <script src="/app-assets/vendors/js/extensions/toastr.min.js"></script> -->
     <script src="/app-assets/vendors/js/extensions/sweetalert2.all.min.js"></script>
@@ -118,22 +118,22 @@
     <!-- END: Theme JS-->
 
     <!-- BEGIN: Page JS-->
-    <script src="/app-assets/js/scripts/pages/dashboard-ecommerce.js"></script>
+    {{-- <script src="/app-assets/js/scripts/pages/dashboard-ecommerce.js"></script> --}}
     <!-- END: Page JS-->
 
     <!-- BEGIN: Page JS-->
-    <script src="/app-assets/js/scripts/forms/pickers/form-pickers.js"></script>
+    {{-- <script src="/app-assets/js/scripts/forms/pickers/form-pickers.js"></script> --}}
     <!-- END: Page JS-->
 
     <script src="/app-assets/js/scripts/extensions/ext-component-sweet-alerts.js"></script>
 
     <!-- BEGIN: Page JS-->
-    <script src="/app-assets/js/scripts/cards/card-statistics.js"></script>
+    {{-- <script src="/app-assets/js/scripts/cards/card-statistics.js"></script> --}}
     <!-- END: Page JS-->
 
     @stack('script')
     {{-- <script type="text/javascript">
-        
+
     </script> --}}
     <script>
         window.Trengo = window.Trengo || {};
