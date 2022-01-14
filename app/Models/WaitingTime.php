@@ -15,22 +15,20 @@ class WaitingTime extends Model
         't2',
         't3',
         'user_id',
-        //Operation Excellence
-        'numberOfResourcesPerCabinet',
-        'totalNumberOfCabinets',
-        'howManyOpen',
-        'howManyClosed',
-        'shiftToShiftCompliance',
-        'shiftSupervisorOnDuty',
-        //Code Red Protocol
-        'strongTriage',
-        'homeKitDistribution',
-        //RT Kitchen
-        'medicalHippaFilter',
-        'rapidTestDataEntry',
-        //Others
-        'suppliesFor6Day',
-        'PCRSampleCollectionFrequency',
+        'codeRedStatus',
+        'operatorSupervisorOnSite',
+        'doubleClinicalResourcesPerCabin',
+        'homeKitsAvailableOnSite',
+        'homeKitsInUseInTheLastHour',
+        'numberOfLanesClosed',
+        'codeRedStatusAndShurtaAlMurourPresent',
+        'PCRSampleCollectionFrequencyAsScheduled',
+        'ARTSampleToTakenKitchenContinuously',
+        'onSiteStocksForPCR_ARTSufficientForDay',
+        'HippaFilterOnSiteInARTKitchen',
+        'dataIsBeingEnteredAsPerTraining',
+        'shiftToShiftHandoverAsPerOperatorSLA',
+        'details'
     ];
 
     public function site(){

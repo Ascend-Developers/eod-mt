@@ -7,7 +7,6 @@
     </ul>
 </div>
 @endif
-<h3>Wating Time</h3>
 
 <div class="form-group">
     <label for="">Site</label>
@@ -37,106 +36,143 @@
     <input type="number" min=0 class="form-control" name="t2" @if(isset($wt)) value="{{$wt->t2}}" @else value="{{ old('t2') }}" @endif>
 </div>
 
-<h3>Operation Excellence</h3>
+<div class="form-group" id="user-sertor">
+    <label for="">Code Red status</label>
+    <select name="codeRedStatus" class="form-control select2">
+        <option value="{{null}}" selected="selected">Select Options</option>
+        <option value="Yes" @if( (isset($wt) && $wt->codeRedStatus == "Yes") || old('Yes') == "Yes" ) selected="selected" @endif>Yes</option>
+        <option value="No" @if( (isset($wt) && $wt->codeRedStatus == "No") || old('No') == "No" ) selected="selected" @endif>No</option>
+    </select>
+</div>
+
+<div class="form-group" id="user-sertor">
+    <label for="">Operator supervisor on site</label>
+    <select name="operatorSupervisorOnSite" class="form-control select2">
+        <option value="{{null}}" selected="selected">Select Options</option>
+        <option value="Yes" @if( (isset($wt) && $wt->operatorSupervisorOnSite == "Yes") || old('Yes') == "Yes" ) selected="selected" @endif>Yes</option>
+        <option value="No" @if( (isset($wt) && $wt->operatorSupervisorOnSite == "No") || old('No') == "No" ) selected="selected" @endif>No</option>
+    </select>
+</div>
+
+<div class="form-group" id="user-sertor">
+    <label for="">Double clinical resources per cabin</label>
+    <select name="doubleClinicalResourcesPerCabin" class="form-control select2">
+        <option value="{{null}}" selected="selected">Select Options</option>
+        <option value="Yes" @if( (isset($wt) && $wt->doubleClinicalResourcesPerCabin == "Yes") || old('Yes') == "Yes" ) selected="selected" @endif>Yes</option>
+        <option value="No" @if( (isset($wt) && $wt->doubleClinicalResourcesPerCabin == "No") || old('No') == "No" ) selected="selected" @endif>No</option>
+    </select>
+</div>
+
+<div class="form-group" id="user-sertor">
+    <label for="">Home kits available on site</label>
+    <select name="homeKitsAvailableOnSite" class="form-control select2">
+        <option value="{{null}}" selected="selected">Select Options</option>
+        <option value="Yes" @if( (isset($wt) && $wt->homeKitsAvailableOnSite == "Yes") || old('Yes') == "Yes" ) selected="selected" @endif>Yes</option>
+        <option value="No" @if( (isset($wt) && $wt->homeKitsAvailableOnSite == "No") || old('No') == "No" ) selected="selected" @endif>No</option>
+    </select>
+</div>
+
+<div class="form-group" id="user-sertor">
+    <label for="">Home kits in use in the last hour</label>
+    <select name="homeKitsInUseInTheLastHour" class="form-control select2">
+        <option value="{{null}}" selected="selected">Select Options</option>
+        <option value="Yes" @if( (isset($wt) && $wt->homeKitsInUseInTheLastHour == "Yes") || old('Yes') == "Yes" ) selected="selected" @endif>Yes</option>
+        <option value="No" @if( (isset($wt) && $wt->homeKitsInUseInTheLastHour == "No") || old('No') == "No" ) selected="selected" @endif>No</option>
+    </select>
+</div>
+
+<div class="form-group" id="user-sertor">
+    <label for="">Number of lanes closed</label>
+    <select name="numberOfLanesClosed" class="form-control select2">
+        <option value="{{null}}" selected="selected">Select Options</option>
+        <option value="1">1</option>
+        <option value="2">2</option>
+        <option value="3">3</option>
+        <option value="4">4</option>
+        <option value="5">5</option>
+        <option value="6">6</option>
+        <option value="7">7</option>
+        <option value="8">8</option>
+        <option value="9">9</option>
+        <option value="10">10</option>
+        <option value="11">11</option>
+        <option value="12">12</option>
+        <option value="13">13</option>
+        <option value="14">14</option>
+        <option value="15">15</option>
+        <option value="16">16</option>
+        <option value="17">17</option>
+        <option value="18">18</option>
+    </select>
+</div>
+
+<div class="form-group" id="user-sertor">
+    <label for="">Code Red status and Shurta Al Murour present</label>
+    <select name="codeRedStatusAndShurtaAlMurourPresent" class="form-control select2">
+        <option value="{{null}}" selected="selected">Select Options</option>
+        <option value="Yes" @if( (isset($wt) && $wt->codeRedStatusAndShurtaAlMurourPresent == "Yes") || old('Yes') == "Yes" ) selected="selected" @endif>Yes</option>
+        <option value="No" @if( (isset($wt) && $wt->codeRedStatusAndShurtaAlMurourPresent == "No") || old('No') == "No" ) selected="selected" @endif>No</option>
+    </select>
+</div>
+
+<div class="form-group" id="user-sertor">
+    <label for="">PCR sample collection frequency as scheduled</label>
+    <select name="PCRSampleCollectionFrequencyAsScheduled" class="form-control select2">
+        <option value="{{null}}" selected="selected">Select Options</option>
+        <option value="Yes" @if( (isset($wt) && $wt->PCRSampleCollectionFrequencyAsScheduled == "Yes") || old('Yes') == "Yes" ) selected="selected" @endif>Yes</option>
+        <option value="No" @if( (isset($wt) && $wt->PCRSampleCollectionFrequencyAsScheduled == "No") || old('No') == "No" ) selected="selected" @endif>No</option>
+    </select>
+</div>
+
+<div class="form-group" id="user-sertor">
+    <label for="">ART sample to taken kitchen continuously</label>
+    <select name="ARTSampleToTakenKitchenContinuously" class="form-control select2">
+        <option value="{{null}}" selected="selected">Select Options</option>
+        <option value="Yes" @if( (isset($wt) && $wt->ARTSampleToTakenKitchenContinuously == "Yes") || old('Yes') == "Yes" ) selected="selected" @endif>Yes</option>
+        <option value="No" @if( (isset($wt) && $wt->ARTSampleToTakenKitchenContinuously == "No") || old('No') == "No" ) selected="selected" @endif>No</option>
+    </select>
+</div>
+
+<div class="form-group" id="user-sertor">
+    <label for="">On site stocks for PCR, ART sufficient for day</label>
+    <select name="onSiteStocksForPCR_ARTSufficientForDay" class="form-control select2">
+        <option value="{{null}}" selected="selected">Select Options</option>
+        <option value="Yes" @if( (isset($wt) && $wt->onSiteStocksForPCR_ARTSufficientForDay == "Yes") || old('Yes') == "Yes" ) selected="selected" @endif>Yes</option>
+        <option value="No" @if( (isset($wt) && $wt->onSiteStocksForPCR_ARTSufficientForDay == "No") || old('No') == "No" ) selected="selected" @endif>No</option>
+    </select>
+</div>
+
+<div class="form-group" id="user-sertor">
+    <label for="">Hippa Filter on site in ART kitchen</label>
+    <select name="HippaFilterOnSiteInARTKitchen" class="form-control select2">
+        <option value="{{null}}" selected="selected">Select Options</option>
+        <option value="Yes" @if( (isset($wt) && $wt->HippaFilterOnSiteInARTKitchen == "Yes") || old('Yes') == "Yes" ) selected="selected" @endif>Yes</option>
+        <option value="No" @if( (isset($wt) && $wt->HippaFilterOnSiteInARTKitchen == "No") || old('No') == "No" ) selected="selected" @endif>No</option>
+    </select>
+</div>
+
+<div class="form-group" id="user-sertor">
+    <label for="">Data is being entered as per training</label>
+    <select name="dataIsBeingEnteredAsPerTraining" class="form-control select2">
+        <option value="{{null}}" selected="selected">Select Options</option>
+        <option value="Yes" @if( (isset($wt) && $wt->dataIsBeingEnteredAsPerTraining == "Yes") || old('Yes') == "Yes" ) selected="selected" @endif>Yes</option>
+        <option value="No" @if( (isset($wt) && $wt->dataIsBeingEnteredAsPerTraining == "No") || old('No') == "No" ) selected="selected" @endif>No</option>
+    </select>
+</div>
+
+<div class="form-group" id="user-sertor">
+    <label for="">Shift to shift handover as per operator SLA</label>
+    <span style="font-size: 70%"> (Staggered with 50% of cabins swapping at any time and no more than 15 mins handover)</span>
+    <select name="shiftToShiftHandoverAsPerOperatorSLA" class="form-control select2">
+        <option value="{{null}}" selected="selected">Select Options</option>
+        <option value="Yes" @if( (isset($wt) && $wt->shiftToShiftHandoverAsPerOperatorSLA == "Yes") || old('Yes') == "Yes" ) selected="selected" @endif>Yes</option>
+        <option value="No" @if( (isset($wt) && $wt->shiftToShiftHandoverAsPerOperatorSLA == "No") || old('No') == "No" ) selected="selected" @endif>No</option>
+    </select>
+</div>
 
 <div class="form-group">
-    <label for="">Number Of Resources Per Cabinet</label>
-    <input type="number" min="0" class="form-control" name="numberOfResourcesPerCabinet" @if(isset($wt)) value="{{$wt->numberOfResourcesPerCabinet}}" @else value="{{ old('numberOfResourcesPerCabinet') }}" @endif>
-</div>
-
-<div class="form-group">
-    <label for="">Total Number Of Cabinets</label>
-    <input type="number" min="0" class="form-control" name="totalNumberOfCabinets" @if(isset($wt)) value="{{$wt->totalNumberOfCabinets}}" @else value="{{ old('totalNumberOfCabinets') }}" @endif>
-</div>
-
-<div class="form-group">
-    <label for="">Out of the total number, How Many Open</label>
-    <input type="number" min="0" class="form-control" name="howManyOpen" @if(isset($wt)) value="{{$wt->howManyOpen}}" @else value="{{ old('howManyOpen') }}" @endif>
-</div>
-
-<div class="form-group">
-    <label for="">Out of the total number, How Many Closed</label>
-    <input type="number" min="0" class="form-control" name="howManyClosed" @if(isset($wt)) value="{{$wt->howManyClosed}}" @else value="{{ old('howManyClosed') }}" @endif>
-</div>
-
-<div class="form-group" id="user-sertor">
-    <label for="">Shift To Shift Compliance</label>
-    <select name="shiftToShiftCompliance" class="form-control select2">
-        <option value="{{null}}" selected="selected">Select Options</option>
-        <option value="Red" @if( (isset($wt) && $wt->shiftToShiftCompliance == "Red") || old('Red') == "Red" ) selected="selected" @endif>Red (more than 10 mints)</option>
-        <option value="Yellow" @if( (isset($wt) && $wt->shiftToShiftCompliance == "Yellow") || old('Yellow') == "Yellow" ) selected="selected" @endif>Yellow (5 to 10 mints)</option>
-        <option value="Green " @if( (isset($wt) && $wt->shiftToShiftCompliance == "Green ") || old('Green ') == "Green " ) selected="selected" @endif>Green (0 to 5 mints)</option>
-    </select>
-</div>
-
-<div class="form-group" id="user-sertor">
-    <label for="">Shift Supervisor On Duty</label>
-    <select name="shiftSupervisorOnDuty" class="form-control select2">
-        <option value="{{null}}" selected="selected">Select Options</option>
-        <option value="Yes" @if( (isset($wt) && $wt->shiftSupervisorOnDuty == "Yes") || old('Yes') == "Yes" ) selected="selected" @endif>Yes</option>
-        <option value="No" @if( (isset($wt) && $wt->shiftSupervisorOnDuty == "No") || old('No') == "No" ) selected="selected" @endif>No</option>
-    </select>
-</div>
-
-<h3>Code Red Protocol</h3>
-
-<div class="form-group" id="user-sertor">
-    <label for="">Strong Triage</label>
-    <select name="strongTriage" class="form-control select2">
-        <option value="{{null}}" selected="selected">Select Options</option>
-        <option value="Yes" @if( (isset($wt) && $wt->strongTriage == "Yes") || old('Yes') == "Yes" ) selected="selected" @endif>Yes</option>
-        <option value="No" @if( (isset($wt) && $wt->strongTriage == "No") || old('No') == "No" ) selected="selected" @endif>No</option>
-    </select>
-</div>
-
-<div class="form-group" id="user-sertor">
-    <label for="">Home Kit Distribution</label>
-    <select name="homeKitDistribution" class="form-control select2">
-        <option value="{{null}}" selected="selected">Select Options</option>
-        <option value="Yes" @if( (isset($wt) && $wt->homeKitDistribution == "Yes") || old('Yes') == "Yes" ) selected="selected" @endif>Yes</option>
-        <option value="No" @if( (isset($wt) && $wt->homeKitDistribution == "No") || old('No') == "No" ) selected="selected" @endif>No</option>
-    </select>
-</div>
-
-<h3>RT Kitchen</h3>
-
-<div class="form-group" id="user-sertor">
-    <label for="">Medical HIPPA Filter</label>
-    <select name="medicalHippaFilter" class="form-control select2">
-        <option value="{{null}}" selected="selected">Select Options</option>
-        <option value="Yes" @if( (isset($wt) && $wt->medicalHippaFilter == "Yes") || old('Yes') == "Yes" ) selected="selected" @endif>Yes</option>
-        <option value="No" @if( (isset($wt) && $wt->medicalHippaFilter == "No") || old('No') == "No" ) selected="selected" @endif>No</option>
-    </select>
-</div>
-
-<div class="form-group" id="user-sertor">
-    <label for="">Rapid Test Data Entry</label>
-    <select name="rapidTestDataEntry" class="form-control select2">
-        <option value="{{null}}" selected="selected">Select Options</option>
-        <option value="Red" @if( (isset($wt) && $wt->rapidTestDataEntry == "Red") || old('Red') == "Red" ) selected="selected" @endif>Red (More Than 6 Hours)</option>
-        <option value="Yellow" @if( (isset($wt) && $wt->rapidTestDataEntry == "Yellow") || old('Yellow') == "Yellow" ) selected="selected" @endif>Yellow (4 Hours)</option>
-        <option value="Green " @if( (isset($wt) && $wt->rapidTestDataEntry == "Green ") || old('Green ') == "Green " ) selected="selected" @endif>Green (2 Hours)</option>
-    </select>
-</div>
-
-<h3>Others</h3>
-
-<div class="form-group" id="user-sertor">
-    <label for="">Supplies For 6 Day</label>
-    <select name="suppliesFor6Day" class="form-control select2">
-        <option value="{{null}}" selected="selected">Select Options</option>
-        <option value="Yes" @if( (isset($wt) && $wt->suppliesFor6Day == "Yes") || old('Yes') == "Yes" ) selected="selected" @endif>Yes</option>
-        <option value="No" @if( (isset($wt) && $wt->suppliesFor6Day == "No") || old('No') == "No" ) selected="selected" @endif>No</option>
-    </select>
-</div>
-
-<div class="form-group" id="user-sertor">
-    <label for="">PCR Sample Collection Frequency</label>
-    <select name="PCRSampleCollectionFrequency" class="form-control select2">
-        <option value="{{null}}" selected="selected">Select Options</option>
-        <option value="Yes" @if( (isset($wt) && $wt->PCRSampleCollectionFrequency == "Yes") || old('Yes') == "Yes" ) selected="selected" @endif>Yes</option>
-        <option value="No" @if( (isset($wt) && $wt->PCRSampleCollectionFrequency == "No") || old('No') == "No" ) selected="selected" @endif>No</option>
-    </select>
+    <label for="">Top 3 issues by site</label>
+    <textarea class="form-control" name="details"></textarea>
 </div>
 
 <button type="submit" class="btn btn-primary mr-2">Submit</button>
