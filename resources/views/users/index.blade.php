@@ -28,7 +28,8 @@
                                 <th>{{$user->name}}</th>
                                 <th>{{$user->email}}</th>
                                 <th>{{$user->type}}</th>
-                                <th>{{$user->sites ? preg_replace('/[["]/', '',$user->sites->pluck('name')) : "--"}}</th>
+                                <th>{{$user->sites ? preg_replace('/[]]/', '',preg_replace('/[["]/', '',$user->sites->pluck('name'))) : "--"}}</th>
+                                {{-- <th>{{$user->sites ? $user->sites->pluck('name') : "--"}}</th> --}}
                                 <th>{{$user->phone}}</th>
                                 {{-- <th>{{$user->modules ? preg_replace('/[["]/', '',$user->modules->pluck('name')) : "--"}}</th> --}}
                                 <th>{{$user->category}}</th>

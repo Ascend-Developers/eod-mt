@@ -10,7 +10,27 @@ class WaitingTime extends Model
     use SoftDeletes;
 
     protected $fillable = [
-        'site_id', 't1', 't2', 't3', 'user_id'
+        'site_id',
+        't1',
+        't2',
+        't3',
+        'user_id',
+        //Operation Excellence
+        'numberOfResourcesPerCabinet',
+        'totalNumberOfCabinets',
+        'howManyOpen',
+        'howManyClosed',
+        'shiftToShiftCompliance',
+        'shiftSupervisorOnDuty',
+        //Code Red Protocol
+        'strongTriage',
+        'homeKitDistribution',
+        //RT Kitchen
+        'medicalHippaFilter',
+        'rapidTestDataEntry',
+        //Others
+        'suppliesFor6Day',
+        'PCRSampleCollectionFrequency',
     ];
 
     public function site(){

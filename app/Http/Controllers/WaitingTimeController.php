@@ -18,9 +18,9 @@ class WaitingTimeController extends Controller
     {
         //
         if(Auth::user()->type == "admin"){
-            $wts = WaitingTime::all();
+            $wts = WaitingTime::paginate(20);
         }else{
-            $wts = WaitingTime::whereIn('site_id', Auth::user()->site_ids)->get();
+            $wts = WaitingTime::whereIn('site_id', Auth::user()->site_ids)->paginate(20);
         }
         
         return view('waiting.index', compact('wts'));
@@ -51,13 +51,30 @@ class WaitingTimeController extends Controller
             't1'=> ['required'],
             't2'=> ['required'],
             'site_id'=> ['required'],
+            'totalNumberOfCabinets'=> ['integer','size:'.((int)$request->input('howManyOpen')+(int)$request->input('howManyClosed'))],
         ]);
         $data = [
             't1' => $request->input('t1'),
             't2' => $request->input('t2'),
             't3' => $request->input('t1')+$request->input('t2'),
             'site_id' => $request->input('site_id'),
-            'user_id' => Auth::user()->_id
+            'user_id' => Auth::user()->_id,
+            //Operation Excellence
+            'numberOfResourcesPerCabinet' => $request->input('numberOfResourcesPerCabinet'),
+            'totalNumberOfCabinets' => $request->input('totalNumberOfCabinets'),
+            'howManyOpen' => $request->input('howManyOpen'),
+            'howManyClosed' => $request->input('howManyClosed'),
+            'shiftToShiftCompliance' => $request->input('shiftToShiftCompliance'),
+            'shiftSupervisorOnDuty' => $request->input('shiftSupervisorOnDuty'),
+            //Code Red Protocol
+            'strongTriage' => $request->input('strongTriage'),
+            'homeKitDistribution' => $request->input('homeKitDistribution'),
+            //RT Kitchen
+            'medicalHippaFilter' => $request->input('medicalHippaFilter'),
+            'rapidTestDataEntry' => $request->input('rapidTestDataEntry'),
+            //Others
+            'suppliesFor6Day' => $request->input('suppliesFor6Day'),
+            'PCRSampleCollectionFrequency' => $request->input('PCRSampleCollectionFrequency'),
         ];
         $wt = WaitingTime::create($data);
 

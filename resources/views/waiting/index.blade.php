@@ -13,13 +13,13 @@
                         <thead>
                             <tr>
                                 <th scope="col">Site Name</th>
-                                <th scope="col">t1<span style="font-size: 70%"> (Arrival to cabinet)</span></th>
-                                <th scope="col">t2<span style="font-size: 70%"> (At cabinet)</span></th>
+                                <th scope="col">t1<span style="font-size: 70%"> (Arrival to cabin)</span></th>
+                                <th scope="col">t2<span style="font-size: 70%"> (At cabin)</span></th>
                                 <th scope="col">t3<span style="font-size: 70%"> (Total TAT)</span></th>
                                 <th scope="col">Status</th>
                                 <th scope="col">Submitted By</th>
                                 <th scope="col">Date of Report</th>
-                                {{-- <th scope="col">Action</th> --}}
+                                <th scope="col">Action</th>
                             </tr>
                         </thead>
                         <tbody>
@@ -39,23 +39,23 @@
 
                                 <th>{{$wt->user ? $wt->user->name: "--"}}</th>
                                 <th>{{ $wt->created_at->format('F j, Y, g:i a') }}</th>
-                                {{-- <th>
-                                    <a href="{{route('waiting.edit', $wt->id)}}"><i data-feather='edit'></i></a>
+                                <th>
+                                    {{-- <a href="{{route('waiting.edit', $wt->id)}}"><i data-feather='edit'></i></a>
                                     |
                                     <form action="{{ route('waiting.destroy', $wt->id) }}" method="POST" style="display: inline" class="macros-delete" id="delete-macros-{{$wt->_id}}">
                                         @csrf
                                         @method('delete')
                                         <button class="text-danger selectDelBtn" type="submit" style="background: none; border:none; display:inline"><i data-feather='delete'></i></button>
                                     </form>
-                                    |
+                                    | --}}
                                     <a style="color: green;" href="{{route('waiting.show', $wt->_id)}}"><i data-feather='eye'></i></a>
-                                </th> --}}
+                                </th>
                             </tr>
                             @endforeach
                         </tbody>
                     </table>
                 </div>
-                {{-- {{$users->appends(Request::all())->links()}} --}}
+                {{$wts->appends(Request::all())->links()}}
             </div>
         </div>
     </div>
