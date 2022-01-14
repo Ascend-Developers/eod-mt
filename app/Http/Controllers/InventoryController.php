@@ -15,13 +15,16 @@ class InventoryController extends Controller
     public function submissions(Request $request)
     {
         $size = $request->per_page ? (int)$request->per_page : 20;
-        if(Auth::user()->type == "admin"){
+        $sites = Site::all();
+        if(Auth::user()->type == "admin" && empty($request->site_id)){
             $submissions = InventoryTransaction::all();
+        }elseif($request->site_id){
+            $submissions = InventoryTransaction::where('site_id', $request->site_id)->get();
         }else{
             $submissions = InventoryTransaction::whereIn('site_id', Auth::user()->site_ids)->get();
         }
         
-        return view('eods.index', compact('submissions'));
+        return view('eods.index', compact('submissions', 'sites'));
     }
 
     public function site(Request $request)

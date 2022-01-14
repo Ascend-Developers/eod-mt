@@ -17,13 +17,16 @@ class WaitingTimeController extends Controller
     public function index()
     {
         //
-        if(Auth::user()->type == "admin"){
-            $wts = WaitingTime::paginate(20);
+        $sites = Site::all();
+        if(Auth::user()->type == "admin" && empty($request->site_id)){
+            $wts = WaitingTime::all();
+        }elseif($request->site_id){
+            $wts = WaitingTime::where('site_id', $request->site_id)->get();
         }else{
-            $wts = WaitingTime::whereIn('site_id', Auth::user()->site_ids)->paginate(20);
+            $wts = WaitingTime::whereIn('site_id', Auth::user()->site_ids)->get();
         }
         
-        return view('waiting.index', compact('wts'));
+        return view('waiting.index', compact('wts','sites'));
     }
 
     /**
