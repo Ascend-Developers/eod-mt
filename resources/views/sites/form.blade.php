@@ -20,7 +20,7 @@
     <select name="siteType" class="form-control form-control-lg select2"  id="exampleSelectl2">
         <option value="{{null}}" selected="selected">Select Options</option>
         <option value="Lab" @if(isset($site->siteType)) value="{{$site->siteType}}" selected="selected" @endif>Lab</option>
-        <option value="Lab" @if(isset($site->siteType)) value="{{$site->siteType}}" selected="selected" @endif>Lab</option>
+        <option value="Covid Test Center" @if(isset($site->siteType)) value="{{$site->siteType}}" selected="selected" @endif>Covid Test Center</option>
     </select>
 </div>
 

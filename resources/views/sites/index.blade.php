@@ -13,8 +13,9 @@
                         <thead>
                             <tr>
                                 <th scope="col">Name</th>
-                                <th scope="col">Type</th>
+                                <th scope="col">Major Site</th>
                                 <th scope="col">Region</th>
+                                <th scope="col">Site Type</th>
                                 <th scope="col">Action</th>
                             </tr>
                         </thead>
@@ -24,6 +25,7 @@
                                 <td>{{$site->name}}</td>
                                 <td>{{$site->type}}</td>
                                 <td>{{$site->region ? $site->region->name : "--"}}</td>
+                                <td>{{$site->siteType}}</td>
                                 <td>
                                     <a href="{{route('site.edit', $site->id)}}"><i data-feather='edit'></i></a>
                                     |
