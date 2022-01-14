@@ -85,7 +85,7 @@
                 </ul>
             </li>
             {{-- Rapid Antigen Testing Site Audid --}}
-            <li class=" nav-item"><a class="d-flex align-items-center" href="#"><i data-feather="layers"></i><span class="menu-title text-truncate" data-i18n="Dashboards">Rapid Antigen Site Audid</span></a>
+            <li class=" nav-item"><a class="d-flex align-items-center" href="#"><i data-feather="edit-3"></i><span class="menu-title text-truncate" data-i18n="Dashboards">Rapid Antigen Site Audid</span></a>
                 <ul class="menu-content">
                     <li><a class="d-flex align-items-center" href="{{route('ratsas.create')}}"><i data-feather="circle"></i><span class="menu-item" data-i18n="Shop">Add</span></a>
                     </li>
@@ -94,20 +94,20 @@
                 </ul>
             </li>
             {{-- Lab Shipment --}}
-            <li class=" nav-item"><a class="d-flex align-items-center" href="#"><i data-feather="layers"></i><span class="menu-title text-truncate" data-i18n="Dashboards">Lab Shipment</span></a>
+            <li class=" nav-item"><a class="d-flex align-items-center" href="#"><i data-feather="anchor"></i><span class="menu-title text-truncate" data-i18n="Dashboards">Lab Shipment</span></a>
                 <ul class="menu-content">
-                    <li><a class="d-flex align-items-center" href="{{route('#')}}"><i data-feather="circle"></i><span class="menu-item" data-i18n="Shop">Add</span></a>
+                    <li><a class="d-flex align-items-center" href="#"><i data-feather="circle"></i><span class="menu-item" data-i18n="Shop">Add</span></a>
                     </li>
-                    <li><a class="d-flex align-items-center" href="{{route('#')}}"><i data-feather="circle"></i><span class="menu-item" data-i18n="Details">List</span></a>
+                    <li><a class="d-flex align-items-center" href="#"><i data-feather="circle"></i><span class="menu-item" data-i18n="Details">List</span></a>
                     </li>
                 </ul>
             </li>
             {{-- Lab Clasification --}}
-            <li class=" nav-item"><a class="d-flex align-items-center" href="#"><i data-feather="layers"></i><span class="menu-title text-truncate" data-i18n="Dashboards">Lab Clasification</span></a>
+            <li class=" nav-item"><a class="d-flex align-items-center" href="#"><i data-feather="clipboard"></i><span class="menu-title text-truncate" data-i18n="Dashboards">Lab Clasification</span></a>
                 <ul class="menu-content">
-                    <li><a class="d-flex align-items-center" href="{{route('#')}}"><i data-feather="circle"></i><span class="menu-item" data-i18n="Shop">Add</span></a>
+                    <li><a class="d-flex align-items-center" href="#"><i data-feather="circle"></i><span class="menu-item" data-i18n="Shop">Add</span></a>
                     </li>
-                    <li><a class="d-flex align-items-center" href="{{route('#')}}"><i data-feather="circle"></i><span class="menu-item" data-i18n="Details">List</span></a>
+                    <li><a class="d-flex align-items-center" href="#"><i data-feather="circle"></i><span class="menu-item" data-i18n="Details">List</span></a>
                     </li>
                 </ul>
             </li>

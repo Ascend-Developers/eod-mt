@@ -15,7 +15,14 @@
     </select>
 </div>
 
-
+<div class="form-group">
+    <label for="">Site Type</label>
+    <select name="siteType" class="form-control form-control-lg select2"  id="exampleSelectl2">
+        <option value="{{null}}" selected="selected">Select Options</option>
+        <option value="Lab" @if(isset($site->siteType)) value="{{$site->siteType}}" selected="selected" @endif>Lab</option>
+        <option value="Lab" @if(isset($site->siteType)) value="{{$site->siteType}}" selected="selected" @endif>Lab</option>
+    </select>
+</div>
 
 <div class="form-group">
     <div class="custom-control custom-control-success custom-switch">

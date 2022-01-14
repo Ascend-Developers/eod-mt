@@ -49,6 +49,7 @@ class SiteController extends Controller
             'name' => $request->input('name'),
             'region_id' => $request->input('region_id'),
             'type' => $request->input('type') == true ? 'mega' : 'minor',
+            'siteType' =>  $request->input('siteType')
         ];
         $site = Site::create($data);
 
@@ -102,6 +103,7 @@ class SiteController extends Controller
         $site->name =  $request->input('name');
         $site->region_id =  $request->input('region_id');
         $site->type =  $request->input('type') == true ? 'mega' : 'minor';
+        $site->siteType =  $request->input('siteType');
 
         $site->save();
 

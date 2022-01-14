@@ -12,7 +12,8 @@ class Site extends Model
     protected $fillable = [
         'name',
         'region_id',
-        'type'
+        'type',
+        'siteType'
     ];
 
     public function region(){
