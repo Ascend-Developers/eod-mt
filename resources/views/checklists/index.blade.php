@@ -6,30 +6,36 @@
         <div class="col-md-12">
             <div class="card">
                 <div class="card-header">
-                    <h4 class="card-title">{{ __('Shipment List') }}</h4>
+                    <h4 class="card-title">{{ __('Lab Checklist List') }}</h4>
                 </div>
                 <div class="card-body">
                     <table class="table">
                         <thead>
                             <tr>
                                 <th scope="col">Site</th>
-                                <th scope="col">Shipment Time</th>
-                                <th scope="col">no_swabs_in_package</th>
-                                <th scope="col">no_swabs_in_ptu</th>
-                                <th scope="col">on_schedule</th>
-                                <th scope="col">Submitted By</th>
+                                <th scope="col">no_of_staff</th>
+                                <th scope="col">no_of_absence</th>
+                                <th scope="col">no_of_results</th>
+                                <th scope="col">no_of_rerun</th>
+                                <th scope="col">no_of_equipment_down</th>
+                                <th scope="col">no_of_swabs_received</th>
+                                <th scope="col">no_of_swabs_ptu</th>
+                                {{-- <th scope="col">Submitted By</th> --}}
                                 {{-- <th scope="col">Action</th> --}}
                             </tr>
                         </thead>
                         <tbody>
-                            @foreach($shipments as $shipment)
+                            @foreach($checklists as $shipment)
                             <tr>
                                 <td>{{ $shipment->site ?  $shipment->site->name : "--"}}</td>
-                                <td>{{ $shipment->shipment_time }}</td>
-                                <td>{{ $shipment->no_swabs_in_package }}</td>
-                                <td>{{ $shipment->no_swabs_in_ptu }}</td>
-                                <td>{{ $shipment->on_schedule }}</td>
-                                <td>{{ $shipment->user ?  $shipment->user->name : "--"}}</td>
+                                <td>{{ $shipment->no_of_staff }}</td>
+                                <td>{{ $shipment->no_of_absence }}</td>
+                                <td>{{ $shipment->no_of_results }}</td>
+                                <td>{{ $shipment->no_of_rerun }}</td>
+                                <td>{{ $shipment->no_of_equipment_down }}</td>
+                                <td>{{ $shipment->no_of_swabs_received }}</td>
+                                <td>{{ $shipment->no_of_swabs_ptu }}</td>
+                                {{-- <td>{{ $shipment->user ?  $shipment->user->name : "--"}}</td> --}}
                                 {{-- <td>
                                     <a href="{{route('shipment.edit', $shipment->id)}}"><i data-feather='edit'></i></a>
                                     |

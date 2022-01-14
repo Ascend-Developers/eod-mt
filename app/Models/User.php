@@ -7,7 +7,6 @@ use Illuminate\Notifications\Notifiable;
 use Jenssegers\Mongodb\Auth\User as Authenticatable;
 use Hash;
 use Carbon\Carbon;
-use Illuminate\Support\Facades\Auth;
 use Jenssegers\Mongodb\Eloquent\SoftDeletes;
 use Auth;
 

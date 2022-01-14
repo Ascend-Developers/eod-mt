@@ -8,6 +8,7 @@ use App\Http\Controllers\UserController;
 use App\Http\Controllers\WaitingTimeController;
 use App\Http\Controllers\ModuleController;
 use App\Http\Controllers\HelperController;
+use App\Http\Controllers\LabCheckListController;
 use App\Http\Controllers\RapidAntigenSiteAuditController;
 use App\Http\Controllers\ShipmentController;
 use Illuminate\Support\Facades\Route;
@@ -49,4 +50,6 @@ Route::resource('waiting', WaitingTimeController::class)->middleware('auth');
 Route::resource('module', ModuleController::class)->middleware('auth');
 Route::resource('ratsas', RapidAntigenSiteAuditController::class)->middleware('auth');
 Route::resource('shipment', ShipmentController::class)->middleware('auth');
+
+Route::resource('checklist', LabCheckListController::class)->middleware('auth');
 

@@ -134,26 +134,26 @@
                 @if (Auth::user()->type == "agent" && in_array("Lab Shipment", Auth::user()->modulesNameArr()))
                     <li class=" nav-item"><a class="d-flex align-items-center" href="#"><i data-feather="anchor"></i><span class="menu-title text-truncate" data-i18n="Dashboards">Lab Shipment</span></a>
                         <ul class="menu-content">
-                            <li><a class="d-flex align-items-center" href="#"><i data-feather="circle"></i><span class="menu-item" data-i18n="Shop">Add</span></a>
+                            <li><a class="d-flex align-items-center" href="{{route('shipment.create')}}"><i data-feather="circle"></i><span class="menu-item" data-i18n="Shop">Add</span></a>
                             </li>
-                            <li><a class="d-flex align-items-center" href="#"><i data-feather="circle"></i><span class="menu-item" data-i18n="Details">List</span></a>
+                            <li><a class="d-flex align-items-center" href="{{route('shipment.index')}}"><i data-feather="circle"></i><span class="menu-item" data-i18n="Details">List</span></a>
                             </li>
                         </ul>
                     </li>
                 @elseif (Auth::user()->type == "admin")
                     <li class=" nav-item"><a class="d-flex align-items-center" href="#"><i data-feather="anchor"></i><span class="menu-title text-truncate" data-i18n="Dashboards">Lab Shipment</span></a>
                         <ul class="menu-content">
-                            <li><a class="d-flex align-items-center" href="#"><i data-feather="circle"></i><span class="menu-item" data-i18n="Shop">Add</span></a>
+                            <li><a class="d-flex align-items-center" href="{{route('shipment.create')}}"><i data-feather="circle"></i><span class="menu-item" data-i18n="Shop">Add</span></a>
                             </li>
-                            <li><a class="d-flex align-items-center" href="#"><i data-feather="circle"></i><span class="menu-item" data-i18n="Details">List</span></a>
+                            <li><a class="d-flex align-items-center" href="{{route('shipment.index')}}"><i data-feather="circle"></i><span class="menu-item" data-i18n="Details">List</span></a>
                             </li>
                         </ul>
                     </li>
                 @endif
 
-                {{-- Lab Clasification --}}
+                {{-- Lab CheckList --}}
                 @if (Auth::user()->type == "agent" && in_array("Lab Classification", Auth::user()->modulesNameArr()))
-                    <li class=" nav-item"><a class="d-flex align-items-center" href="#"><i data-feather="clipboard"></i><span class="menu-title text-truncate" data-i18n="Dashboards">Lab Clasification</span></a>
+                    <li class=" nav-item"><a class="d-flex align-items-center" href="#"><i data-feather="clipboard"></i><span class="menu-title text-truncate" data-i18n="Dashboards">Lab CheckList</span></a>
                         <ul class="menu-content">
                             <li><a class="d-flex align-items-center" href="#"><i data-feather="circle"></i><span class="menu-item" data-i18n="Shop">Add</span></a>
                             </li>
@@ -162,23 +162,23 @@
                         </ul>
                     </li>
                 @elseif (Auth::user()->type == "admin")
-                    <li class=" nav-item"><a class="d-flex align-items-center" href="#"><i data-feather="clipboard"></i><span class="menu-title text-truncate" data-i18n="Dashboards">Lab Clasification</span></a>
+                    <li class=" nav-item"><a class="d-flex align-items-center" href="#"><i data-feather="clipboard"></i><span class="menu-title text-truncate" data-i18n="Dashboards">Lab CheckList</span></a>
                         <ul class="menu-content">
-                            <li><a class="d-flex align-items-center" href="#"><i data-feather="circle"></i><span class="menu-item" data-i18n="Shop">Add</span></a>
+                            <li><a class="d-flex align-items-center" href="{{route('checklist.create')}}""><i data-feather="circle"></i><span class="menu-item" data-i18n="Shop">Add</span></a>
                             </li>
-                            <li><a class="d-flex align-items-center" href="#"><i data-feather="circle"></i><span class="menu-item" data-i18n="Details">List</span></a>
+                            <li><a class="d-flex align-items-center" href="{{route('checklist.index')}}""><i data-feather="circle"></i><span class="menu-item" data-i18n="Details">List</span></a>
                             </li>
                         </ul>
                     </li>
                 @endif
-                        
-                        
-                        
-                        
+
+
+
+
                         {{-- Lab Shipment --}}
-                        
-                        
-                        
+
+
+
            </ul>
        </div>
    </div>
