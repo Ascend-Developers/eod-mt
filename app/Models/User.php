@@ -9,6 +9,7 @@ use Hash;
 use Carbon\Carbon;
 use Illuminate\Support\Facades\Auth;
 use Jenssegers\Mongodb\Eloquent\SoftDeletes;
+use Auth;
 
 class User extends Authenticatable
 {
@@ -40,6 +41,17 @@ class User extends Authenticatable
         return $this->belongsToMany(Module::class, 'module_ids');
     }
 
+
+    public function modulesNameArr()
+    {
+        $name = [];
+        foreach(Auth::user()->modules as $mo){
+            array_push($name, $mo->name);
+        }
+        // in_array("EOD Submission", $name)
+        // return in_array("EOD Submission", $name);
+        return $name;
+    }
     public function getSites(){
         if(Auth::user()->type == 'admin'){
             return Site::all();

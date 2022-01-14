@@ -51,7 +51,6 @@ class WaitingTimeController extends Controller
             't1'=> ['required'],
             't2'=> ['required'],
             'site_id'=> ['required'],
-            'totalNumberOfCabinets'=> ['integer','size:'.((int)$request->input('howManyOpen')+(int)$request->input('howManyClosed'))],
         ]);
         $data = [
             't1' => $request->input('t1'),
@@ -59,22 +58,20 @@ class WaitingTimeController extends Controller
             't3' => $request->input('t1')+$request->input('t2'),
             'site_id' => $request->input('site_id'),
             'user_id' => Auth::user()->_id,
-            //Operation Excellence
-            'numberOfResourcesPerCabinet' => $request->input('numberOfResourcesPerCabinet'),
-            'totalNumberOfCabinets' => $request->input('totalNumberOfCabinets'),
-            'howManyOpen' => $request->input('howManyOpen'),
-            'howManyClosed' => $request->input('howManyClosed'),
-            'shiftToShiftCompliance' => $request->input('shiftToShiftCompliance'),
-            'shiftSupervisorOnDuty' => $request->input('shiftSupervisorOnDuty'),
-            //Code Red Protocol
-            'strongTriage' => $request->input('strongTriage'),
-            'homeKitDistribution' => $request->input('homeKitDistribution'),
-            //RT Kitchen
-            'medicalHippaFilter' => $request->input('medicalHippaFilter'),
-            'rapidTestDataEntry' => $request->input('rapidTestDataEntry'),
-            //Others
-            'suppliesFor6Day' => $request->input('suppliesFor6Day'),
-            'PCRSampleCollectionFrequency' => $request->input('PCRSampleCollectionFrequency'),
+            'codeRedStatus' => $request->input('codeRedStatus'),
+            'operatorSupervisorOnSite' => $request->input('operatorSupervisorOnSite'),
+            'doubleClinicalResourcesPerCabin' => $request->input('doubleClinicalResourcesPerCabin'),
+            'homeKitsAvailableOnSite' => $request->input('homeKitsAvailableOnSite'),
+            'homeKitsInUseInTheLastHour' => $request->input('homeKitsInUseInTheLastHour'),
+            'numberOfLanesClosed' => $request->input('numberOfLanesClosed'),
+            'codeRedStatusAndShurtaAlMurourPresent' => $request->input('codeRedStatusAndShurtaAlMurourPresent'),
+            'PCRSampleCollectionFrequencyAsScheduled' => $request->input('PCRSampleCollectionFrequencyAsScheduled'),
+            'ARTSampleToTakenKitchenContinuously' => $request->input('ARTSampleToTakenKitchenContinuously'),
+            'onSiteStocksForPCR_ARTSufficientForDay' => $request->input('onSiteStocksForPCR_ARTSufficientForDay'),
+            'HippaFilterOnSiteInARTKitchen' => $request->input('HippaFilterOnSiteInARTKitchen'),
+            'dataIsBeingEnteredAsPerTraining' => $request->input('dataIsBeingEnteredAsPerTraining'),
+            'shiftToShiftHandoverAsPerOperatorSLA' => $request->input('shiftToShiftHandoverAsPerOperatorSLA'),
+            'details' => $request->input('details')
         ];
         $wt = WaitingTime::create($data);
 

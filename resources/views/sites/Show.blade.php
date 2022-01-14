@@ -11,7 +11,8 @@
                 <div class="card-body">
                 
                     <h5><strong>Name : </strong>{{$site->name}}</h5>
-                    <h5><strong>Type : </strong>{{$site->type}}</h5>
+                    <h5><strong>Major Site : </strong>{{$site->type}}</h5>
+                    <h5><strong>Site Type : </strong>{{$site->siteType}}</h5>
                     <h5><strong>Region : </strong>{{$site->region ? $site->region->name : "--"}}</h5>
                 </div>
             </div>
