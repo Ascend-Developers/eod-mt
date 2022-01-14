@@ -34,7 +34,7 @@
                                         <span class="badge badge-success" >Green</span>
                                     @else
                                         <span class="badge badge-danger" >Red</span>
-                                    @endif96
+                                    @endif
                                 </th>
 
                                 <th>{{$wt->user ? $wt->user->name: "--"}}</th>
