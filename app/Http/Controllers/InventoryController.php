@@ -14,20 +14,14 @@ class InventoryController extends Controller
     //
     public function submissions(Request $request)
     {
-        $size = $request->per_page ? (int)$request->per_page : 20;
-        if(Auth::user()->type == "admin"){
-            $submissions = InventoryTransaction::all();
-        }else{
-            $submissions = InventoryTransaction::whereIn('site_id', Auth::user()->site_ids)->get();
-        }
-        
+        $submissions = InventoryTransaction::whereIn('site_id', Auth::user()->getSites()->pluck('id')->toArray())->paginate(20);
         return view('eods.index', compact('submissions'));
     }
 
     public function site(Request $request)
     {
         $size = $request->per_page ? (int)$request->per_page : 20;
-        $sites = Site::whereIn('_id', Auth::user()->site_ids)->get();
+        $sites = Site::whereIn('site_id', Auth::user()->getSites()->pluck('id')->toArray())->get();
         return view('eods.sites', compact('sites'));
     }
 
@@ -43,7 +37,7 @@ class InventoryController extends Controller
             'item_id'=> ['required'],
             'test'=> ['required'],
             'newStock'=> ['required'],
-            'shift'=> ['required'],
+            // 'shift'=> ['required'],
         ]);
         $site = Site::findOrFail($request->site_id);
 

@@ -41,6 +41,7 @@
                             <h5><strong>Hippa Filter on site in ART kitchen : </strong>{{$wt->HippaFilterOnSiteInARTKitchen}}</h5>
                             <h5><strong>Data is being entered as per training : </strong>{{$wt->dataIsBeingEnteredAsPerTraining}}</h5>
                             <h5><strong>Shift to shift handover as per operator SLA : </strong>{{$wt->shiftToShiftHandoverAsPerOperatorSLA}}</h5>
+                            <h5><strong>Mode Of Operations : </strong>{{$wt->modeOfOperations}}</h5>
                             <h5><strong>Top 3 issues by site <span style="font-size: 70%"> (Staggered with 50% of cabins swapping at any time and no more than 15 mins handover)</span> : </strong>{{$wt->details}}</h5>
                         </div>
                     </div>

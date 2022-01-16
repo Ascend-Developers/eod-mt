@@ -16,5 +16,10 @@ class LabCheckList extends Model
             'no_of_swabs_received' ,
             'no_of_swabs_ptu' ,
             'site_id' ,
+            'shift' ,
         ];
+
+        public function site(){
+            return $this->belongsTo(Site::class, 'site_id');
+        }
 }

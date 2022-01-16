@@ -55,6 +55,6 @@ class User extends Authenticatable
         if(Auth::user()->type == 'admin'){
             return Site::all();
         }
-        return Site::whereIn('site_id', Auth::user()->site_id)->get();
+        return Site::whereIn('_id', Auth::user()->site_ids)->get();
     }
 }

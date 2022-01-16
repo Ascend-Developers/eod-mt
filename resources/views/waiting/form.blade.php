@@ -170,6 +170,16 @@
     </select>
 </div>
 
+<div class="form-group" id="user-sertor">
+    <label for="">Mode of Operations</label>
+    <select name="modeOfOperations" class="form-control select2">
+        <option value="{{null}}" selected="selected">Select Options</option>
+        <option value="ART" @if( (isset($wt) && $wt->modeOfOperations == "ART") || old('ART') == "ART" ) selected="selected" @endif>ART</option>
+        <option value="PCR" @if( (isset($wt) && $wt->modeOfOperations == "PCR") || old('PCR') == "PCR" ) selected="selected" @endif>PCR</option>
+        <option value="Both" @if( (isset($wt) && $wt->modeOfOperations == "Both") || old('Both') == "Both" ) selected="selected" @endif>Both</option>
+    </select>
+</div>
+
 <div class="form-group">
     <label for="">Top 3 issues by site</label>
     <textarea class="form-control" name="details"></textarea>

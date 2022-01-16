@@ -6,20 +6,21 @@
         <div class="col-md-12">
             <div class="card">
                 <div class="card-header">
-                    <h4 class="card-title">{{ __('Lab Checklist List') }}</h4>
+                    <h4 class="card-title">{{ __('Lab Per Shift Submissions') }}</h4>
                 </div>
                 <div class="card-body">
                     <table class="table">
                         <thead>
                             <tr>
                                 <th scope="col">Site</th>
-                                <th scope="col">no_of_staff</th>
-                                <th scope="col">no_of_absence</th>
-                                <th scope="col">no_of_results</th>
-                                <th scope="col">no_of_rerun</th>
-                                <th scope="col">no_of_equipment_down</th>
-                                <th scope="col">no_of_swabs_received</th>
-                                <th scope="col">no_of_swabs_ptu</th>
+                                <th scope="col">no of staff</th>
+                                <th scope="col">no of absence</th>
+                                <th scope="col">no of results</th>
+                                <th scope="col">no of rerun</th>
+                                <th scope="col">no of equipment down</th>
+                                <th scope="col">no of swabs received</th>
+                                <th scope="col">no of swabs ptu</th>
+                                <th scope="col">Shift</th>
                                 {{-- <th scope="col">Submitted By</th> --}}
                                 {{-- <th scope="col">Action</th> --}}
                             </tr>
@@ -35,6 +36,7 @@
                                 <td>{{ $shipment->no_of_equipment_down }}</td>
                                 <td>{{ $shipment->no_of_swabs_received }}</td>
                                 <td>{{ $shipment->no_of_swabs_ptu }}</td>
+                                <td>{{ $shipment->shift }}</td>
                                 {{-- <td>{{ $shipment->user ?  $shipment->user->name : "--"}}</td> --}}
                                 {{-- <td>
                                     <a href="{{route('shipment.edit', $shipment->id)}}"><i data-feather='edit'></i></a>
@@ -52,6 +54,9 @@
                         </tbody>
                     </table>
                 </div>
+            </div>
+            <div class="d-flex justify-content-center mt-5">
+                {!! $checklists->links() !!}
             </div>
         </div>
     </div>

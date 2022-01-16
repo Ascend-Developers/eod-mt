@@ -55,7 +55,9 @@
                         </tbody>
                     </table>
                 </div>
-                {{$wts->appends(Request::all())->links()}}
+            </div>
+            <div class="d-flex justify-content-center mt-5">
+                {!! $wts->links() !!}
             </div>
         </div>
     </div>

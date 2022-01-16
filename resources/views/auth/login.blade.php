@@ -56,7 +56,7 @@
                         <div class="card mb-0">
                             <div class="card-body">
                                 <a href="javascript:void(0);" class="brand-logo">
-                                    
+
                                     <img src="/app-assets/images/logo/org-logo.jpg"  alt="Ascend" width="30%">
                                 </a>
 
@@ -77,7 +77,7 @@
                                     @endif
                                     <div class="form-group">
                                         <label for="login-email" class="form-label">Email</label>
-                                        <input type="email" class="form-control @error('email') error @enderror" id="login-email"  name="email" value="{{ old('email') }}" placeholder="john@example.com" aria-describedby="login-email" tabindex="1" autofocus  required/>
+                                        <input type="email" class="form-control @error('email') error @enderror" id="login-email"  name="email" value="{{ old('email') }}" placeholder="john@example.com" aria-describedby="login-email" tabindex="1" autofocus  required />
                                         @error('email')
                                             <span id="login-email-error" class="error">{{ $message }}</span>
                                         @enderror
@@ -146,6 +146,14 @@
                     height: 14
                 });
             }
+        })
+        $('form').on('submit', function(e){
+            // e.preventDefault()
+            let email = $("#login-email").val();
+            email = email.toLowerCase();
+            email = email.replace(/\s/g, '');
+            // $
+            $("#login-email").val(email);
         })
     </script>
 </body>

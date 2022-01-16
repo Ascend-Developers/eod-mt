@@ -4,6 +4,7 @@ namespace App\Console\Commands;
 
 use Illuminate\Console\Command;
 use App\Models\Module;
+use App\Models\User;
 
 class ModulesCommand extends Command
 {
@@ -48,6 +49,12 @@ class ModulesCommand extends Command
 
         foreach($data as $d){
             $module = Module::create($d);
+        }
+
+        $modules = Module::all()->pluck('_id')->toArray();
+        $users = User::all();
+        foreach ($users as $user) {
+            $user->modules()->attach($modules);
         }
     }
 }

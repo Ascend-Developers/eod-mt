@@ -6,7 +6,7 @@
         <div class="col-md-12">
             <div class="card">
                 <div class="card-header">
-                    <h4 class="card-title">{{ __('Add Rapid Antigen Site Audid') }}</h4>
+                    <h4 class="card-title">{{ __('Add Rapid Antigen Site Audit') }}</h4>
                 </div>
                 <div class="card-body">
                     <form action="{{route('ratsas.store')}}" method="POST">

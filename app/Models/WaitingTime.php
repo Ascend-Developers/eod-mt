@@ -28,7 +28,8 @@ class WaitingTime extends Model
         'HippaFilterOnSiteInARTKitchen',
         'dataIsBeingEnteredAsPerTraining',
         'shiftToShiftHandoverAsPerOperatorSLA',
-        'details'
+        'details',
+        'modeOfOperations'
     ];
 
     public function site(){

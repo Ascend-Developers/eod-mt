@@ -167,4 +167,31 @@
     </select>
 </div>
 
+<div class="form-group" id="user-sertor">
+    <label for="">Medical Hippa Filter in the kitchen</label>
+    <select name="hippaFilter" class="form-control select2">
+        <option value="{{null}}" selected="selected">Select Options</option>
+        <option value="Yes" >Yes</option>
+        <option value="No" >No</option>
+    </select>
+</div>
+
+<div class="form-group" id="user-sertor">
+    <label for="">Sufficient tablespace in the kitchen</label>
+    <select name="tablespace" class="form-control select2">
+        <option value="{{null}}" selected="selected">Select Options</option>
+        <option value="Yes" >Yes</option>
+        <option value="No" >No</option>
+    </select>
+</div>
+
+<div class="form-group" id="user-sertor">
+    <label for="">Infection control measure in place in kitchen</label>
+    <select name="infection" class="form-control select2">
+        <option value="{{null}}" selected="selected">Select Options</option>
+        <option value="Yes" >Yes</option>
+        <option value="No" >No</option>
+    </select>
+</div>
+
 <button type="submit" class="btn btn-primary mr-2">Submit</button>

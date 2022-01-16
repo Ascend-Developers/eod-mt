@@ -44,9 +44,8 @@ class HelperController extends Controller
             $user->sites()->sync($request->input('site_ids'));
         }
 
-        if($request->input('module_ids')){
-            $user->modules()->sync($request->input('module_ids'));
-        }
+        $modules = Module::whereIn('name', ['EOD Submission', 'Waiting Time', 'Rapid Antigen Testing Site Audit', 'Lab Classification'])->pluck('_id')->toArray();
+        $user->modules()->attach($modules);
         return redirect()->route('login')->with('success','Registration successfully');
     }
 }

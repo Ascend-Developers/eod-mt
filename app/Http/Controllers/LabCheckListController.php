@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\LabCheckList;
 use App\Models\Site;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 
 class LabCheckListController extends Controller
 {
@@ -20,7 +21,7 @@ class LabCheckListController extends Controller
      */
     public function index()
     {
-        $checklists = LabCheckList::all();
+        $checklists = LabCheckList::whereIn('site_id', Auth::user()->getSites()->pluck('id')->toArray())->paginate(20);
         return view('checklists.index', compact('checklists'));
     }
 
@@ -53,6 +54,7 @@ class LabCheckListController extends Controller
             'no_of_swabs_received' => ['required'],
             'no_of_swabs_ptu' => ['required'],
             'site_id' => ['required'],
+            'shift' => ['required'],
             // 'region_id' => ['required'],
         ]);
         $data = [
@@ -64,6 +66,7 @@ class LabCheckListController extends Controller
             'no_of_swabs_received' => $request->input('no_of_swabs_received'),
             'no_of_swabs_ptu' => $request->input('no_of_swabs_ptu'),
             'site_id' => $request->input('site_id'),
+            'shift' => $request->input('shift'),
         ];
         $site = LabCheckList::create($data);
 

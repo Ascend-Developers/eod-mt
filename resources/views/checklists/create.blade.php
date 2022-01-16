@@ -6,7 +6,7 @@
         <div class="col-md-12">
             <div class="card">
                 <div class="card-header">
-                    <h4 class="card-title">{{ __('Add Lab EOD') }}</h4>
+                    <h4 class="card-title">{{ __('Add Lab Per Shift Submission') }}</h4>
                 </div>
                 <div class="card-body">
                     <form action="{{route('checklist.store')}}" method="POST">

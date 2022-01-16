@@ -16,13 +16,7 @@ class WaitingTimeController extends Controller
      */
     public function index()
     {
-        //
-        if(Auth::user()->type == "admin"){
-            $wts = WaitingTime::paginate(20);
-        }else{
-            $wts = WaitingTime::whereIn('site_id', Auth::user()->site_ids)->paginate(20);
-        }
-        
+        $wts = WaitingTime::whereIn('site_id', Auth::user()->getSites()->pluck('id')->toArray())->orderBy('created_at', 'desc')->paginate(20);
         return view('waiting.index', compact('wts'));
     }
 
@@ -71,6 +65,7 @@ class WaitingTimeController extends Controller
             'HippaFilterOnSiteInARTKitchen' => $request->input('HippaFilterOnSiteInARTKitchen'),
             'dataIsBeingEnteredAsPerTraining' => $request->input('dataIsBeingEnteredAsPerTraining'),
             'shiftToShiftHandoverAsPerOperatorSLA' => $request->input('shiftToShiftHandoverAsPerOperatorSLA'),
+            'modeOfOperations' => $request->input('modeOfOperations'),
             'details' => $request->input('details')
         ];
         $wt = WaitingTime::create($data);

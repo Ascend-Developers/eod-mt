@@ -19,7 +19,6 @@
                                 <th scope="col">Stock Before Submission</th>
                                 <th scope="col">Stock After Submission</th>
                                 <th scope="col">Submitted By</th>
-                                <th scope="col">Shift</th>
                                 <th scope="col">Created At</th>
 
                         </thead>
@@ -33,7 +32,6 @@
                                 <td>{{$sub->intialStock}}</td>
                                 <td>{{$sub->eodStock}}</td>
                                 <td>{{$sub->user ? $sub->user->name : '--'}}</td>
-                                <td>{{$sub->shift}}</td>
                                 <td>{{$sub->created_at->format('F j, Y, g:i a')}}</td>
                             </tr>
                             @endforeach
@@ -44,6 +42,9 @@
                     </table>
                 </div>
                 {{-- {{ $vaccineSites->appends(Request::all())->links() }} --}}
+            </div>
+            <div class="d-flex justify-content-center mt-5">
+                {!! $submissions->links() !!}
             </div>
         </div>
     </div>

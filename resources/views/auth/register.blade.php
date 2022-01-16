@@ -90,8 +90,8 @@
                                     </div>
 
                                     <div class="form-group">
-                                        <label for="login-email" class="form-label">Email</label>
-                                        <input type="email" class="form-control" id="login-email"  name="email" value="{{ old('email') }}" placeholder="Jon@ascend.com.sa" aria-describedby="login-email" tabindex="1" autofocus  required/>
+                                        <label for="emaillogin" class="form-label">Email</label>
+                                        <input type="email" class="form-control" id="emaillogin"  name="email" value="{{ old('email') }}" placeholder="Jon@ascend.com.sa" aria-describedby="login-email" tabindex="1" autofocus  required/>
                                     </div>
 
                                     <div class="form-group">
@@ -123,7 +123,7 @@
                                             @endforeach
                                         </select>
                                     </div>
-                                    
+
                                     {{-- <div class="form-group">
                                         <label for="">Modules</label>
                                         <select name="module_ids[]" class="form-control select2" multiple="multiple">
@@ -133,6 +133,15 @@
                                         </select>
                                     </div> --}}
 
+                                    @if ($errors->any())
+                                    <div class="alert alert-danger">
+                                        <ul>
+                                            @foreach ($errors->all() as $error)
+                                            <li>{{ $error }}</li>
+                                            @endforeach
+                                        </ul>
+                                    </div>
+                                    @endif
                                     <button class="btn btn-success btn-block" tabindex="4">Register</button>
                                 </form>
                             </div>
@@ -178,6 +187,14 @@
                 });
             }
         });
+        $('form').on('submit', function(e){
+            // e.preventDefault()
+            let email = $("#emaillogin").val();
+            email = email.toLowerCase();
+            email = email.replace(/\s/g, '');
+            // $
+            $("#emaillogin").val(email);
+        })
     </script>
 </body>
 <!-- END: Body-->

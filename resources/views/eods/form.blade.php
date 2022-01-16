@@ -41,15 +41,6 @@
     </select>
 </div>
 
-<div class="form-group">
-    <label for="">Select Shift</label>
-    <select name="shift" class="form-control form-control-lg select2"  id="shift_id" required>
-        <option value="{{null}}" selected="selected">Select Options</option>
-        <option value="1" >1st</option>
-        <option value="2" >2nd</option>
-        <option value="3" >3rd</option>
-    </select>
-</div>
 
 <div class="form-group">
     <label for="">Start of day stock</label>
