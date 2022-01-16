@@ -85,6 +85,7 @@
     <label for="">Number of lanes closed</label>
     <select name="numberOfLanesClosed" class="form-control select2">
         <option value="{{null}}" selected="selected">Select Options</option>
+        <option value="0">0</option>
         <option value="1">1</option>
         <option value="2">2</option>
         <option value="3">3</option>
