@@ -131,7 +131,7 @@
                 @endif
 
                 {{-- Lab Shipment --}}
-                @if (Auth::user()->type == "agent" && in_array("Lab Shipment", Auth::user()->modulesNameArr()))
+                {{-- @if (Auth::user()->type == "agent" && in_array("Lab Shipment", Auth::user()->modulesNameArr()))
                     <li class=" nav-item"><a class="d-flex align-items-center" href="#"><i data-feather="anchor"></i><span class="menu-title text-truncate" data-i18n="Dashboards">Lab Shipment</span></a>
                         <ul class="menu-content">
                             <li><a class="d-flex align-items-center" href="{{route('shipment.create')}}"><i data-feather="circle"></i><span class="menu-item" data-i18n="Shop">Add</span></a>
@@ -149,7 +149,7 @@
                             </li>
                         </ul>
                     </li>
-                @endif
+                @endif --}}
 
                 {{-- Lab CheckList --}}
                 @if (Auth::user()->type == "agent" && in_array("Lab Classification", Auth::user()->modulesNameArr()))
