@@ -28,6 +28,7 @@ class LabCheckListsExport implements FromQuery, WithMapping, WithHeadings, Shoul
     {
         return [
             'Site Name',
+            'Supervisor Active',
             'No of Starf',
             'No of Absence',
             'No of Results',
@@ -43,6 +44,7 @@ class LabCheckListsExport implements FromQuery, WithMapping, WithHeadings, Shoul
     {
         return [
             $lab->site ?  $lab->site->name : "--",
+            $lab->shiftSupervisor,
             $lab->no_of_staff,
             $lab->no_of_absence,
             $lab->no_of_results,
