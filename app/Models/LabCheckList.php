@@ -17,6 +17,7 @@ class LabCheckList extends Model
             'no_of_swabs_ptu' ,
             'site_id' ,
             'shift' ,
+            'shiftSupervisor'
         ];
 
         public function site(){

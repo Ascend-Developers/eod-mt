@@ -14,7 +14,7 @@
         <option value="{{null}}" selected="selected">Select Options</option>
         @if(Auth::user()->type == "agent")
             @foreach (Auth::user()->sites as $site)
-                <option value="{{$site->_id}}" @if( (isset($wt->site_id)) || (old('site_id')) )selected="selected" @endif>
+                <option data-user="{{$site->type}}" value="{{$site->_id}}" @if( (isset($wt->site_id)) || (old('site_id')) )selected="selected" @endif>
                     {{$site->name}}
                 </option>
             @endforeach

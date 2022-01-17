@@ -9,7 +9,7 @@
         <div class="row">
              <div class="card card-custom gutter-b w-100">
                 <div class="card-header">
-                    <h4 class="card-title">{{ __('Waiting Time Details') }}</h4>
+                    <h4 class="card-title">{{ __('MT hourly checklist status Details') }}</h4>
                 </div>
                 <div class="card-body">
                     <!--begin::Example-->

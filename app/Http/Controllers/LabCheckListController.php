@@ -58,6 +58,7 @@ class LabCheckListController extends Controller
             'site_id' => ['required'],
             'shift' => ['required'],
             // 'region_id' => ['required'],
+            'shiftSupervisor' => ['required']
         ]);
         $data = [
             'no_of_staff' => $request->input('no_of_staff'),
@@ -69,6 +70,7 @@ class LabCheckListController extends Controller
             'no_of_swabs_ptu' => $request->input('no_of_swabs_ptu'),
             'site_id' => $request->input('site_id'),
             'shift' => $request->input('shift'),
+            'shiftSupervisor' => $request->input('shiftSupervisor')
         ];
         $site = LabCheckList::create($data);
 

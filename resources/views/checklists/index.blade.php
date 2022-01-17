@@ -22,6 +22,7 @@
                         <thead>
                             <tr>
                                 <th scope="col">Site</th>
+                                <th scope="col">supervisor active</th>
                                 <th scope="col">no of staff</th>
                                 <th scope="col">no of absence</th>
                                 <th scope="col">no of results</th>
@@ -38,6 +39,7 @@
                             @foreach($checklists as $shipment)
                             <tr>
                                 <td>{{ $shipment->site ?  $shipment->site->name : "--"}}</td>
+                                <td>{{ $shipment->shiftSupervisor}}</td>
                                 <td>{{ $shipment->no_of_staff }}</td>
                                 <td>{{ $shipment->no_of_absence }}</td>
                                 <td>{{ $shipment->no_of_results }}</td>

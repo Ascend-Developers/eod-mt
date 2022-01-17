@@ -33,6 +33,15 @@
 </div>
 
 <div class="form-group">
+    <label for="">Shift Supervisor on duty</label>
+    <select name="shiftSupervisor" class="form-control form-control-lg select2"  id="shift_id" required>
+        <option value="{{null}}" selected="selected">Select Options</option>
+        <option value="Yes">Yes</option>
+        <option value="No">No</option>
+    </select>
+</div>
+
+<div class="form-group">
     <label for="">Number of Staff</label>
     <input type="number" class="form-control" name="no_of_staff"  >
 </div>
