@@ -6,6 +6,8 @@ use App\Models\RapidAntigenSiteAudit;
 use Illuminate\Http\Request;
 use App\Models\Site;
 use Auth;
+use App\Exports\RapidAntigenSiteAuditsExport;
+use Excel;
 
 class RapidAntigenSiteAuditController extends Controller
 {
@@ -137,5 +139,10 @@ class RapidAntigenSiteAuditController extends Controller
         $ratsa = RapidAntigenSiteAudit::find($id);
         $ratsa->delete();
         return redirect()->route('ratsas.index');
+    }
+
+    public function export()
+    {
+        return Excel::download(new RapidAntigenSiteAuditsExport, 'rasa.xlsx');
     }
 }

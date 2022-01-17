@@ -4,6 +4,8 @@ namespace App\Http\Controllers;
 
 use App\Models\Item;
 use Illuminate\Http\Request;
+use App\Exports\ItemsExport;
+use Excel;
 
 class ItemController extends Controller
 {
@@ -109,5 +111,10 @@ class ItemController extends Controller
         $item = Item::find($id);
         $item->delete();
         return redirect()->route('item.index');
+    }
+
+    public function export()
+    {
+        return Excel::download(new ItemsExport, 'item.xlsx');
     }
 }

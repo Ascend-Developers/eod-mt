@@ -5,6 +5,8 @@ namespace App\Http\Controllers;
 use App\Models\Module;
 use Illuminate\Http\Request;
 use Illuminate\Validation\Rule;
+use App\Exports\ModulesExport;
+use Excel;
 
 class ModuleController extends Controller
 {
@@ -115,5 +117,10 @@ class ModuleController extends Controller
         $module = Module::find($id);
         $module->delete();
         return redirect()->route('module.index');
+    }
+
+    public function export()
+    {
+        return Excel::download(new ModulesExport, 'module.xlsx');
     }
 }

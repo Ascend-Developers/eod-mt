@@ -3,6 +3,15 @@
 @section('content')
 <div class="container-fluid">
     <div class="row justify-content-center">
+        <div class="col-md-11">  
+        </div>
+        <div class="col-md-1">
+            <div class="card-title"><a class="btn btn-primary" href="{{route('eod.export')}}">Export</a></div>
+        </div>
+    </div>
+</div>
+<div class="container-fluid">
+    <div class="row justify-content-center">
         <div class="col-md-12">
             <div class="card">
                 <div class="card-header">

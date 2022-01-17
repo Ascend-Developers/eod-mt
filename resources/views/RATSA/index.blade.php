@@ -3,6 +3,15 @@
 @section('content')
 <div class="container-fluid">
     <div class="row justify-content-center">
+        <div class="col-md-11">  
+        </div>
+        <div class="col-md-1">
+            <div class="card-title"><a class="btn btn-primary" href="{{route('ratsa.export')}}">Export</a></div>
+        </div>
+    </div>
+</div>
+<div class="container-fluid">
+    <div class="row justify-content-center">
         <div class="col-md-12">
             <div class="card">
                 <div class="card-header">
@@ -13,7 +22,7 @@
                         <thead>
                             <tr>
                                 <th scope="col">Site Name</th>
-                                <th scope="col">Cabinet Numbers</th>
+                                <th scope="col">Cabin Numbers</th>
                                 <th scope="col">Training sample withdrawl</th>
                                 <th scope="col">Training RAT use</th>
                                 <th scope="col">Training in use of HESN</th>
@@ -24,7 +33,7 @@
                                 <th scope="col">Preparation of extraction tubes</th>
                                 <th scope="col">Non reacting cassettes</th>
                                 <th scope="col">Health and Safety</th>
-                                <th scope="col">Submited By</th>
+                                <th scope="col">Submitted By</th>
                                 <th scope="col">Report Date</th>
                                 <th scope="col">Action</th>
                             </tr>

@@ -3,10 +3,19 @@
 @section('content')
 <div class="container-fluid">
     <div class="row justify-content-center">
+        <div class="col-md-11">  
+        </div>
+        <div class="col-md-1">
+            <div class="card-title"><a class="btn btn-primary" href="{{route('user.export')}}">Export</a></div>
+        </div>
+    </div>
+</div>
+<div class="container-fluid">
+    <div class="row justify-content-center">
         <div class="col-md-12">
             <div class="card">
                 <div class="card-header">
-                    <h4 class="card-title">{{ __('Users') }}</h4>
+                    <h4 class="card-title col-md-10">{{ __('Users') }}</h4>
                 </div>
                 <div class="card-body table-responsive w-100">
                     <table class="table responsive " id="user-table">

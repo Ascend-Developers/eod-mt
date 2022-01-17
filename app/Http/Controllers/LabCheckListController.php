@@ -6,6 +6,8 @@ use App\Models\LabCheckList;
 use App\Models\Site;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use App\Exports\LabCheckListsExport;
+use Excel;
 
 class LabCheckListController extends Controller
 {
@@ -116,5 +118,10 @@ class LabCheckListController extends Controller
     public function destroy(LabCheckList $labCheckList)
     {
         //
+    }
+
+    public function export()
+    {
+        return Excel::download(new LabCheckListsExport, 'checklist.xlsx');
     }
 }

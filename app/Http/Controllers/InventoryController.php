@@ -8,6 +8,8 @@ use App\Models\Inventory;
 use App\Models\InventoryTransaction;
 use Illuminate\Http\Request;
 use Auth;
+use App\Exports\InventoresExport;
+use Excel;
 
 class InventoryController extends Controller
 {
@@ -81,5 +83,8 @@ class InventoryController extends Controller
 
     }
 
-
+    public function export()
+    {
+        return Excel::download(new InventoresExport, 'eod.xlsx');
+    }
 }

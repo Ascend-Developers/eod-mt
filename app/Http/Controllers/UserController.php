@@ -8,6 +8,8 @@ use App\Models\Module;
 use Illuminate\Http\Request;
 use Hash;
 use Illuminate\Validation\Rule;
+use App\Exports\UsersExport;
+use Excel;
 
 class UserController extends Controller
 {
@@ -168,5 +170,10 @@ class UserController extends Controller
         $user = User::find($id);
         $user->delete();
         return redirect()->route('user.index');
+    }
+
+    public function export()
+    {
+        return Excel::download(new UsersExport, 'user.xlsx');
     }
 }

@@ -36,20 +36,38 @@ Route::post('reg/data', [HelperController::class, 'register'])->name('registerDa
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
 
 Route::resource('user', UserController::class)->middleware('auth');
+Route::get('userExport', [UserController::class, 'export'])->name('user.export')->middleware('auth');
+
 Route::resource('region', RegionController::class)->middleware('auth');
+Route::get('regionExport', [RegionController::class, 'export'])->name('region.export')->middleware('auth');
+
 Route::resource('site', SiteController::class)->middleware('auth');
+Route::get('siteExport', [SiteController::class, 'export'])->name('site.export')->middleware('auth');
+
 
 Route::resource('item', ItemController::class)->middleware('auth');
+Route::get('itemExport', [ItemController::class, 'export'])->name('item.export')->middleware('auth');
+
 
 Route::get('eod/create', [InventoryController::class, 'create'])->name('eod.create')->middleware('auth');
 Route::post('eod/store', [InventoryController::class, 'store'])->name('eod.store')->middleware('auth');
 Route::get('eod/index', [InventoryController::class, 'submissions'])->name('eod.index')->middleware('auth');
 Route::get('eod/site', [InventoryController::class, 'site'])->name('eod.site')->middleware('auth');
+Route::get('eodExport', [InventoryController::class, 'export'])->name('eod.export')->middleware('auth');
 
 Route::resource('waiting', WaitingTimeController::class)->middleware('auth');
+Route::get('waitingExport', [WaitingTimeController::class, 'export'])->name('waiting.export')->middleware('auth');
+
 Route::resource('module', ModuleController::class)->middleware('auth');
+Route::get('moduleExport', [ModuleController::class, 'export'])->name('module.export')->middleware('auth');
+
 Route::resource('ratsas', RapidAntigenSiteAuditController::class)->middleware('auth');
+Route::get('ratsasExport', [RapidAntigenSiteAuditController::class, 'export'])->name('ratsa.export')->middleware('auth');
+
 Route::resource('shipment', ShipmentController::class)->middleware('auth');
+Route::get('shipmentExport', [ShipmentController::class, 'export'])->name('shipment.export')->middleware('auth');
 
 Route::resource('checklist', LabCheckListController::class)->middleware('auth');
+Route::get('checklistExport', [LabCheckListController::class, 'export'])->name('checklist.export')->middleware('auth');
+
 

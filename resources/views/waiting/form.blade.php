@@ -10,7 +10,7 @@
 
 <div class="form-group">
     <label for="">Site</label>
-    <select name="site_id" class="select2 select2" id="large-select-multi">
+    <select name="site_id" class="select2 select2" id="siteType">
         <option value="{{null}}" selected="selected">Select Options</option>
         @if(Auth::user()->type == "agent")
             @foreach (Auth::user()->sites as $site)
@@ -20,7 +20,7 @@
             @endforeach
         @else
             @foreach ($sites as $site)
-                <option value="{{$site->id}}" @if( (isset($wt->site_id)) || (old('site_id')) )selected="selected" @endif > {{$site->name}} </option>
+                <option data-user="{{$site->type}}" value="{{$site->id}}" @if( (isset($wt->site_id)) || (old('site_id')) )selected="selected" @endif > {{$site->name}} </option>
             @endforeach
         @endif
     </select>
@@ -36,7 +36,7 @@
     <input type="number" min=0 class="form-control" name="t2" @if(isset($wt)) value="{{$wt->t2}}" @else value="{{ old('t2') }}" @endif>
 </div>
 
-<div class="form-group" id="user-sertor">
+<div class="form-group" id="wt-codeRed">
     <label for="">Code Red status</label>
     <select name="codeRedStatus" class="form-control select2">
         <option value="{{null}}" selected="selected">Select Options</option>
@@ -45,7 +45,7 @@
     </select>
 </div>
 
-<div class="form-group" id="user-sertor">
+<div class="form-group" id="wt-operatorSite">
     <label for="">Operator supervisor on site</label>
     <select name="operatorSupervisorOnSite" class="form-control select2">
         <option value="{{null}}" selected="selected">Select Options</option>
@@ -54,7 +54,7 @@
     </select>
 </div>
 
-<div class="form-group" id="user-sertor">
+<div class="form-group" id="wt-doubleClinic">
     <label for="">Double clinical resources per cabin</label>
     <select name="doubleClinicalResourcesPerCabin" class="form-control select2">
         <option value="{{null}}" selected="selected">Select Options</option>
@@ -63,7 +63,7 @@
     </select>
 </div>
 
-<div class="form-group" id="user-sertor">
+<div class="form-group" id="wt-homeKit">
     <label for="">Home kits available on site</label>
     <select name="homeKitsAvailableOnSite" class="form-control select2">
         <option value="{{null}}" selected="selected">Select Options</option>
@@ -72,7 +72,7 @@
     </select>
 </div>
 
-<div class="form-group" id="user-sertor">
+<div class="form-group" id="wt-homeKit-lastHour">
     <label for="">Home kits in use in the last hour</label>
     <select name="homeKitsInUseInTheLastHour" class="form-control select2">
         <option value="{{null}}" selected="selected">Select Options</option>
@@ -81,7 +81,7 @@
     </select>
 </div>
 
-<div class="form-group" id="user-sertor">
+<div class="form-group" id="wt-laneClosed">
     <label for="">Number of lanes closed</label>
     <select name="numberOfLanesClosed" class="form-control select2">
         <option value="{{null}}" selected="selected">Select Options</option>
@@ -107,7 +107,7 @@
     </select>
 </div>
 
-<div class="form-group" id="user-sertor">
+<div class="form-group" id="wt-codeRed-present">
     <label for="">Code Red status and Shurta Al Murour present</label>
     <select name="codeRedStatusAndShurtaAlMurourPresent" class="form-control select2">
         <option value="{{null}}" selected="selected">Select Options</option>
@@ -116,7 +116,7 @@
     </select>
 </div>
 
-<div class="form-group" id="user-sertor">
+<div class="form-group" id="wt-pcr">
     <label for="">PCR sample collection frequency as scheduled</label>
     <select name="PCRSampleCollectionFrequencyAsScheduled" class="form-control select2">
         <option value="{{null}}" selected="selected">Select Options</option>
@@ -125,7 +125,7 @@
     </select>
 </div>
 
-<div class="form-group" id="user-sertor">
+<div class="form-group" id="wt-art">
     <label for="">ART sample to taken kitchen continuously</label>
     <select name="ARTSampleToTakenKitchenContinuously" class="form-control select2">
         <option value="{{null}}" selected="selected">Select Options</option>
@@ -134,7 +134,7 @@
     </select>
 </div>
 
-<div class="form-group" id="user-sertor">
+<div class="form-group" id="wt-stocksPCR">
     <label for="">On site stocks for PCR, ART sufficient for day</label>
     <select name="onSiteStocksForPCR_ARTSufficientForDay" class="form-control select2">
         <option value="{{null}}" selected="selected">Select Options</option>
@@ -143,7 +143,7 @@
     </select>
 </div>
 
-<div class="form-group" id="user-sertor">
+<div class="form-group" id="wt-hippaART">
     <label for="">Hippa Filter on site in ART kitchen</label>
     <select name="HippaFilterOnSiteInARTKitchen" class="form-control select2">
         <option value="{{null}}" selected="selected">Select Options</option>
@@ -152,7 +152,7 @@
     </select>
 </div>
 
-<div class="form-group" id="user-sertor">
+<div class="form-group" id="wt-traning">
     <label for="">Data is being entered as per training</label>
     <select name="dataIsBeingEnteredAsPerTraining" class="form-control select2">
         <option value="{{null}}" selected="selected">Select Options</option>
@@ -161,7 +161,7 @@
     </select>
 </div>
 
-<div class="form-group" id="user-sertor">
+<div class="form-group" id="wt-SLA">
     <label for="">Shift to shift handover as per operator SLA</label>
     <span style="font-size: 70%"> (Staggered with 50% of cabins swapping at any time and no more than 15 mins handover)</span>
     <select name="shiftToShiftHandoverAsPerOperatorSLA" class="form-control select2">
@@ -171,7 +171,7 @@
     </select>
 </div>
 
-<div class="form-group" id="user-sertor">
+<div class="form-group" id="wt-operation">
     <label for="">Mode of Operations</label>
     <select name="modeOfOperations" class="form-control select2">
         <option value="{{null}}" selected="selected">Select Options</option>
@@ -181,7 +181,7 @@
     </select>
 </div>
 
-<div class="form-group">
+<div class="form-group" id="wt-details">
     <label for="">Top 3 issues by site</label>
     <textarea class="form-control" name="details"></textarea>
 </div>

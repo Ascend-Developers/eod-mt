@@ -6,6 +6,8 @@ use App\Models\WaitingTime;
 use Illuminate\Http\Request;
 use App\Models\Site;
 use Auth;
+use App\Exports\WaitingTimesExport;
+use Excel;
 
 class WaitingTimeController extends Controller
 {
@@ -140,5 +142,10 @@ class WaitingTimeController extends Controller
         $wt = WaitingTime::find($id);
         $wt->delete();
         return redirect()->route('waiting.index');
+    }
+
+    public function export()
+    {
+        return Excel::download(new WaitingTimesExport, 'waitingTime.xlsx');
     }
 }

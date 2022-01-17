@@ -6,6 +6,8 @@ use App\Models\Shipment;
 use App\Models\Site;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use App\Exports\ShipmentsExport;
+use Excel;
 
 class ShipmentController extends Controller
 {
@@ -107,5 +109,10 @@ class ShipmentController extends Controller
     public function destroy(Shipment $shipment)
     {
         //
+    }
+
+    public function export()
+    {
+        return Excel::download(new ShipmentsExport, 'shipment.xlsx');
     }
 }

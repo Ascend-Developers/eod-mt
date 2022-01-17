@@ -5,6 +5,8 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use Illuminate\Validation\Rule;
 use App\Models\Region;
+use App\Exports\RegionsExport;
+use Excel;
 
 class RegionController extends Controller
 {
@@ -117,5 +119,10 @@ class RegionController extends Controller
         $regions = Region::find($id);
         $regions->delete();
         return redirect()->route('region.index');
+    }
+
+    public function export()
+    {
+        return Excel::download(new RegionsExport, 'region.xlsx');
     }
 }

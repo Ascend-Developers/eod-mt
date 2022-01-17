@@ -6,6 +6,8 @@ use App\Models\Region;
 use App\Models\Site;
 use Illuminate\Http\Request;
 use Illuminate\Validation\Rule;
+use App\Exports\SitesExport;
+use Excel;
 
 class SiteController extends Controller
 {
@@ -122,5 +124,10 @@ class SiteController extends Controller
         $site = Site::find($id);
         $site->delete();
         return redirect()->route('site.index');
+    }
+
+    public function export()
+    {
+        return Excel::download(new SitesExport, 'site.xlsx');
     }
 }
