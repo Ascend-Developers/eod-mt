@@ -13,7 +13,7 @@ class HelperController extends Controller
     public function eodSubmission(Request $request)
     {
         $size = $request->per_page ? (int)$request->per_page : 20;
-        $eod = InventoryTransaction::orderBy('created_at', 'DESC')->with('site')->paginate($size);
+        $eod = InventoryTransaction::orderBy('created_at', 'DESC')->with('site','item', 'user')->paginate($size);
         return response()->json($eod, 200);
     }
 
@@ -27,7 +27,7 @@ class HelperController extends Controller
     public function siteInventory(Request $request)
     {
         $size = $request->per_page ? (int)$request->per_page : 20;
-        $inventory = Inventory::orderBy('created_at', 'DESC')->with('site')->paginate($size);
+        $inventory = Inventory::orderBy('created_at', 'DESC')->with('site', 'item')->paginate($size);
         return response()->json($inventory, 200);
     }
 }
