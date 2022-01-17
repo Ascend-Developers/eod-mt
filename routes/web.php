@@ -9,7 +9,7 @@ use App\Http\Controllers\WaitingTimeController;
 use App\Http\Controllers\ModuleController;
 use App\Http\Controllers\HelperController;
 use App\Http\Controllers\RapidAntigenSiteAuditController;
-
+use App\Http\Controllers\ShipmentController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -48,3 +48,5 @@ Route::get('eod/site', [InventoryController::class, 'site'])->name('eod.site')->
 Route::resource('waiting', WaitingTimeController::class)->middleware('auth');
 Route::resource('module', ModuleController::class)->middleware('auth');
 Route::resource('ratsas', RapidAntigenSiteAuditController::class)->middleware('auth');
+Route::resource('shipment', ShipmentController::class)->middleware('auth');
+
