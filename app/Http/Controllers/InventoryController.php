@@ -23,7 +23,7 @@ class InventoryController extends Controller
     public function site(Request $request)
     {
         $size = $request->per_page ? (int)$request->per_page : 20;
-        $sites = Site::whereIn('site_id', Auth::user()->getSites()->pluck('id')->toArray())->get();
+        $sites = Site::whereIn('_id', Auth::user()->getSites()->pluck('id')->toArray())->get();
         return view('eods.sites', compact('sites'));
     }
 
