@@ -27,7 +27,7 @@
 <div class="form-group">
     <div class="custom-control custom-control-success custom-switch">
         <p class="mb-50">Major Site</p>
-        <input name="type" type="checkbox" @if(isset($site) && $site->type == true) checked @endif class="custom-control-input" id="customSwitch5" />
+        <input name="type" type="checkbox" @if(isset($site) && $site->type == 'mega') checked @endif class="custom-control-input" id="customSwitch5" />
         <label class="custom-control-label" for="customSwitch5"></label>
     </div>
 </div>

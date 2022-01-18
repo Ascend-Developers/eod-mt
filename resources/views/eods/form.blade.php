@@ -49,12 +49,12 @@
 
 <div class="form-group">
     <label for="">Number of Tests</label>
-    <input type="number" class="form-control" name="test" required>
+    <input type="number" placeholder="99999999" min='0' max='100000000' class="form-control" name="test" required>
 </div>
 
 
 <div class="form-group">
     <label for="">New Stock Received</label>
-    <input type="number" class="form-control" name="newStock" required>
+    <input type="number" min='0' class="form-control" name="newStock" required>
 </div>
 

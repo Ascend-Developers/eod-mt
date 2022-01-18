@@ -12,8 +12,10 @@
     <input type="text" class="form-control" name="name" @if(isset($users)) value="{{$users->name}}" @else value="{{ old('name') }}" @endif>
 </div>
 <div class="form-group">
-    <label for="">Email</label>
-    <input type="text" class="form-control" name="email" @if(isset($users)) value="{{$users->email}}" @else value="{{ old('email') }}" @endif>
+    <label class="form-label" for="basic-default-email1">Email</label>
+    <input type="email" id="basic-default-email1" class="form-control" name="email" @if(isset($users)) value="{{$users->email}}" @else value="{{ old('email') }}" @endif required>
+    <div class="valid-feedback">Looks good!</div>
+    <div class="invalid-feedback">Please enter a valid email</div>
 </div>
 <div class="form-group">
     <label for="">Password</label>
@@ -37,7 +39,7 @@
 </div>
 <div class="form-group">
     <label for="">Phone No</label>
-    <input type="text" class="form-control" name="phone" @if(isset($users)) value="{{$users->phone}}" @else value="{{ old('phone') }}" @endif>
+    <input type="tel" placeholder="960000000000" class="form-control" name="phone" @if(isset($users)) value="{{$users->phone}}" @else value="{{ old('phone') }}" @endif>
 </div>
 
 <div class="form-group">
