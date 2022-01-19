@@ -14,8 +14,6 @@
 <div class="form-group">
     <label class="form-label" for="basic-default-email1">Email</label>
     <input type="email" id="basic-default-email1" class="form-control" name="email" @if(isset($users)) value="{{$users->email}}" @else value="{{ old('email') }}" @endif required>
-    <div class="valid-feedback">Looks good!</div>
-    <div class="invalid-feedback">Please enter a valid email</div>
 </div>
 <div class="form-group">
     <label for="">Password</label>

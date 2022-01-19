@@ -18,7 +18,8 @@
         "laravel/ui": "^3.4",
         "maatwebsite/excel": "^3.1",
         "mongodb/mongodb": "^1.7",
-        "realrashid/sweet-alert": "^4.1"
+        "realrashid/sweet-alert": "^4.1",
+        "yajra/laravel-datatables-oracle": "^9.19"
     },
     "require-dev": {
         "facade/ignition": "^2.3.6",

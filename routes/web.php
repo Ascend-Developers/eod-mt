@@ -37,6 +37,7 @@ Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name
 
 Route::resource('user', UserController::class)->middleware('auth');
 Route::get('userExport', [UserController::class, 'export'])->name('user.export')->middleware('auth');
+Route::get('userTable', [UserController::class, 'DataTables'])->name('user.datatable')->middleware('auth');
 
 Route::resource('region', RegionController::class)->middleware('auth');
 Route::get('regionExport', [RegionController::class, 'export'])->name('region.export')->middleware('auth');

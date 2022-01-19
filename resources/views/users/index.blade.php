@@ -24,14 +24,14 @@
                                 <th scope="col">Name</th>
                                 <th scope="col">Email</th>
                                 <th scope="col">Type</th>
-                                <th scope="col"> Site</th>
+                                <th scope="col">Site</th>
                                 <th scope="col">Phone no</th>
                                 <th scope="col">Module</th>
                                 <th scope="col">Category</th>
                                 <th scope="col">Action</th>
                             </tr>
                         </thead>
-                        <tbody>
+                        {{-- <tbody>
                             @foreach ($users as $user)
                             <tr>
                                 <th>{{$user->name}}</th>
@@ -54,7 +54,7 @@
                                 </th>
                             </tr>
                             @endforeach
-                        </tbody>
+                        </tbody> --}}
                     </table>
                 </div>
                 {{-- {{$users->appends(Request::all())->links()}} --}}
@@ -104,5 +104,24 @@
                 });
         });
         });
+
+        $(function() {
+                $('#user-table').DataTable({
+                    processing: true,
+                    serverSide: false,
+                    responsive: true,
+                    ajax: '{!! route('user.datatable') !!}',
+                    columns: [
+                        { data: 'name', name: 'name' ,searchable: true},
+                        { data: 'email', name: 'email' ,searchable: true},
+                        { data: 'type', name: 'type',searchable: true },
+                        { data: 'sites', name: 'sites',searchable: true },
+                        { data: 'phone', name: 'phone' ,searchable: true},
+                        { data: 'module', name: 'module' ,searchable: true},
+                        { data: 'category', name: 'category' ,searchable: true},
+                        { data: 'action', name: 'action' },
+                    ]
+                });
+            });
 </script>
 @endpush

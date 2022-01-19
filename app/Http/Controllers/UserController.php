@@ -10,6 +10,7 @@ use Hash;
 use Illuminate\Validation\Rule;
 use App\Exports\UsersExport;
 use Excel;
+use DataTables;
 
 class UserController extends Controller
 {
@@ -31,8 +32,57 @@ class UserController extends Controller
     public function index()
     {
         //
-        $users = User::all();
-        return view('users.index', compact('users'));
+        // $users = User::all();
+        // return view('users.index', compact('users'));
+        
+        return view('users.index');
+    }
+
+    public function getFilterData($request)
+    {
+        $users = User::query();
+        return $users->orderBy('created_at', 'desc');
+    }
+
+    public function DataTables(Request $request)
+    {
+        $users = $this->getFilterData($request)->get();
+
+        return DataTables::of($users)
+            ->addColumn('name', function ($user) {
+                return $user->name;
+            })
+            ->addColumn('email', function ($user) {
+                return $user->email;
+            })
+            ->addColumn('type', function ($user) {
+                return $user->type;
+            })
+            ->addColumn('sites', function ($user) {
+                return $user->sites ? preg_replace('/[]]/', '',preg_replace('/[["]/', '',$user->sites->pluck('name'))) : "--";
+            })
+            ->addColumn('phone', function ($user) {
+                return $user->phone;
+            })
+            ->addColumn('module', function ($user) {
+                return $user->modules ? preg_replace('/[]]/', '',preg_replace('/[["]/', '',$user->modules->pluck('name'))) : "--";
+            })
+            ->addColumn('category', function ($user) {
+                return $user->category;
+            })
+            ->addColumn('action', function ($user) {
+                $route = route('user.edit', $user->id);
+                $route1 = route('user.show', $user->_id);
+                return '<a href="' . $route . '"><i data-feather="edit"></i></a>
+                        <form action=" ' . route("user.destroy", $user->id) . ' " method="POST" style="display: inline" class="macros-delete" id="delete-macros-' . $user->_id . '">
+                            <input type="hidden" name="_method" value="delete">
+                            <input type="hidden" name="_token" value="' . csrf_token() . '">
+                            <button class="text-danger selectDelBtn" type="submit" style="background: none; border:none; display:inline"><i data-feather="delete"></i></button>
+                        </form>
+                        <a href="' . $route1 . '"><i data-feather="show"></i></a>';
+            })
+            ->whitelist(['name', 'email', 'type', 'site', 'phone', 'module', 'category'])
+            ->toJson();
     }
 
     /**
