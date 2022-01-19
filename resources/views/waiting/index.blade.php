@@ -49,14 +49,16 @@
                                 <th>{{$wt->user ? $wt->user->name: "--"}}</th>
                                 <th>{{ $wt->created_at->format('F j, Y, g:i a') }}</th>
                                 <th>
-                                    {{-- <a href="{{route('waiting.edit', $wt->id)}}"><i data-feather='edit'></i></a>
+                                    @if (Auth::user()->type == "admin")
+                                    <a href="{{route('waiting.edit', $wt->id)}}"><i data-feather='edit'></i></a>
                                     |
                                     <form action="{{ route('waiting.destroy', $wt->id) }}" method="POST" style="display: inline" class="macros-delete" id="delete-macros-{{$wt->_id}}">
                                         @csrf
                                         @method('delete')
                                         <button class="text-danger selectDelBtn" type="submit" style="background: none; border:none; display:inline"><i data-feather='delete'></i></button>
                                     </form>
-                                    | --}}
+                                    |
+                                    @endif
                                     <a style="color: green;" href="{{route('waiting.show', $wt->_id)}}"><i data-feather='eye'></i></a>
                                 </th>
                             </tr>
@@ -93,7 +95,7 @@
             swal({
                     position: 'top-end',
                     title: "Are you sure?",
-                    text: "Once deleted, you will not be able to recover EOD!",
+                    text: "Once deleted, you will not be able to recover Hourly Checklist Status!",
                     icon: "warning",
                     buttons: true,
                     dangerMode: true,
@@ -103,8 +105,8 @@
                     e.currentTarget.submit();
                     swal({
                         position: 'top-end',
-                        title: "EOD",
-                        text: "EOD is deleted successfully",
+                        title: "Hourly Checklist Status",
+                        text: "Hourly Checklist Status is deleted successfully",
                         icon: "success",
                     });
                 }else{

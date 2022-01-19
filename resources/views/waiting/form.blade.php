@@ -183,7 +183,7 @@
 
 <div class="form-group" id="wt-details">
     <label for="">Top 3 issues by site</label>
-    <textarea class="form-control" name="details"></textarea>
+    <textarea class="form-control" name="details">@if(isset($wt)) {{$wt->details}} @endif</textarea>
 </div>
 
 <button type="submit" class="btn btn-primary mr-2">Submit</button>
