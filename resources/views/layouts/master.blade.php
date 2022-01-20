@@ -50,11 +50,11 @@
             color: white;
         }
         .select2-container--default .select2-selection--multiple .select2-selection__choice {
-            background-color: #144593;
+            background-color: #002E6E;
         }
 
         .card .card-header{
-            background:linear-gradient(118deg, #175998, rgba(23,89,152, 0.7));
+            background:linear-gradient(118deg, #002E6E, rgba(0, 46, 110, 0.7));
             margin-bottom: 20px
         }
 
