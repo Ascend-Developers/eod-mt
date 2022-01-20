@@ -18,7 +18,7 @@ class RapidAntigenSiteAuditController extends Controller
      */
     public function index()
     {
-        $ratsas = RapidAntigenSiteAudit::whereIn('site_id', Auth::user()->getSites()->pluck('id')->toArray())->paginate(20);
+        $ratsas = RapidAntigenSiteAudit::whereIn('site_id', Auth::user()->getSites()->pluck('id')->toArray())->orderBy('created_at', 'DESC')->paginate(20);
         return view('RATSA.index', compact('ratsas'));
     }
 

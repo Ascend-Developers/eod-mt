@@ -31,7 +31,8 @@
                                 <th scope="col">no of swabs received</th>
                                 <th scope="col">no of swabs ptu</th>
                                 <th scope="col">Shift</th>
-                                {{-- <th scope="col">Submitted By</th> --}}
+                                <th scope="col">Submitted By</th>
+                                <th scope="col">Submitted At</th>
                                 {{-- <th scope="col">Action</th> --}}
                             </tr>
                         </thead>
@@ -48,7 +49,8 @@
                                 <td>{{ $shipment->no_of_swabs_received }}</td>
                                 <td>{{ $shipment->no_of_swabs_ptu }}</td>
                                 <td>{{ $shipment->shift }}</td>
-                                {{-- <td>{{ $shipment->user ?  $shipment->user->name : "--"}}</td> --}}
+                                <td>{{ $shipment->user ?  $shipment->user->name : "--"}}</td>
+                                <th>{{ $shipment->created_at->format('F j, Y, g:i a') }}</th>
                                 {{-- <td>
                                     <a href="{{route('shipment.edit', $shipment->id)}}"><i data-feather='edit'></i></a>
                                     |

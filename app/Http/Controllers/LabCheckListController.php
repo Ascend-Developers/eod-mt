@@ -23,7 +23,7 @@ class LabCheckListController extends Controller
      */
     public function index()
     {
-        $checklists = LabCheckList::whereIn('site_id', Auth::user()->getSites()->pluck('id')->toArray())->paginate(20);
+        $checklists = LabCheckList::whereIn('site_id', Auth::user()->getSites()->pluck('id')->toArray())->orderBy('created_at', 'DESC')->paginate(20);
         return view('checklists.index', compact('checklists'));
     }
 
@@ -69,6 +69,7 @@ class LabCheckListController extends Controller
             'no_of_swabs_received' => $request->input('no_of_swabs_received'),
             'no_of_swabs_ptu' => $request->input('no_of_swabs_ptu'),
             'site_id' => $request->input('site_id'),
+            'user_id' => Auth::user()->_id,
             'shift' => $request->input('shift'),
             'shiftSupervisor' => $request->input('shiftSupervisor')
         ];

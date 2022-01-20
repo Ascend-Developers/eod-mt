@@ -16,7 +16,7 @@ class InventoryController extends Controller
     //
     public function submissions(Request $request)
     {
-        $submissions = InventoryTransaction::whereIn('site_id', Auth::user()->getSites()->pluck('id')->toArray())->paginate(20);
+        $submissions = InventoryTransaction::whereIn('site_id', Auth::user()->getSites()->pluck('id')->toArray())->orderBy('created_at', 'DESC')->paginate(20);
         return view('eods.index', compact('submissions'));
     }
 
