@@ -9,7 +9,7 @@ html {
 
 html body {
     height: 100%;
-    background-color: #F8F8F8;
+    background-color: #f0f5fb;
     direction: ltr;
 }
 
@@ -614,6 +614,7 @@ footer.footer-border {
 
 .main-menu.menu-light .navigation {
     background: #002E6E;
+    margin-top: 20%;
 }
 
 .main-menu.menu-light .navigation .navigation-header {
@@ -1000,7 +1001,8 @@ footer.footer-border {
 
 .main-menu.menu-shadow {
     box-shadow: 0 0 15px 0 rgba(34, 41, 47, 0.05);
-    border-radius: 29px;
+    border-top-right-radius: 35px;
+    border-bottom-right-radius: 35px;
 }
 
 .main-menu.menu-border {
@@ -1054,7 +1056,7 @@ footer.footer-border {
 }
 
 .main-menu .navbar-header .navbar-brand .brand-logo img {
-    max-width: 145px;
+    max-width: 100px;
     /* transform: rotate(180deg); */
 }
 
@@ -1072,6 +1074,7 @@ footer.footer-border {
 .main-menu .navbar-header .modern-nav-toggle {
     -webkit-animation: 0.3s cubic-bezier(0.25, 0.8, 0.25, 1) 0s normal forwards 1 fadein;
     animation: 0.3s cubic-bezier(0.25, 0.8, 0.25, 1) 0s normal forwards 1 fadein;
+    margin-top: 190%;
 }
 
 .main-menu .main-menu-content {
