@@ -53,12 +53,14 @@
                 <div class="auth-wrapper auth-v1 px-2">
                     <div class="auth-inner py-2">
                         <!-- Login v1 -->
-                        <div class="card mb-0">
-                            <div class="card-body">
-                                <a href="javascript:void(0);" class="brand-logo">
-
-                                    <img src="/app-assets/images/logo/Ascend-logo.png"  alt="Ascend" width="30%">
+                        <div class="card mb-0 bg-blue" >
+                            <div class="card-header">
+                                <a href="javascript:void(0);" class="brand-logo" >
+                                    <img src="/app-assets/images/logo/EOD-logo-01.png"  alt="Ascend" width="30%" style="filter: brightness(0%)">
                                 </a>
+                            </div>
+                            <div class="card-body">
+
 
                                 <h4 class="card-title mb-1">Welcome to EOD-MT Portal! 👋</h4>
                                 <p class="card-text mb-2">Please sign-in to your account and start the adventure</p>
