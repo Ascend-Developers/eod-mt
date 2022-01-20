@@ -76,7 +76,7 @@
                         <div class="card mb-0">
                             <div class="card-body">
                                 <a href="javascript:void(0);" class="brand-logo">
-                                    <img src="/app-assets/images/logo/org-logo.jpg"  alt="Ascend" width="30%">
+                                    <img src="/app-assets/images/logo/Ascend-logo.png"  alt="Ascend" width="30%">
                                 </a>
 
                                 <h4 class="card-title mb-1">EOD-MT Registration Portal! 👋</h4>
