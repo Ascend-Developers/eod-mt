@@ -54,9 +54,13 @@
                     <div class="auth-inner py-2">
                         <!-- Login v1 -->
                         <div class="card mb-0 bg-blue" >
-                            <div class="card-header">
-                                <a href="javascript:void(0);" class="brand-logo" >-
-                                    <img src="/app-assets/images/logo/EOD logo Blue-01 login.png"  alt="Ascend" width="50%" >
+                            <div class="card-header" style="text-align: center">
+                                <a href="javascript:void(0);" class="brand-logo" style="text-align: center" >
+                                    <h1 style="margin-left: 68px; color: #002e6e">
+                                        EOD - Tetamman
+
+                                    </h1>
+                                    {{-- <img src="/app-assets/images/logo/EOD logo Blue-01 login.png"  alt="Ascend" width="50%" > --}}
                                 </a>
                             </div>
                             <div class="card-body">

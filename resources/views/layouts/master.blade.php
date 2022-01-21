@@ -61,7 +61,7 @@
         .card-header h4 ,h2{
             color:white;
         }
-        .main-menu .navbar-header .navbar-brand .brand-logo img{
+        .main-menu .navbar-header .navbar-brand .brand-logo {
             margin-left: 11px;
         }
     </style>
