@@ -18,7 +18,7 @@
                     <h4 class="card-title col-md-10">{{ __('Users') }}</h4>
                 </div>
                 <div class="card-body table-responsive w-100">
-                    <table class="table responsive " id="user-table">
+                    <table class="table responsive table-bordered" id="user-table">
                         <thead>
                             <tr>
                                 <th scope="col">Name</th>
