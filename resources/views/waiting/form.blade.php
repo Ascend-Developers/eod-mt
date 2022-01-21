@@ -108,7 +108,7 @@
 </div>
 
 <div class="form-group" id="wt-codeRed-present">
-    <label for="">Code Red status and Shurta Al Murour present</label>
+    <label for="">Trafic Police Present</label>
     <select name="codeRedStatusAndShurtaAlMurourPresent" class="form-control select2">
         <option value="{{null}}" selected="selected">Select Options</option>
         <option value="Yes" @if( (isset($wt) && $wt->codeRedStatusAndShurtaAlMurourPresent == "Yes") || old('Yes') == "Yes" ) selected="selected" @endif>Yes</option>

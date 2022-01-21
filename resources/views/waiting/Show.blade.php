@@ -34,7 +34,7 @@
                             <h5><strong>Home kits available on site : </strong>{{$wt->homeKitsAvailableOnSite}}</h5>
                             <h5><strong>Home kits in use in the last hour : </strong>{{$wt->homeKitsInUseInTheLastHour}}</h5>
                             <h5><strong>Number of lanes closed : </strong>{{$wt->numberOfLanesClosed}}</h5>
-                            <h5><strong>Code Red status and Shurta Al Murour present : </strong>{{$wt->codeRedStatusAndShurtaAlMurourPresent}}</h5>
+                            <h5><strong>Trafic Police Present : </strong>{{$wt->codeRedStatusAndShurtaAlMurourPresent}}</h5>
                             <h5><strong>PCR sample collection frequency as scheduled : </strong>{{$wt->PCRSampleCollectionFrequencyAsScheduled}}</h5>
                             <h5><strong>ART sample to taken kitchen continuously : </strong>{{$wt->ARTSampleToTakenKitchenContinuously}}</h5>
                             <h5><strong>On site stocks for PCR, ART sufficient for day : </strong>{{$wt->onSiteStocksForPCR_ARTSufficientForDay}}</h5>
