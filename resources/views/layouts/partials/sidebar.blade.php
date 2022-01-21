@@ -5,7 +5,7 @@
                <li class="nav-item mr-auto">
                    <a class="navbar-brand" href="{{route('home')}}">
                        <span class="brand-logo">
-                           <img src="/app-assets/images/logo/EOD-logo-01.png" alt="">
+                           <img src="/app-assets/images/logo/EOD logo Blue-01.png" alt="">
                        </span>
                    </a>
                </li>

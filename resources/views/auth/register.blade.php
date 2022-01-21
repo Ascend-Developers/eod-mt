@@ -76,10 +76,10 @@
                         <div class="card mb-0">
                             <div class="card-body">
                                 <a href="javascript:void(0);" class="brand-logo">
-                                    <img src="/app-assets/images/logo/EOD-logo-01.png"  alt="Ascend" width="30%" style="filter: brightness(0%)">
+                                    <img src="/app-assets/images/logo/EOD logo Blue-01 login.png"  alt="Ascend" width="50%">
                                 </a>
 
-                                <h4 class="card-title mb-1">EOD-MT Registration Portal! 👋</h4>
+                                <h4 class="card-title mb-1">Mass Testing Program! 👋</h4>
                                 <p class="card-text mb-2">Please Register your account and start the adventure</p>
 
                                 <form class="auth-login-form mt-2" method="POST" action="{{ route('registerData') }}">
