@@ -7,6 +7,7 @@ use Illuminate\Validation\Rule;
 use App\Models\Region;
 use App\Exports\RegionsExport;
 use Excel;
+use Auth;
 
 class RegionController extends Controller
 {
@@ -24,6 +25,9 @@ class RegionController extends Controller
     public function index()
     {
         //
+        if(Auth::user()->type == "agent"){
+            return redirect()->back();
+        }
         $regions = Region::all();
         return view('regions.index', compact('regions'));
     }
@@ -36,6 +40,9 @@ class RegionController extends Controller
     public function create()
     {
         //
+        if(Auth::user()->type == "agent"){
+            return redirect()->back();
+        }
         return view('regions.create');
     }
 
@@ -48,6 +55,9 @@ class RegionController extends Controller
     public function store(Request $request)
     {
         //
+        if(Auth::user()->type == "agent"){
+            return redirect()->back();
+        }
         $this->validate($request, [
             'name'=> ['required', Rule::unique('regions','name')->whereNull('deleted_at')],
         ]);
@@ -67,6 +77,9 @@ class RegionController extends Controller
     public function show($id)
     {
         //
+        if(Auth::user()->type == "agent"){
+            return redirect()->back();
+        }
         $regions = Region::find($id);
         return view('regions.Show', compact('regions'));
     }
@@ -80,6 +93,9 @@ class RegionController extends Controller
     public function edit($id)
     {
         //
+        if(Auth::user()->type == "agent"){
+            return redirect()->back();
+        }
         $regions = Region::find($id);
         return view('regions.edit', compact('regions'));
     }
@@ -94,6 +110,9 @@ class RegionController extends Controller
     public function update(Request $request, $id)
     {
         //
+        if(Auth::user()->type == "agent"){
+            return redirect()->back();
+        }
         $this->validate($request, [
             'name'=> ['required'],
         ]);
@@ -116,6 +135,9 @@ class RegionController extends Controller
     public function destroy($id)
     {
         //
+        if(Auth::user()->type == "agent"){
+            return redirect()->back();
+        }
         $regions = Region::find($id);
         $regions->delete();
         return redirect()->route('region.index');

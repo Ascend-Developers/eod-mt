@@ -20,10 +20,14 @@
                             <h5><strong>T2 <span style="font-size: 70%"> (At cabin)</span>: </strong>{{$wt->t2}}</h5>
                             <h5><strong>T3 <span style="font-size: 70%"> (Total TAT)</span>: </strong>{{$wt->t3}}</h5>
                             <h5><strong>Status : </strong>
-                                @if($wt->t3 < 20)
+                                @if($wt->t3 > -1 && $wt->t3 < 21)
                                     <span class="badge badge-success" >Green</span>
-                                @else
+                                @elseif($wt->t3 > 20 && $wt->t3 < 46)
+                                    <span class="badge badge-warning" >Yellow</span>
+                                @elseif($wt->t3 > 45 && $wt->t3 < 121)
                                     <span class="badge badge-danger" >Red</span>
+                                @else
+                                    <span class="badge badge-dark" >Black</span>
                                 @endif
                             </h5>
                             <h5><strong>Submitted By : </strong>{{$wt->user ? $wt->user->name: "--"}}</h5>

@@ -39,10 +39,14 @@
                                 <th>{{$wt->t2}}</th>
                                 <th>{{$wt->t3}}</th>
                                 <th>
-                                    @if($wt->t3 < 20)
+                                    @if($wt->t3 > -1 && $wt->t3 < 21)
                                         <span class="badge badge-success" >Green</span>
-                                    @else
+                                    @elseif($wt->t3 > 20 && $wt->t3 < 46)
+                                        <span class="badge badge-warning" >Yellow</span>
+                                    @elseif($wt->t3 > 45 && $wt->t3 < 121)
                                         <span class="badge badge-danger" >Red</span>
+                                    @else
+                                        <span class="badge badge-dark" >Black</span>
                                     @endif
                                 </th>
 

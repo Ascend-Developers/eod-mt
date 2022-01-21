@@ -10,6 +10,7 @@ use Hash;
 use Illuminate\Validation\Rule;
 use App\Exports\UsersExport;
 use Excel;
+use Auth;
 
 class UserController extends Controller
 {
@@ -31,6 +32,9 @@ class UserController extends Controller
     public function index()
     {
         //
+        if(Auth::user()->type == "agent"){
+            return redirect()->back();
+        }
         $users = User::all();
         return view('users.index', compact('users'));
     }
@@ -43,6 +47,9 @@ class UserController extends Controller
     public function create()
     {
         //
+        if(Auth::user()->type == "agent"){
+            return redirect()->back();
+        }
         $sites = Site::all();
         $modules = Module::all();
         return view('users.create', compact('sites', 'modules'));
@@ -57,6 +64,9 @@ class UserController extends Controller
     public function store(Request $request)
     {
         //
+        if(Auth::user()->type == "agent"){
+            return redirect()->back();
+        }
         $this->validate($request, [
             'name'=> ['required'],
             'email' => ['required', Rule::unique('users','email')->whereNull('deleted_at')],
@@ -95,6 +105,9 @@ class UserController extends Controller
     public function show($id)
     {
         //
+        if(Auth::user()->type == "agent"){
+            return redirect()->back();
+        }
         $users = User::find($id);
         return view('users.Show', compact('users'));
     }
@@ -108,6 +121,9 @@ class UserController extends Controller
     public function edit($id)
     {
         //
+        if(Auth::user()->type == "agent"){
+            return redirect()->back();
+        }
         $users = User::find($id);
         $sites = Site::all();
         $modules = Module::all();
@@ -124,6 +140,9 @@ class UserController extends Controller
     public function update(Request $request, $id)
     {
         //
+        if(Auth::user()->type == "agent"){
+            return redirect()->back();
+        }
         $this->validate($request, [
             'name'=> ['required'],
             'email' => ['required'],
@@ -167,6 +186,9 @@ class UserController extends Controller
     public function destroy($id)
     {
         //
+        if(Auth::user()->type == "agent"){
+            return redirect()->back();
+        }
         $user = User::find($id);
         $user->delete();
         return redirect()->route('user.index');

@@ -6,6 +6,7 @@ use App\Models\Item;
 use Illuminate\Http\Request;
 use App\Exports\ItemsExport;
 use Excel;
+use Auth;
 
 class ItemController extends Controller
 {
@@ -16,6 +17,9 @@ class ItemController extends Controller
      */
     public function index()
     {
+        if(Auth::user()->type == "agent"){
+            return redirect()->back();
+        }
         $items = Item::all();
         return view('items.index', compact('items'));
     }
@@ -27,8 +31,10 @@ class ItemController extends Controller
      */
     public function create()
     {
+        if(Auth::user()->type == "agent"){
+            return redirect()->back();
+        }
         return view('items.create');
-
     }
 
     /**
@@ -39,6 +45,9 @@ class ItemController extends Controller
      */
     public function store(Request $request)
     {
+        if(Auth::user()->type == "agent"){
+            return redirect()->back();
+        }
         $this->validate($request, [
             'name' => ['required'],
         ]);
@@ -59,6 +68,9 @@ class ItemController extends Controller
     public function show($id)
     {
         //
+        if(Auth::user()->type == "agent"){
+            return redirect()->back();
+        }
         $item = Item::find($id);
         return view('items.Show', compact('item'));
     }
@@ -72,6 +84,9 @@ class ItemController extends Controller
     public function edit($id)
     {
         //
+        if(Auth::user()->type == "agent"){
+            return redirect()->back();
+        }
         $item = Item::find($id);
         return view('items.edit', compact('item'));
     }
@@ -86,6 +101,9 @@ class ItemController extends Controller
     public function update(Request $request, $id)
     {
         //
+        if(Auth::user()->type == "agent"){
+            return redirect()->back();
+        }
         $this->validate($request, [
             'name'=> ['required'],
         ]);
@@ -108,6 +126,9 @@ class ItemController extends Controller
     public function destroy($id)
     {
         //
+        if(Auth::user()->type == "agent"){
+            return redirect()->back();
+        }
         $item = Item::find($id);
         $item->delete();
         return redirect()->route('item.index');
