@@ -5,6 +5,7 @@ namespace App\Console\Commands;
 use Illuminate\Console\Command;
 use App\Models\Module;
 use App\Models\User;
+use App\Models\Item;
 
 class ModulesCommand extends Command
 {
@@ -41,10 +42,10 @@ class ModulesCommand extends Command
     {
         $data = [
             ['name' => 'EOD Submission'],
-            ['name' => 'Waiting Time'],
-            ['name' => 'Rapid Antigen Testing Site Audit'],
-            ['name' => 'Lab Shipment'],
-            ['name' => 'Lab Classification'],
+            // ['name' => 'Waiting Time'],
+            // ['name' => 'Rapid Antigen Testing Site Audit'],
+            // ['name' => 'Lab Shipment'],
+            // ['name' => 'Lab Classification'],
         ];
 
         foreach($data as $d){
@@ -56,5 +57,17 @@ class ModulesCommand extends Command
         foreach ($users as $user) {
             $user->modules()->attach($modules);
         }
+
+
+        $da = [
+            'PCR', 
+            'Rapid Test'
+        ];
+
+        foreach($da as $f){
+            $item = Item::create($f);
+        }
+
+        dd("Module and Item Done");
     }
 }

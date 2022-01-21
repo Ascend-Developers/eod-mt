@@ -61,13 +61,13 @@ Route::get('waitingExport', [WaitingTimeController::class, 'export'])->name('wai
 Route::resource('module', ModuleController::class)->middleware('auth');
 Route::get('moduleExport', [ModuleController::class, 'export'])->name('module.export')->middleware('auth');
 
-Route::resource('ratsas', RapidAntigenSiteAuditController::class)->middleware('auth');
-Route::get('ratsasExport', [RapidAntigenSiteAuditController::class, 'export'])->name('ratsa.export')->middleware('auth');
+// Route::resource('ratsas', RapidAntigenSiteAuditController::class)->middleware('auth');
+// Route::get('ratsasExport', [RapidAntigenSiteAuditController::class, 'export'])->name('ratsa.export')->middleware('auth');
 
-Route::resource('shipment', ShipmentController::class)->middleware('auth');
-Route::get('shipmentExport', [ShipmentController::class, 'export'])->name('shipment.export')->middleware('auth');
+// Route::resource('shipment', ShipmentController::class)->middleware('auth');
+// Route::get('shipmentExport', [ShipmentController::class, 'export'])->name('shipment.export')->middleware('auth');
 
-Route::resource('checklist', LabCheckListController::class)->middleware('auth');
-Route::get('checklistExport', [LabCheckListController::class, 'export'])->name('checklist.export')->middleware('auth');
+// Route::resource('checklist', LabCheckListController::class)->middleware('auth');
+// Route::get('checklistExport', [LabCheckListController::class, 'export'])->name('checklist.export')->middleware('auth');
 
 
