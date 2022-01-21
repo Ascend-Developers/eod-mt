@@ -56,17 +56,17 @@
                         <div class="card mb-0 bg-blue" >
                             <div class="card-header" style="text-align: center">
                                 <a href="javascript:void(0);" class="brand-logo" style="text-align: center" >
-                                    <h1 style="margin-left: 68px; color: #002e6e">
+                                    {{-- <h1 style="margin-left: 68px; color: #002e6e">
                                         EOD - Tetamman
 
-                                    </h1>
-                                    {{-- <img src="/app-assets/images/logo/EOD logo Blue-01 login.png"  alt="Ascend" width="50%" > --}}
+                                    </h1> --}}
+                                    <img src="/app-assets/images/logo/EOD logo Blue-01.png"  alt="EOD - Tetamman" width="50%" >
                                 </a>
                             </div>
                             <div class="card-body">
 
 
-                                <h4 class="card-title mb-1">Welcome to Mass Testing Program 👋</h4>
+                                <h4 class="card-title mb-1">Welcome to EOD - Tetamman Program 👋</h4>
                                 <p class="card-text mb-2">Please sign-in to your account and start the adventure</p>
 
                                 <form class="auth-login-form mt-2" method="POST" action="{{ route('login') }}">
