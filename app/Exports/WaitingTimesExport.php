@@ -7,6 +7,7 @@ use Maatwebsite\Excel\Concerns\WithHeadings;
 use Maatwebsite\Excel\Concerns\WithMapping;
 use Maatwebsite\Excel\Concerns\FromQuery;
 use Maatwebsite\Excel\Concerns\ShouldAutoSize;
+use Auth;
 
 class WaitingTimesExport implements FromQuery, WithMapping, WithHeadings, ShouldAutoSize
 {
@@ -20,7 +21,11 @@ class WaitingTimesExport implements FromQuery, WithMapping, WithHeadings, Should
 
     public function query()
     {
-        $wt = WaitingTime::query();
+        if(Auth::user()->type == "agent"){
+            $wt = WaitingTime::whereIn('site_id', Auth::user()->getSites()->pluck('id')->toArray());
+        }else{
+            $wt = WaitingTime::query();
+        }
         return $wt;
     }
 

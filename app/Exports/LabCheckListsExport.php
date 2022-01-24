@@ -7,6 +7,7 @@ use Maatwebsite\Excel\Concerns\WithHeadings;
 use Maatwebsite\Excel\Concerns\WithMapping;
 use Maatwebsite\Excel\Concerns\FromQuery;
 use Maatwebsite\Excel\Concerns\ShouldAutoSize;
+use Auth;
 
 class LabCheckListsExport implements FromQuery, WithMapping, WithHeadings, ShouldAutoSize
 {
@@ -20,7 +21,11 @@ class LabCheckListsExport implements FromQuery, WithMapping, WithHeadings, Shoul
 
     public function query()
     {
-        $lab = LabCheckList::query();
+        if(Auth::user()->type == "agent"){
+            $lab = LabCheckList::whereIn('site_id', Auth::user()->getSites()->pluck('id')->toArray());
+        }else{
+            $lab = LabCheckList::query();
+        }
         return $lab;
     }
 

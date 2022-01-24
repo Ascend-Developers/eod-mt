@@ -17,8 +17,8 @@
                 <div class="card-header">
                     <h4 class="card-title">{{ __('Modules') }}</h4>
                 </div>
-                <div class="card-body">
-                    <table class="table">
+                <div class="card-body table-responsive w-100">
+                    <table class="table table-bordered" id="user-table">
                         <thead>
                             <tr>
                                 <th scope="col">Name</th>

@@ -18,7 +18,7 @@
                     <h4 class="card-title">{{ __('Items') }}</h4>
                 </div>
                 <div class="card-body table-responsive w-100">
-                    <table class="table responsive " id="site-table">
+                    <table class="table table-bordered" id="user-table">
                         <thead>
                             <tr>
                                 <th scope="col">Name</th>
@@ -31,13 +31,11 @@
                                 <td>{{$item->name}}</td>
                                 <td>
                                     <a href="{{route('item.edit', $item->id)}}"><i data-feather='edit'></i></a>
-                                    |
                                     <form action="{{ route('item.destroy', $item->id) }}" method="POST" style="display: inline" class="macros-delete" id="delete-macros-{{$item->_id}}">
                                         @csrf
                                         @method('delete')
                                         <button class="text-danger selectDelBtn" type="submit" style="background: none; border:none; display:inline"><i data-feather='delete'></i></button>
                                     </form>
-                                    |
                                     <a href="{{ route('item.show', $item->id) }}"><i data-feather='eye'></i></a>
                                 </td>
                             </tr>

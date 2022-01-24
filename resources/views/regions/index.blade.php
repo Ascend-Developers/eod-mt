@@ -17,8 +17,8 @@
                 <div class="card-header">
                     <h4 class="card-title">{{ __('Region') }}</h4>
                 </div>
-                <div class="card-body">
-                    <table class="table">
+                <div class="card-body table-responsive w-100">
+                    <table class="table table-bordered" id="user-table">
                         <thead>
                             <tr>
                                 <th scope="col">Name</th>
@@ -31,13 +31,11 @@
                                 <td>{{ $region->name }}</td>
                                 <td>
                                     <a href="{{route('region.edit', $region->id)}}"><i data-feather='edit'></i></a>
-                                    |
                                     <form action="{{ route('region.destroy', $region->id) }}" method="POST" style="display: inline" class="macros-delete" id="delete-macros-{{$region->_id}}">
                                         @csrf
                                         @method('delete')
                                         <button class="text-danger selectDelBtn" type="submit" style="background: none; border:none; display:inline"><i data-feather='delete'></i></button>
                                     </form>
-                                    |
                                     <a href="{{ route('region.show', $region->id) }}"><i data-feather='eye'></i></a>
                                 </td>
                             </tr>

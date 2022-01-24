@@ -10,6 +10,8 @@ use Hash;
 use Illuminate\Validation\Rule;
 use App\Exports\UsersExport;
 use Excel;
+use App\Mail\UserCreate;
+use Mail;
 
 class UserController extends Controller
 {
@@ -64,12 +66,14 @@ class UserController extends Controller
             'type'=> ['required'],
             'phone'=> ['required'],
             'category'=> ['required'],
+            'site_ids'=> ['required'],
         ]);
 
+        $password = $request->input('password');
         $data = [
             'name' => $request->input('name'),
             'email' => strtolower(trim($request->input('email'))),
-            'password' => Hash::make($request->input('password')),
+            'password' => Hash::make($password),
             'type' => $request->input('type'),
             'phone' => $request->input('phone'),
             'category' => $request->input('category'),
@@ -83,6 +87,14 @@ class UserController extends Controller
         if($request->input('module_ids')){
             $user->modules()->sync($request->input('module_ids'));
         }
+
+        try {
+            Mail::to($user->email)->send(new UserCreate($user, $password));
+        } catch (exception $e) {
+            //throw $th;
+            dd($e->error());
+        }
+
         return redirect()->route('user.index')->with('success','User is created successfully');
     }
 
@@ -130,6 +142,7 @@ class UserController extends Controller
             'type'=> ['required'],
             'phone'=> ['required'],
             'category'=> ['required'],
+            'site_ids'=> ['required'],
         ]);
 
         $user = User::find($id);
