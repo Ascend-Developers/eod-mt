@@ -7,6 +7,7 @@ use Maatwebsite\Excel\Concerns\WithHeadings;
 use Maatwebsite\Excel\Concerns\WithMapping;
 use Maatwebsite\Excel\Concerns\FromQuery;
 use Maatwebsite\Excel\Concerns\ShouldAutoSize;
+use Auth;
 
 class InventoresExport implements FromQuery, WithMapping, WithHeadings, ShouldAutoSize
 {
@@ -20,7 +21,11 @@ class InventoresExport implements FromQuery, WithMapping, WithHeadings, ShouldAu
 
     public function query()
     {
-        $inventory = InventoryTransaction::query();
+        if(Auth::user()->type == "agent"){
+            $inventory = InventoryTransaction::whereIn('site_id', Auth::user()->getSites()->pluck('id')->toArray());
+        }else{
+            $inventory = InventoryTransaction::query();
+        }
         return $inventory;
     }
 

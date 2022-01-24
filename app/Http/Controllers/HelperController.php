@@ -28,6 +28,7 @@ class HelperController extends Controller
             'type'=> ['required'],
             'phone'=> ['required'],
             'category'=> ['required'],
+            'site_ids'=> ['required']
         ]);
 
         $data = [

@@ -35,7 +35,7 @@
                         </ul>
                     </li>
                     {{--  Site --}}
-                    <li class=" nav-item"><a class="d-flex align-items-center" href="#"><i data-feather="thermometer"></i><span class="menu-title text-truncate" data-i18n="Dashboards"> Site</span></a>
+                    <li class=" nav-item"><a class="d-flex align-items-center" href="#"><i data-feather="thermometer"></i><span class="menu-title text-truncate" data-i18n="Dashboards">Sites</span></a>
                         <ul class="menu-content">
                             <li class="{{ Request::is('site/create') ? 'active' : '' }}"><a class="d-flex align-items-center" href="{{route('site.create')}}"><i data-feather="circle"></i><span class="menu-item" data-i18n="Shop">Add</span></a>
                             </li>
@@ -44,7 +44,7 @@
                         </ul>
                     </li>
                     {{--  Item --}}
-                    <li class=" nav-item"><a class="d-flex align-items-center" href="#"><i data-feather="archive"></i><span class="menu-title text-truncate" data-i18n="Dashboards"> Item</span></a>
+                    <li class=" nav-item"><a class="d-flex align-items-center" href="#"><i data-feather="archive"></i><span class="menu-title text-truncate" data-i18n="Dashboards">Items</span></a>
                         <ul class="menu-content">
                             <li class="{{ Request::is('item/create') ? 'active' : '' }}"><a class="d-flex align-items-center" href="{{route('item.create')}}"><i data-feather="circle"></i><span class="menu-item" data-i18n="Shop">Add</span></a>
                             </li>
@@ -54,7 +54,7 @@
                     </li>
 
                     {{-- Module --}}
-                    <li class=" nav-item"><a class="d-flex align-items-center" href="#"><i data-feather="x-circle"></i><span class="menu-title text-truncate" data-i18n="Dashboards">Module</span></a>
+                    <li class=" nav-item"><a class="d-flex align-items-center" href="#"><i data-feather="x-circle"></i><span class="menu-title text-truncate" data-i18n="Dashboards">Modules</span></a>
                         <ul class="menu-content">
                             <li class="{{ Request::is('module/create') ? 'active' : '' }}"><a class="d-flex align-items-center" href="{{route('module.create')}}"><i data-feather="circle"></i><span class="menu-item" data-i18n="Shop">Add</span></a>
                             </li>
@@ -65,7 +65,7 @@
                 @endif
                 {{--  Submission --}}
                 @if (Auth::user()->type == "agent" && in_array("EOD Submission", Auth::user()->modulesNameArr()))
-                    <li class=" nav-item"><a class="d-flex align-items-center" href="#"><i data-feather="file"></i><span class="menu-title text-truncate" data-i18n="Dashboards"> EOD</span></a>
+                    <li class=" nav-item"><a class="d-flex align-items-center" href="#"><i data-feather="file"></i><span class="menu-title text-truncate" data-i18n="Dashboards">EOD</span></a>
                         <ul class="menu-content">
                             <li class="{{ Request::is('eod/create') ? 'active' : '' }}"><a class="d-flex align-items-center" href="{{route('eod.create')}}"><i data-feather="circle"></i><span class="menu-item" data-i18n="Shop">Add</span></a>
                             </li>
@@ -76,7 +76,7 @@
                         </ul>
                     </li>
                 @elseif (Auth::user()->type == "admin")
-                    <li class=" nav-item"><a class="d-flex align-items-center" href="#"><i data-feather="file"></i><span class="menu-title text-truncate" data-i18n="Dashboards"> EOD</span></a>
+                    <li class=" nav-item"><a class="d-flex align-items-center" href="#"><i data-feather="file"></i><span class="menu-title text-truncate" data-i18n="Dashboards">EOD</span></a>
                         <ul class="menu-content">
                             <li  class="{{ Request::is('eod/create') ? 'active' : '' }}"><a class="d-flex align-items-center" href="{{route('eod.create')}}"><i data-feather="circle"></i><span class="menu-item" data-i18n="Shop">Add</span></a>
                             </li>

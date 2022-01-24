@@ -39,12 +39,12 @@
 </div>
 <div class="form-group">
     <label for="">Phone No</label>
-    <input type="tel" placeholder="960000000000" class="form-control" name="phone" @if(isset($users)) value="{{$users->phone}}" @else value="{{ old('phone') }}" @endif>
+    <input type="number" placeholder="960000000000" class="form-control" name="phone" @if(isset($users)) value="{{$users->phone}}" @else value="{{ old('phone') }}" @endif>
 </div>
 
 <div class="form-group">
     <label for="">Site</label>
-    <select name="site_ids[]" class="select2" multiple="multiple" id="large-select-multi1">
+    <select name="site_ids[]" class="select2" multiple="multiple" id="large-select-multi1" required>
         @foreach($sites as $site)
         <option value="{{$site->id}}" @if( (isset($users->site_ids) && in_array($site->id,$users->site_ids) ) || (old('site_ids') && in_array($site->id, old('site_ids')) ) )selected="selected" @endif > {{$site->name}} </option>
         @endforeach

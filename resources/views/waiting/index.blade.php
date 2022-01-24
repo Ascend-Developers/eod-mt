@@ -18,7 +18,7 @@
                     <h4 class="card-title">{{ __('MT hourly checklist status') }}</h4>
                 </div>
                 <div class="card-body table-responsive w-100">
-                    <table class="table responsive " id="user-table">
+                    <table class="table table-bordered" id="user-table">
                         <thead>
                             <tr>
                                 <th scope="col">Site Name</th>
@@ -55,13 +55,11 @@
                                 <th>
                                     @if (Auth::user()->type == "admin")
                                     <a href="{{route('waiting.edit', $wt->id)}}"><i data-feather='edit'></i></a>
-                                    |
                                     <form action="{{ route('waiting.destroy', $wt->id) }}" method="POST" style="display: inline" class="macros-delete" id="delete-macros-{{$wt->_id}}">
                                         @csrf
                                         @method('delete')
                                         <button class="text-danger selectDelBtn" type="submit" style="background: none; border:none; display:inline"><i data-feather='delete'></i></button>
                                     </form>
-                                    |
                                     @endif
                                     <a style="color: green;" href="{{route('waiting.show', $wt->_id)}}"><i data-feather='eye'></i></a>
                                 </th>
