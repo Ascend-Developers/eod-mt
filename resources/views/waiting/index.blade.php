@@ -3,7 +3,7 @@
 @section('content')
 <div class="container-fluid">
     <div class="row justify-content-center">
-        <div class="col-md-11">  
+        <div class="col-md-11">
         </div>
         <div class="col-md-1">
             <div class="card-title"><a class="btn btn-primary" href="{{route('waiting.export')}}">Export</a></div>
@@ -22,10 +22,11 @@
                         <thead>
                             <tr>
                                 <th scope="col">Site Name</th>
-                                <th scope="col">t1<span style="font-size: 70%"> (Arrival to cabin)</span></th>
-                                <th scope="col">t2<span style="font-size: 70%"> (At cabin)</span></th>
-                                <th scope="col">t3<span style="font-size: 70%"> (Total TAT)</span></th>
-                                <th scope="col">Status</th>
+                                <th scope="col">Waiting Time</th>
+                                <th scope="col">Total number of customers </th>
+                                <th scope="col">Total number of clinicians </th>
+                                <th scope="col">Total working hours</th>
+                                <th scope="col">Data entry to the system </th>
                                 <th scope="col">Submitted By</th>
                                 <th scope="col">Date of Report</th>
                                 <th scope="col">Action</th>
@@ -35,16 +36,11 @@
                             @foreach ($wts as $wt)
                             <tr>
                                 <th>{{$wt->site ? $wt->site->name : "--"}}</th>
-                                <th>{{$wt->t1}}</th>
-                                <th>{{$wt->t2}}</th>
-                                <th>{{$wt->t3}}</th>
-                                <th>
-                                    @if($wt->t3 < 20)
-                                        <span class="badge badge-success" >Green</span>
-                                    @else
-                                        <span class="badge badge-danger" >Red</span>
-                                    @endif
-                                </th>
+                                <th>{{$wt->waiting_time}}</th>
+                                <th>{{$wt->no_customer}}</th>
+                                <th>{{$wt->no_clinics}}</th>
+                                <th>{{$wt->working_hours}}</th>
+                                <th>{{$wt->data_entry}}</th>
 
                                 <th>{{$wt->user ? $wt->user->name: "--"}}</th>
                                 <th>{{ $wt->created_at->format('F j, Y, g:i a') }}</th>

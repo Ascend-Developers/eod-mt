@@ -42,33 +42,22 @@ class WaitingTimeController extends Controller
      */
     public function store(Request $request)
     {
-        //
         $this->validate($request, [
-            't1'=> ['required'],
-            't2'=> ['required'],
+            'waiting_time'=> ['required'],
+            'no_customer'=> ['required'],
+            'no_clinics'=> ['required'],
+            'working_hours'=> ['required'],
+            'data_entry'=> ['required'],
             'site_id'=> ['required'],
         ]);
         $data = [
-            't1' => $request->input('t1'),
-            't2' => $request->input('t2'),
-            't3' => $request->input('t1')+$request->input('t2'),
+            'waiting_time' => $request->input('waiting_time'),
+            'no_customer' => $request->input('no_customer'),
+            'working_hours' => $request->input('working_hours'),
+            'data_entry' => $request->input('data_entry'),
+            'no_clinics' => $request->input('no_clinics'),
             'site_id' => $request->input('site_id'),
             'user_id' => Auth::user()->_id,
-            'codeRedStatus' => $request->input('codeRedStatus'),
-            'operatorSupervisorOnSite' => $request->input('operatorSupervisorOnSite'),
-            'doubleClinicalResourcesPerCabin' => $request->input('doubleClinicalResourcesPerCabin'),
-            'homeKitsAvailableOnSite' => $request->input('homeKitsAvailableOnSite'),
-            'homeKitsInUseInTheLastHour' => $request->input('homeKitsInUseInTheLastHour'),
-            'numberOfLanesClosed' => $request->input('numberOfLanesClosed'),
-            'codeRedStatusAndShurtaAlMurourPresent' => $request->input('codeRedStatusAndShurtaAlMurourPresent'),
-            'PCRSampleCollectionFrequencyAsScheduled' => $request->input('PCRSampleCollectionFrequencyAsScheduled'),
-            'ARTSampleToTakenKitchenContinuously' => $request->input('ARTSampleToTakenKitchenContinuously'),
-            'onSiteStocksForPCR_ARTSufficientForDay' => $request->input('onSiteStocksForPCR_ARTSufficientForDay'),
-            'HippaFilterOnSiteInARTKitchen' => $request->input('HippaFilterOnSiteInARTKitchen'),
-            'dataIsBeingEnteredAsPerTraining' => $request->input('dataIsBeingEnteredAsPerTraining'),
-            'shiftToShiftHandoverAsPerOperatorSLA' => $request->input('shiftToShiftHandoverAsPerOperatorSLA'),
-            'modeOfOperations' => $request->input('modeOfOperations'),
-            'details' => $request->input('details')
         ];
         $wt = WaitingTime::create($data);
 

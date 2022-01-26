@@ -89,7 +89,7 @@
                 @endif
 
                 {{-- Waiting Time --}}
-                {{-- @if (Auth::user()->type == "agent" && in_array("Waiting Time", Auth::user()->modulesNameArr()))
+                 @if (Auth::user()->type == "agent" && in_array("Waiting Time", Auth::user()->modulesNameArr()))
                     <li class=" nav-item"><a class="d-flex align-items-center" href="#"><i data-feather="layers"></i><span class="menu-title text-truncate" data-i18n="Dashboards">MT hourly checklist status</span></a>
                         <ul class="menu-content">
                             <li class="{{ Request::is('waiting/create') ? 'active' : '' }}"><a class="d-flex align-items-center" href="{{route('waiting.create')}}"><i data-feather="circle"></i><span class="menu-item" data-i18n="Shop">Add</span></a>
@@ -107,7 +107,7 @@
                             </li>
                         </ul>
                     </li>
-                @endif --}}
+                @endif
 
                 {{-- Rapid Antigen Testing Site Audid --}}
                 {{-- @if (Auth::user()->type == "agent" && in_array("Rapid Antigen Testing Site Audit", Auth::user()->modulesNameArr()))

@@ -11,25 +11,12 @@ class WaitingTime extends Model
 
     protected $fillable = [
         'site_id',
-        't1',
-        't2',
-        't3',
         'user_id',
-        'codeRedStatus',
-        'operatorSupervisorOnSite',
-        'doubleClinicalResourcesPerCabin',
-        'homeKitsAvailableOnSite',
-        'homeKitsInUseInTheLastHour',
-        'numberOfLanesClosed',
-        'codeRedStatusAndShurtaAlMurourPresent',
-        'PCRSampleCollectionFrequencyAsScheduled',
-        'ARTSampleToTakenKitchenContinuously',
-        'onSiteStocksForPCR_ARTSufficientForDay',
-        'HippaFilterOnSiteInARTKitchen',
-        'dataIsBeingEnteredAsPerTraining',
-        'shiftToShiftHandoverAsPerOperatorSLA',
-        'details',
-        'modeOfOperations'
+        'waiting_time',
+        'no_customer',
+        'working_hours',
+        'data_entry',
+        'no_clinics'
     ];
 
     public function site(){
