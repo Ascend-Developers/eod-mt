@@ -13,7 +13,7 @@ class Item extends Model
     protected $fillable = [
         'name',
     ];
-
+   
     // public function transections(){
     //     return $this->hasMany(LabTransactions::class, 'item_id');
     // }

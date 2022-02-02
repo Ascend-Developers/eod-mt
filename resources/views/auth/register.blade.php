@@ -75,7 +75,7 @@
                         <!-- Login v1 -->
                         <div class="card mb-0">
                             <div class="card-body">
-                                <a href="javascript:void(0);" class="brand-logo">
+                                <a href="{{url('/login')}}" class="brand-logo">
                                     <img src="/app-assets/images/logo/EOD logo Blue-01 login.png"  alt="Ascend" width="50%">
                                 </a>
 

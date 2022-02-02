@@ -4,6 +4,13 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\WaitingTime;
+use App\Models\Site;
+use App\Models\Item;
+use App\Charts\MonthlyUsersChart;
+
+
+
+use ArielMejiaDev\LarapexCharts\LarapexChart;
 
 class HomeController extends Controller
 {
@@ -24,30 +31,20 @@ class HomeController extends Controller
      */
     public function index()
     {
-        $wts = WaitingTime::all();
-        $t1 = [];
-        $t2 = [];
-        $t3 = [];
-        foreach($wts as $wt){
-            array_push($t1, $wt->t1);
-            array_push($t2, $wt->t2);
-            array_push($t3, $wt->t3);
-        }
-        if(count($t1)>0){
-            $t1 = array_sum($t1)/count($t1);
-        }else{
-            $t1 = 0;
-        }
-        if(count($t2)>0){
-            $t2 = array_sum($t2)/count($t2);
-        }else{
-            $t2 = 0;
-        }
-        if(count($t3)>0){
-            $t3 = array_sum($t3)/count($t3);
-        }else{
-            $t3 = 0;
-        }
-        return view('home', compact('t1', 't2', 't3'));
+        
+        $sites = Site::all();
+        
+        $wts =  WaitingTime::all();
+
+        return view('home', compact('sites',));
     }
+
+    public function check( Request $request, MonthlyUsersChart $chart)
+{
+    $wts =  WaitingTime::all();
+    $sites = Site::all();
+    return view('check', ['chart' => $chart->build($request->all())] , compact('wts','sites'));
+} 
+
+   
 }

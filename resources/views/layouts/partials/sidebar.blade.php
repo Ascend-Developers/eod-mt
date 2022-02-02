@@ -16,6 +16,9 @@
        <div class="main-menu-content">
            <ul class="navigation navigation-main" id="main-menu-navigation" data-menu="menu-navigation">
                @if (Auth::user()->type == "admin")
+                    {{-- Dashboard --}}
+                   
+                    
                     {{-- Users --}}
                     <li class=" nav-item"><a class="d-flex align-items-center" href=""><i data-feather="users"></i><span class="menu-title text-truncate" data-i18n="Dashboards">Users</span></a>
                         <ul class="menu-content">
@@ -84,6 +87,10 @@
                             </li>
                             <li class="{{ Request::is('eod/site') ? 'active' : '' }}"><a class="d-flex align-items-center" href="{{route('eod.site')}}"><i data-feather="circle"></i><span class="menu-item" data-i18n="Details">Site View</span></a>
                             </li>
+                            <li class="{{ Request::is('home') ? 'active' : '' }}"><a class="d-flex align-items-center" href="{{route('home')}}"><i data-feather="circle"></i><span class="menu-title text-truncate" data-i18n="Dashboards">Daashboard</span></a>
+                       
+                       </li>
+                      
                         </ul>
                     </li>
                 @endif
@@ -105,6 +112,10 @@
                             </li>
                             <li class="{{ Request::is('waiting') ? 'active' : '' }}"><a class="d-flex align-items-center" href="{{route('waiting.index')}}"><i data-feather="circle"></i><span class="menu-item" data-i18n="Details">List</span></a>
                             </li>
+                        
+                            <li class=" {{ Request::is('check') ? 'active' : '' }}"><a class="d-flex align-items-center" href="{{route('check')}}"><i data-feather="circle"></i><span class="menu-title text-truncate" data-i18n="Dashboards">Dashboard</span></a>
+                       
+                       </li>
                         </ul>
                     </li>
                 @endif

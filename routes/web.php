@@ -1,5 +1,5 @@
 <?php
-
+use App\Http\Controllers\HomeController;
 use App\Http\Controllers\InventoryController;
 use App\Http\Controllers\ItemController;
 use App\Http\Controllers\RegionController;
@@ -11,8 +11,9 @@ use App\Http\Controllers\HelperController;
 use App\Http\Controllers\LabCheckListController;
 use App\Http\Controllers\RapidAntigenSiteAuditController;
 use App\Http\Controllers\ShipmentController;
-use Illuminate\Support\Facades\Route;
 
+use Illuminate\Support\Facades\Route;
+use ArielMejiaDev\LarapexCharts\LarapexChart;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -30,10 +31,17 @@ Route::get('/', function () {
 
 Auth::routes(['register' => false]);
 
+
+
+
 Route::get('reg', [HelperController::class, 'registerPage'])->name('register');
 Route::post('reg/data', [HelperController::class, 'register'])->name('registerData');
 
-Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
+Route::get('/home', [HomeController::class, 'index'])->name('home');
+Route::get('/check', [HomeController::class, 'check'])->name('check');
+
+
+
 
 Route::resource('user', UserController::class)->middleware('auth');
 Route::get('userExport', [UserController::class, 'export'])->name('user.export')->middleware('auth');
