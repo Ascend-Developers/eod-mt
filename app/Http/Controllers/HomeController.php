@@ -6,7 +6,8 @@ use Illuminate\Http\Request;
 use App\Models\WaitingTime;
 use App\Models\Site;
 use App\Models\Item;
-use App\Charts\MonthlyUsersChart;
+
+
 
 
 
@@ -32,19 +33,6 @@ class HomeController extends Controller
     public function index()
     {
         
-        $sites = Site::all();
-        
-        $wts =  WaitingTime::all();
-
-        return view('home', compact('sites',));
+        return view('home');
     }
-
-    public function check( Request $request, MonthlyUsersChart $chart)
-{
-    $wts =  WaitingTime::all();
-    $sites = Site::all();
-    return view('check', ['chart' => $chart->build($request->all())] , compact('wts','sites'));
-} 
-
-   
 }

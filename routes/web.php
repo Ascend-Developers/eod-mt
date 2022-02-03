@@ -31,17 +31,12 @@ Route::get('/', function () {
 
 Auth::routes(['register' => false]);
 
+Route::get('/home', [HomeController::class, 'index'])->name('home');
 
 
 
 Route::get('reg', [HelperController::class, 'registerPage'])->name('register');
 Route::post('reg/data', [HelperController::class, 'register'])->name('registerData');
-
-Route::get('/home', [HomeController::class, 'index'])->name('home');
-Route::get('/check', [HomeController::class, 'check'])->name('check');
-
-
-
 
 Route::resource('user', UserController::class)->middleware('auth');
 Route::get('userExport', [UserController::class, 'export'])->name('user.export')->middleware('auth');
@@ -62,9 +57,13 @@ Route::post('eod/store', [InventoryController::class, 'store'])->name('eod.store
 Route::get('eod/index', [InventoryController::class, 'submissions'])->name('eod.index')->middleware('auth');
 Route::get('eod/site', [InventoryController::class, 'site'])->name('eod.site')->middleware('auth');
 Route::get('eodExport', [InventoryController::class, 'export'])->name('eod.export')->middleware('auth');
+Route::get('/eod/dashboard', [InventoryController::class, 'dashboard'])->name('eod.dashboard')->middleware('auth');
+
 
 Route::resource('waiting', WaitingTimeController::class)->middleware('auth');
 Route::get('waitingExport', [WaitingTimeController::class, 'export'])->name('waiting.export')->middleware('auth');
+Route::get('check', [WaitingTimeController::class, 'check'])->name('check');
+
 
 Route::resource('module', ModuleController::class)->middleware('auth');
 Route::get('moduleExport', [ModuleController::class, 'export'])->name('module.export')->middleware('auth');

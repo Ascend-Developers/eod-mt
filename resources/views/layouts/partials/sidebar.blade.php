@@ -87,7 +87,7 @@
                             </li>
                             <li class="{{ Request::is('eod/site') ? 'active' : '' }}"><a class="d-flex align-items-center" href="{{route('eod.site')}}"><i data-feather="circle"></i><span class="menu-item" data-i18n="Details">Site View</span></a>
                             </li>
-                            <li class="{{ Request::is('home') ? 'active' : '' }}"><a class="d-flex align-items-center" href="{{route('home')}}"><i data-feather="circle"></i><span class="menu-title text-truncate" data-i18n="Dashboards">Daashboard</span></a>
+                            <li class="{{ Request::is('eod/dashboard') ? 'active' : '' }}"><a class="d-flex align-items-center" href="{{route('eod.dashboard')}}"><i data-feather="circle"></i><span class="menu-title text-truncate" data-i18n="Dashboards">Daashboard</span></a>
                        
                        </li>
                       

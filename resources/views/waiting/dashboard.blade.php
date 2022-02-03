@@ -41,6 +41,10 @@
 {{ $chart->script() }}
 
 
+
+
+
+
 @endsection
 
   

@@ -2,19 +2,19 @@
 
 namespace App\Charts;
 use App\Models\WaitingTime;
-use ArielMejiaDev\LarapexCharts\LarapexChart;
 use Carbon\Carbon;
-class MonthlyUsersChart
+use ArielMejiaDev\LarapexCharts\LarapexChart;
+
+class WaitingTimeChart
 {
     protected $chart;
-    
 
-    public function __construct(LarapexChart $chart )
+    public function __construct(LarapexChart $chart)
     {
-        
         $this->chart = $chart;
     }
 
+   
     public function build($site): \ArielMejiaDev\LarapexCharts\LineChart
     { 
         if($site){
@@ -23,8 +23,8 @@ class MonthlyUsersChart
              })->toArray();    
             return $this->chart->lineChart()
             ->setTitle('Waiting Time & Checklist')
-            ->addLine('Waiting Time 1', WaitingTime::where('site_id', $site['site'])->get()->pluck('t1')->toArray())
-            ->addLine('Waiting Time 2', WaitingTime::where('site_id', $site['site'])->get()->pluck('t2')->toArray())
+            ->addLine('Waiting Time 1', WaitingTime::where('site_id', $site['site'])->get()->pluck('t3')->toArray())
+            
             ->setXAxis($created_at)
             ->setColors(['#ffc63b', '#008080']);
         }else{
@@ -33,13 +33,11 @@ class MonthlyUsersChart
              })->toArray();    
             return $this->chart->lineChart()
             ->setTitle('Waiting Time & Checklist')
-            ->addLine('Waiting Time 1', \App\Models\WaitingTime::all()->pluck('t1')->toArray())
-            ->addLine('Waiting Time 2', \App\Models\WaitingTime::all()->pluck('t2')->toArray())
+            ->addLine('Waiting Time 1', \App\Models\WaitingTime::all()->pluck('t3')->toArray())
+            
             ->setXAxis($created_at)
             ->setColors(['#ffc63b', '#008080']);
         }
         
     }
 }
-
-

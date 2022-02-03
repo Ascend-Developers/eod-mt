@@ -8,7 +8,8 @@ use App\Models\Site;
 use Auth;
 use App\Exports\WaitingTimesExport;
 use Excel;
-
+use App\Charts\MonthlyUsersChart;
+use App\Charts\WaitingTimeChart;
 class WaitingTimeController extends Controller
 {
     /**
@@ -148,4 +149,14 @@ class WaitingTimeController extends Controller
     {
         return Excel::download(new WaitingTimesExport, 'waitingTime.xlsx');
     }
+      
+    public function check( Request $request, MonthlyUsersChart $chart  )
+{
+    $wts =  WaitingTime::all();
+    $sites = Site::all();
+    return view('waiting.dashboard', ['chart' => $chart->build($request->all())] , compact('wts','sites'));
+} 
+
+   
+
 }
