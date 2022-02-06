@@ -156,17 +156,34 @@ class WaitingTimeController extends Controller
 {
     $wts =  WaitingTime::all();
     $sites = Site::all();
-    // if($site){
-    //     $created_at = WaitingTime::where('site_id', $site['site'])->get()->map(function ($data) {
-    //         return Carbon::parse($data->created_at)->format('Y-m-d H:i:s');
-    //      })->toArray();
-    //      $chart = (new LarapexChart)->lineChart()
-    //     ->setTitle('Waiting Time & Checklist')
-    //     ->addLine('Waiting Time 1', WaitingTime::where('site_id', $site['site'])->get()->pluck('t1')->toArray())
-    //     ->addLine('Waiting Time 2', WaitingTime::where('site_id', $site['site'])->get()->pluck('t2')->toArray())
-    //     ->setXAxis($created_at)
-    //     ->setColors(['#ffc63b', '#008080']);
-    // }else{
+      if($site){
+
+        $sites= WaitingTime::where('site_id', $site)->get();
+
+        $created_at = WaitingTime::where('site_id', $site['site'])->get()->map(function ($data) {
+            return Carbon::parse($data->created_at)->format('Y-m-d H:i:s');
+         })->toArray();
+         $chart = (new LarapexChart)->lineChart()
+        ->setTitle('Waiting Time & Checklist')
+        ->addData('Waiting Time 1', WaitingTime::where('site_id', $site['site'])->get()->pluck('t1')->toArray())
+        ->addData('Waiting Time 2', WaitingTime::where('site_id', $site['site'])->get()->pluck('t2')->toArray())
+        ->setXAxis($created_at)
+        ->setColors(['#ffc63b', '#008080']);
+
+        $chart1 = (new LarapexChart)->lineChart()
+        ->setTitle('Waiting Time & Checklist')
+        ->addData('Waiting Time 1', WaitingTime::where('site_id', $site['site'])->get()->pluck('t3')->toArray())
+        ->setXAxis($created_at)
+        ->setColors(['#ffc63b', '#008080']);
+
+
+
+}
+    
+     else{
+
+        $wts= WaitingTime::first();
+
         $created_at = WaitingTime::all()->map(function ($data) {
             return Carbon::parse($data->created_at)->format('Y-m-d H:i:s');
          })->toArray();
@@ -176,16 +193,19 @@ class WaitingTimeController extends Controller
         ->addData('Waiting Time 1', \App\Models\WaitingTime::all()->pluck('t1')->toArray())
         ->addData('Waiting Time 2', \App\Models\WaitingTime::all()->pluck('t2')->toArray())
         ->setXAxis($created_at)
-        ->setColors(['#ffc63b', '#008080']);
+        ->setColors(['#ffc63b', '#008080'])
+        ->setHeight(300);
 
 
         $chart1 =  (new LarapexChart)->lineChart()
         ->setTitle('Waiting Time & Checklist1')
-        ->addData('Waiting Time 1', \App\Models\WaitingTime::all()->pluck('t1')->toArray())
-        ->addData('Waiting Time 2', \App\Models\WaitingTime::all()->pluck('t2')->toArray())
+        ->addData('Waiting Time 1', \App\Models\WaitingTime::all()->pluck('t3')->toArray())
+        
         ->setXAxis($created_at)
-        ->setColors(['#ffc63b', '#008080']);
-    // }
+        ->setColors(['#ffc63b', '#008080'])
+        ->setHeight(300);
+
+    }
 
     // return view('waiting.dashboard', ['chart' => $chart->build($request->all())] , compact('wts','sites'));
     return view('waiting.dashboard',  compact('wts','sites', 'chart', 'chart1'));
