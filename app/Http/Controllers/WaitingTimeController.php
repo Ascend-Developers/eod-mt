@@ -10,6 +10,8 @@ use App\Exports\WaitingTimesExport;
 use Excel;
 use App\Charts\MonthlyUsersChart;
 use App\Charts\WaitingTimeChart;
+use Illuminate\Support\Carbon;
+use ArielMejiaDev\LarapexCharts\LarapexChart;
 class WaitingTimeController extends Controller
 {
     /**
@@ -149,14 +151,46 @@ class WaitingTimeController extends Controller
     {
         return Excel::download(new WaitingTimesExport, 'waitingTime.xlsx');
     }
-      
+
     public function check( Request $request, MonthlyUsersChart $chart  )
 {
     $wts =  WaitingTime::all();
     $sites = Site::all();
-    return view('waiting.dashboard', ['chart' => $chart->build($request->all())] , compact('wts','sites'));
-} 
+    // if($site){
+    //     $created_at = WaitingTime::where('site_id', $site['site'])->get()->map(function ($data) {
+    //         return Carbon::parse($data->created_at)->format('Y-m-d H:i:s');
+    //      })->toArray();
+    //      $chart = (new LarapexChart)->lineChart()
+    //     ->setTitle('Waiting Time & Checklist')
+    //     ->addLine('Waiting Time 1', WaitingTime::where('site_id', $site['site'])->get()->pluck('t1')->toArray())
+    //     ->addLine('Waiting Time 2', WaitingTime::where('site_id', $site['site'])->get()->pluck('t2')->toArray())
+    //     ->setXAxis($created_at)
+    //     ->setColors(['#ffc63b', '#008080']);
+    // }else{
+        $created_at = WaitingTime::all()->map(function ($data) {
+            return Carbon::parse($data->created_at)->format('Y-m-d H:i:s');
+         })->toArray();
 
-   
+        $chart =  (new LarapexChart)->lineChart()
+        ->setTitle('Waiting Time & Checklist')
+        ->addData('Waiting Time 1', \App\Models\WaitingTime::all()->pluck('t1')->toArray())
+        ->addData('Waiting Time 2', \App\Models\WaitingTime::all()->pluck('t2')->toArray())
+        ->setXAxis($created_at)
+        ->setColors(['#ffc63b', '#008080']);
+
+
+        $chart1 =  (new LarapexChart)->lineChart()
+        ->setTitle('Waiting Time & Checklist1')
+        ->addData('Waiting Time 1', \App\Models\WaitingTime::all()->pluck('t1')->toArray())
+        ->addData('Waiting Time 2', \App\Models\WaitingTime::all()->pluck('t2')->toArray())
+        ->setXAxis($created_at)
+        ->setColors(['#ffc63b', '#008080']);
+    // }
+
+    // return view('waiting.dashboard', ['chart' => $chart->build($request->all())] , compact('wts','sites'));
+    return view('waiting.dashboard',  compact('wts','sites', 'chart', 'chart1'));
+}
+
+
 
 }

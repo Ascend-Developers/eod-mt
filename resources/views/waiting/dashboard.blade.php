@@ -17,16 +17,16 @@
                                         <select class="form-control" id="basicSelect" name="site">
                                           @foreach($sites as $site)
                                             <option value="{{$site->_id}}">{{$site->name}}</option>
-                                            
+
                                             @endforeach
                                         </select>
                                         <button type="button" class="btn btn-primary">Submit</button>
                                         </form>
-                                       
-                                        
-                                       
-                                        
-                                        
+
+
+
+
+
                                     </div>
 <div class="container px-4 mx-auto">
 
@@ -36,9 +36,18 @@
 
 </div>
 
+<div class="container px-4 mx-auto">
+
+    <div class="p-6 m-20 bg-white rounded shadow 1">
+        {!! $chart1->container() !!}
+    </div>
+
+</div>
+
 <script src="{{ $chart->cdn() }}"></script>
 
 {{ $chart->script() }}
+{{ $chart1->script() }}
 
 
 
@@ -47,4 +56,3 @@
 
 @endsection
 
-  
