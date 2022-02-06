@@ -90,13 +90,10 @@ class InventoryController extends Controller
     {
         return Excel::download(new InventoresExport, 'eod.xlsx');
     }
+
     public function dashboard()
     {
-        
-        $sites = Site::all();
-        
-        $wts =  WaitingTime::all();
-
-        return view('eods.dashboard', compact('sites',));
+        $sites = Site::orderBy('name')->whereHas('inventories')->get();
+        return view('eods.dashboard', compact('sites'));
     }
 }
