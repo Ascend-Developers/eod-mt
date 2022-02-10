@@ -60,6 +60,7 @@ Route::get('eodExport', [InventoryController::class, 'export'])->name('eod.expor
 Route::get('/eod/dashboard', [InventoryController::class, 'dashboard'])->name('eod.dashboard')->middleware('auth');
 
 
+Route::get('waiting/siteTracker', [WaitingTimeController::class, 'siteTracker'])->name('siteTracker');
 Route::resource('waiting', WaitingTimeController::class)->middleware('auth');
 Route::get('waitingExport', [WaitingTimeController::class, 'export'])->name('waiting.export')->middleware('auth');
 Route::get('check', [WaitingTimeController::class, 'check'])->name('check');

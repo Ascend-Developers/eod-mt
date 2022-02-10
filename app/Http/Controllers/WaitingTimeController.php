@@ -153,34 +153,9 @@ class WaitingTimeController extends Controller
     }
 
     public function check( Request $request, MonthlyUsersChart $chart  )
-{
-    $wts =  WaitingTime::all();
-    $sites = Site::all();
-      if($site){
-
-        $sites= WaitingTime::where('site_id', $site)->get();
-
-        $created_at = WaitingTime::where('site_id', $site['site'])->get()->map(function ($data) {
-            return Carbon::parse($data->created_at)->format('Y-m-d H:i:s');
-         })->toArray();
-         $chart = (new LarapexChart)->lineChart()
-        ->setTitle('Waiting Time & Checklist')
-        ->addData('Waiting Time 1', WaitingTime::where('site_id', $site['site'])->get()->pluck('t1')->toArray())
-        ->addData('Waiting Time 2', WaitingTime::where('site_id', $site['site'])->get()->pluck('t2')->toArray())
-        ->setXAxis($created_at)
-        ->setColors(['#ffc63b', '#008080']);
-
-        $chart1 = (new LarapexChart)->lineChart()
-        ->setTitle('Waiting Time & Checklist')
-        ->addData('Waiting Time 1', WaitingTime::where('site_id', $site['site'])->get()->pluck('t3')->toArray())
-        ->setXAxis($created_at)
-        ->setColors(['#ffc63b', '#008080']);
-
-
-
-}
-    
-     else{
+    {
+        $wts =  WaitingTime::all();
+        $sites = Site::all();
 
         $wts= WaitingTime::first();
 
@@ -200,17 +175,24 @@ class WaitingTimeController extends Controller
         $chart1 =  (new LarapexChart)->lineChart()
         ->setTitle('Waiting Time & Checklist1')
         ->addData('Waiting Time 1', \App\Models\WaitingTime::all()->pluck('t3')->toArray())
-        
+
         ->setXAxis($created_at)
         ->setColors(['#ffc63b', '#008080'])
         ->setHeight(300);
 
+        return view('waiting.dashboard',  compact('wts','sites', 'chart', 'chart1'));
     }
 
-    // return view('waiting.dashboard', ['chart' => $chart->build($request->all())] , compact('wts','sites'));
-    return view('waiting.dashboard',  compact('wts','sites', 'chart', 'chart1'));
-}
 
-
+    public function siteTracker(){
+        $day = Carbon::today();
+        $sites = Site::whereHas('hourlySub', function($q) use($day){
+            $q->whereBetween('created_at', [$day->startOfDay(), $day->endOfDay()]);
+        })->get();
+        $w = WaitingTime::whereBetween('created_at', [$day->startOfDay(), $day->endOfDay()])->count();
+        dd($w,[$day->startOfDay(), $day->endOfDay()]);
+        // dd($sites, [$day->startOfDay(), $day->endOfDay()]);
+        return view('waiting.siteTracker', compact('sites'));
+    }
 
 }

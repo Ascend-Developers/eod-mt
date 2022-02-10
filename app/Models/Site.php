@@ -8,7 +8,7 @@ use Jenssegers\Mongodb\Eloquent\SoftDeletes;
 class Site extends Model
 {
     use SoftDeletes;
-    
+
     protected $fillable = [
         'name',
         'region_id',
@@ -22,5 +22,10 @@ class Site extends Model
 
     public function inventories(){
         return $this->hasMany(Inventory::class, 'site_id');
+    }
+
+    public function hourlySub()
+    {
+        return $this->hasMany(WaitingTime::class, 'site_id');
     }
 }
