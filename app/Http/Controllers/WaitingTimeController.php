@@ -153,43 +153,55 @@ class WaitingTimeController extends Controller
     }
 
     public function check( Request $request, MonthlyUsersChart $chart  )
-{
+{   
+    $Yes = 0;
+    $No = 0;
     $wts =  WaitingTime::all();
     $sites = Site::all();
-      if($site){
+    foreach($wts as $wt)
+    if ($wt->operatorSupervisorOnSite == 'Yes'){
+    $Yes ++;
 
-        $sites= WaitingTime::where('site_id', $site)->get();
+    }
+    else{
+        $No ++;
 
-        $created_at = WaitingTime::where('site_id', $site['site'])->get()->map(function ($data) {
-            return Carbon::parse($data->created_at)->format('Y-m-d H:i:s');
-         })->toArray();
-         $chart = (new LarapexChart)->lineChart()
-        ->setTitle('Waiting Time & Checklist')
-        ->addData('Waiting Time 1', WaitingTime::where('site_id', $site['site'])->get()->pluck('t1')->toArray())
-        ->addData('Waiting Time 2', WaitingTime::where('site_id', $site['site'])->get()->pluck('t2')->toArray())
-        ->setXAxis($created_at)
-        ->setColors(['#ffc63b', '#008080']);
+    }
 
-        $chart1 = (new LarapexChart)->lineChart()
-        ->setTitle('Waiting Time & Checklist')
-        ->addData('Waiting Time 1', WaitingTime::where('site_id', $site['site'])->get()->pluck('t3')->toArray())
-        ->setXAxis($created_at)
-        ->setColors(['#ffc63b', '#008080']);
+//       if($site){
+
+//         $sites= WaitingTime::where('site_id', $site)->get();
+
+//         $created_at = WaitingTime::where('site_id', $site['site'])->get()->map(function ($data) {
+//             return Carbon::parse($data->created_at)->format('Y-m-d H:i:s');
+//          })->toArray();
+//          $chart = (new LarapexChart)->lineChart()
+//         ->setTitle('Waiting Time & Checklist')
+//         ->addData('Waiting Time 1', WaitingTime::where('site_id', $site['site'])->get()->pluck('t1')->toArray())
+//         ->addData('Waiting Time 2', WaitingTime::where('site_id', $site['site'])->get()->pluck('t2')->toArray())
+//         ->setXAxis($created_at)
+//         ->setColors(['#ffc63b', '#008080']);
+
+//         $chart1 = (new LarapexChart)->lineChart()
+//         ->setTitle('Waiting Time & Checklist')
+//         ->addData('Waiting Time 1', WaitingTime::where('site_id', $site['site'])->get()->pluck('t3')->toArray())
+//         ->setXAxis($created_at)
+//         ->setColors(['#ffc63b', '#008080']);
 
 
 
-}
+// }
     
-     else{
+//      else{
 
-        $wts= WaitingTime::first();
-
+        // $wts= WaitingTime::first();
+        
         $created_at = WaitingTime::all()->map(function ($data) {
             return Carbon::parse($data->created_at)->format('Y-m-d H:i:s');
          })->toArray();
 
         $chart =  (new LarapexChart)->lineChart()
-        ->setTitle('Waiting Time & Checklist')
+        ->setTitle('Waiting Time T1 & T2 (In Minutes)')
         ->addData('Waiting Time 1', \App\Models\WaitingTime::all()->pluck('t1')->toArray())
         ->addData('Waiting Time 2', \App\Models\WaitingTime::all()->pluck('t2')->toArray())
         ->setXAxis($created_at)
@@ -198,17 +210,28 @@ class WaitingTimeController extends Controller
 
 
         $chart1 =  (new LarapexChart)->lineChart()
-        ->setTitle('Waiting Time & Checklist1')
-        ->addData('Waiting Time 1', \App\Models\WaitingTime::all()->pluck('t3')->toArray())
+        ->setTitle('Waiting Time T3 (In Minutes)')
+        ->addData('Waiting Time 3', \App\Models\WaitingTime::all()->pluck('t3')->toArray())
         
         ->setXAxis($created_at)
         ->setColors(['#ffc63b', '#008080'])
         ->setHeight(300);
 
-    }
+        $chart2 =  (new LarapexChart)->donutChart()
+        
+        ->setTitle('Supervisor On Site')
+        
+        ->addData([$Yes, $No])
+        ->setLabels(['Yes', 'No'])
+        ->setHeight(95)
+        ->setColors(['#0CA8A3', '#DC251C']);
+
+         
+    // }
 
     // return view('waiting.dashboard', ['chart' => $chart->build($request->all())] , compact('wts','sites'));
-    return view('waiting.dashboard',  compact('wts','sites', 'chart', 'chart1'));
+    
+    return view('waiting.dashboard',  compact('wts','sites', 'chart', 'chart1','chart2'));
 }
 
 
