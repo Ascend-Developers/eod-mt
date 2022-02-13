@@ -190,11 +190,11 @@ class WaitingTimeController extends Controller
         $users = User::whereHas('hourlySub')->get();
         $date = $request->has('date') ? Carbon::parse($request->date)->format('d-m-Y') : Carbon::today()->format('d-m-Y');
 
-        $created_at = WaitingTime::where('created_at', [Carbon::parse($date)->startOfDay(), Carbon::parse($date)->endOfDay()])->get()->groupBy(function($date) {
+        $created_at = WaitingTime::whereBetween('created_at', [Carbon::parse($date)->startOfDay(), Carbon::parse($date)->endOfDay()])->get()->groupBy(function($date) {
             return Carbon::parse($date->created_at)->format('h');
         })->toArray();
-        $wt = WaitingTime::where('created_at', [Carbon::parse($date)->startOfDay(), Carbon::parse($date)->endOfDay()])->pluck('t3')->toArray();
-
+        $wt = WaitingTime::whereBetween('created_at', [Carbon::parse($date)->startOfDay(), Carbon::parse($date)->endOfDay()])->pluck('t3')->toArray();
+        // dd($created_at, $wt);
         $chart1 =  (new LarapexChart)->lineChart()
         ->setTitle('Waiting Time & Checklist')
         ->addData('Waiting Time 1',$wt)
@@ -203,13 +203,8 @@ class WaitingTimeController extends Controller
         ->setHeight(300);
 
         $data=[];
-
-        // dd($data, [Carbon::parse('8:00')->subMinutes(15), Carbon::parse('8:00')->addMinutes(15)]);
         $chart =  (new LarapexChart)->horizontalBarChart();
-        // ->setTitle('Waiting Time & Checklist');
-
         $array = [' 08:00', ' 14:00', ' 00:00'];
-// dd($date.$array[1]);
         foreach ($array as $key) {
             $tempData = [];
             foreach ($sites as $site) {
