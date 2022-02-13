@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\WaitingTime;
 use Illuminate\Http\Request;
 use App\Models\Site;
+use App\Models\User;
 use Auth;
 use App\Exports\WaitingTimesExport;
 use Excel;
@@ -184,15 +185,50 @@ class WaitingTimeController extends Controller
     }
 
 
-    public function siteTracker(){
-        $day = Carbon::today();
-        $sites = Site::whereHas('hourlySub', function($q) use($day){
-            $q->whereBetween('created_at', [$day->startOfDay(), $day->endOfDay()]);
-        })->get();
-        $w = WaitingTime::whereBetween('created_at', [$day->startOfDay(), $day->endOfDay()])->count();
-        dd($w,[$day->startOfDay(), $day->endOfDay()]);
-        // dd($sites, [$day->startOfDay(), $day->endOfDay()]);
-        return view('waiting.siteTracker', compact('sites'));
+    public function siteTracker(Request $request){
+        $sites = Site::all();
+        $users = User::all();
+        $date = $request->has('date') ? Carbon::parse($request->date)->format('d-m-Y') : Carbon::today()->format('d-m-Y');
+// dd($date);
+        // /subMinutes
+
+        $created_at = WaitingTime::all()->groupBy(function($date) {
+            return Carbon::parse($date->created_at)->format('h');
+        })->toArray();
+        // dd($created_at);
+        $wt = WaitingTime::all()->groupBy(function($date) {
+            return Carbon::parse($date->created_at)->format('h');
+        })->pluck('t3')->toArray();
+
+        $chart =  (new LarapexChart)->lineChart()
+        ->setTitle('Waiting Time & Checklist')
+        ->addData('Waiting Time 1',$wt)
+        ->setXAxis($created_at)
+        ->setColors(['#ffc63b', '#008080'])
+        ->setHeight(300);
+
+        $data=[];
+
+        // dd($data, [Carbon::parse('8:00')->subMinutes(15), Carbon::parse('8:00')->addMinutes(15)]);
+        $chart =  (new LarapexChart)->horizontalBarChart();
+        // ->setTitle('Waiting Time & Checklist');
+
+        $array = [' 08:00', ' 14:00', ' 00:00'];
+// dd($date.$array[1]);
+        foreach ($array as $key) {
+            $tempData = [];
+            foreach ($sites as $site) {
+                array_push($tempData, WaitingTime::where('site_id', $site->_id)->whereBetween('created_at', [Carbon::parse($date.$key)->subMinutes(15), Carbon::parse($date.$key)->addMinutes(15)])->avg('t3'));
+            }
+            $chart =  $chart->addData($key, $tempData);
+        }
+        $chart =  $chart
+        ->setXAxis($sites->pluck('name')->toArray())
+        ->setColors(['#553AFE', '#01C0F6', '#F1963A'])
+        ->setHeight(300);
+
+
+        return view('waiting.siteTracker', compact('sites', 'users', 'chart'));
     }
 
 }

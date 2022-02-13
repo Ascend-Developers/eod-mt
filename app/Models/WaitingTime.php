@@ -41,6 +41,9 @@ class WaitingTime extends Model
         return $this->belongsTo(User::class, 'user_id');
     }
 
+    public function getEntryStatus(){
+
+    }
 //     public function getCreatedAtAttribute($date)
 // {
 //     return Carbon::createFromFormat('Y-m-d H:i:s', $date)->format('Y-m-d');

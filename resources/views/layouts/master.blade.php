@@ -158,6 +158,7 @@
             }
         })
     </script>
+
     @include('sweetalert::alert')
 </body>
 <!-- END: Body-->
