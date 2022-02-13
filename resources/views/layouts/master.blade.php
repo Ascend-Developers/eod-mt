@@ -41,6 +41,8 @@
 
     <!-- BEGIN: Custom CSS-->
     <link rel="stylesheet" type="text/css" href="/assets/css/style.css">
+    <link rel="stylesheet" type="text/css" href="/app-assets/css/dashboard.css">
+
     {{-- <link rel="stylesheet" href="//cdn.datatables.net/1.10.7/css/jquery.dataTables.min.css"> --}}
     {{-- <link rel="stylesheet" href="//cdn.datatables.net/responsive/2.2.7/css/responsive.dataTables.min.css"> --}}
     <!-- END: Custom CSS-->
