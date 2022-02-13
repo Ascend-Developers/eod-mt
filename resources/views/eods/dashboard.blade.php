@@ -11,7 +11,7 @@
         <div class="row">
             @foreach ($sites as $site )
                 
-            <div class="col-md-6 col-lg-6 mt-5">
+            <div class="col-md-12 col-lg-6   mt-5">
                 <div class="card inventory-card inventory-card-shadow w-100 h-100  pb-0">
                     <div class="card-header card-header-dashboard d-flex justify-content-between pb-0 ">
                         <div class="tag"></div>
@@ -23,11 +23,15 @@
                     <div class="card-body p-0" >
                         <div class="row" >
                             @foreach($site->inventories as $inventory)
-                                <div class="col-md-6 col-lg-4    flex-column">
-                                
-                                    <div class="income ">  <img src="/app-assets/images/icons/placeholder.svg" /> 
-                                        <h1 class="item-name mt-3  ">{{$inventory->item->name}} </h1>
-                                       
+                                <div class="col-md-12 col-lg-4    flex-column">
+                                    @if($inventory->item->name == "syringe")
+                                    <div class="income3">  <img src="/app-assets/images/icons/syringe.svg" /> 
+                                    @elseif ($inventory->item->name == "cylinder")
+                                    <div class="income">  <img src="/app-assets/images/icons/placeholder.svg" />
+                                    @else
+                                    <div class="income4">  <img src="/app-assets/images/icons/plastic.svg" />  
+                                    @endif    
+                                        <h1 class="item-name mt-3  ">{{$inventory->item->name }} </h1>
                                             <p class="item-number">{{$inventory->stock? $inventory->stock :"--"}}</p>
                                         </div>
                                         <p class="font-small-3  mt-0 mb-0">{{$inventory->updated_at}}</p>
@@ -41,14 +45,7 @@
                         </div>
                     </div>
     
-                        {{-- <div class="row  mx-0 ">
-                                @foreach($site->inventories as $inventory)
-                                    <div class="col-md-4 d-flex flex-column flex-wrap date">
-                                        <h1 class="font-small-3  mt-0 mb-0">{{$inventory->updated_at}}</h1>
-                                            
-                                    </div>
-                                @endforeach
-                        </div> --}}
+                       
                     
                 </div>
             </div>   
@@ -58,7 +55,7 @@
         </div>
 
     </div>
-</div>
+
 
 
 @endsection

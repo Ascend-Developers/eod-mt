@@ -154,19 +154,10 @@ class WaitingTimeController extends Controller
 
     public function check( Request $request, MonthlyUsersChart $chart  )
 {   
-    $Yes = 0;
-    $No = 0;
+    
     $wts =  WaitingTime::all();
     $sites = Site::all();
-    foreach($wts as $wt)
-    if ($wt->operatorSupervisorOnSite == 'Yes'){
-    $Yes ++;
-
-    }
-    else{
-        $No ++;
-
-    }
+    
 
 //       if($site){
 
@@ -194,8 +185,11 @@ class WaitingTimeController extends Controller
     
 //      else{
 
-        // $wts= WaitingTime::first();
-        
+        $Yes = WaitingTime::where('operatorSupervisorOnSite', 'Yes')->count();
+        $No= WaitingTime::where('operatorSupervisorOnSite', 'No')->count();
+        $Yes2 = WaitingTime::where('homeKitsAvailableOnSite', 'Yes')->count();
+        $No2= WaitingTime::where('homeKitsAvailableOnSite', 'No')->count();
+        // $wts= WaitingTime::first()
         $created_at = WaitingTime::all()->map(function ($data) {
             return Carbon::parse($data->created_at)->format('Y-m-d H:i:s');
          })->toArray();
@@ -206,7 +200,7 @@ class WaitingTimeController extends Controller
         ->addData('Waiting Time 2', \App\Models\WaitingTime::all()->pluck('t2')->toArray())
         ->setXAxis($created_at)
         ->setColors(['#ffc63b', '#008080'])
-        ->setHeight(300);
+        ->setHeight(462);
 
 
         $chart1 =  (new LarapexChart)->lineChart()
@@ -215,7 +209,7 @@ class WaitingTimeController extends Controller
         
         ->setXAxis($created_at)
         ->setColors(['#ffc63b', '#008080'])
-        ->setHeight(300);
+        ->setHeight(462);
 
         $chart2 =  (new LarapexChart)->donutChart()
         
@@ -223,15 +217,24 @@ class WaitingTimeController extends Controller
         
         ->addData([$Yes, $No])
         ->setLabels(['Yes', 'No'])
-        ->setHeight(95)
+        ->setHeight(108)
         ->setColors(['#0CA8A3', '#DC251C']);
+        
+        $chart3 =  (new LarapexChart)->donutChart()
+        
+        ->setTitle('Home Kits Available On Site')
+        
+        ->addData([$Yes2, $No2])
+        ->setLabels(['Yes', 'No'])
+        ->setHeight(108)
+        ->setColors(['#553AFE', '#01C0F6']);
 
          
     // }
 
     // return view('waiting.dashboard', ['chart' => $chart->build($request->all())] , compact('wts','sites'));
     
-    return view('waiting.dashboard',  compact('wts','sites', 'chart', 'chart1','chart2'));
+    return view('waiting.dashboard',  compact('wts','sites', 'chart', 'chart1','chart2','chart3'));
 }
 
 
