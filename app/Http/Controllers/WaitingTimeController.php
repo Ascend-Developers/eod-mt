@@ -200,7 +200,7 @@ class WaitingTimeController extends Controller
             return Carbon::parse($date->created_at)->format('h');
         })->pluck('t3')->toArray();
 
-        $chart =  (new LarapexChart)->lineChart()
+        $chart1 =  (new LarapexChart)->lineChart()
         ->setTitle('Waiting Time & Checklist')
         ->addData('Waiting Time 1',$wt)
         ->setXAxis($created_at)
@@ -225,10 +225,10 @@ class WaitingTimeController extends Controller
         $chart =  $chart
         ->setXAxis($sites->pluck('name')->toArray())
         ->setColors(['#553AFE', '#01C0F6', '#F1963A'])
-        ->setHeight(300);
+        ->setHeight(600);
 
 
-        return view('waiting.siteTracker', compact('sites', 'users', 'chart'));
+        return view('waiting.siteTracker', compact('sites', 'users', 'chart', 'chart1'));
     }
 
 }

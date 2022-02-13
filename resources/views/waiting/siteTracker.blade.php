@@ -95,12 +95,28 @@
             </div>
         </div>
     </div>
+    <div class="col-md-6 ">
+        <div class="card" >
+            <div class="row">
+                <div class="col-md-12 ">
+                    <div class="card-body">
+                        <h4 class="">TAT during shift change</h4>
+                        <div class="row">
+                            {!! $chart1->container() !!}
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
 </div>
 </section>
 
 <script src="{{ $chart->cdn() }}"></script>
 
 {{ $chart->script() }}
+{{ $chart1->script() }}
 @endsection
 
 @push('script')
