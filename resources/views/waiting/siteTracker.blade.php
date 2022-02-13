@@ -32,8 +32,8 @@
                                 {{$site->name}}
                                 {{-- {{$site->hourlySub->count()}} --}}
                                 @php
-                                    $date = Carbon\Carbon::today();
-                                    $percentage = $site->getDateSubmissionProgress('11 Feb 2022');
+                                    $date = request()->has('date') ? request()->date: Carbon\Carbon::today();
+                                    $percentage = $site->getDateSubmissionProgress($date);
                                     $class = $site->getClass($percentage)
                                 @endphp
                                 {{-- --{{$percentage}} --}}
@@ -62,8 +62,8 @@
                                 {{$user->name}}
                                 {{-- {{$site->hourlySub->count()}} --}}
                                 @php
-                                    $date = Carbon\Carbon::today();
-                                    $percentage = $user->getDateSubmissionProgress('11 Feb 2022');
+                                    $date = request()->has('date') ? request()->date: Carbon\Carbon::today();
+                                    $percentage = $user->getDateSubmissionProgress($date);
                                     $class = $user->getClass($percentage)
                                 @endphp
                                 {{-- --{{$percentage}} --}}
