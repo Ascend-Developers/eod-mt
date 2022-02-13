@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\WaitingTime;
 use Illuminate\Http\Request;
 use App\Models\Site;
+use App\Models\User;
 use Auth;
 use App\Exports\WaitingTimesExport;
 use Excel;
@@ -237,6 +238,45 @@ class WaitingTimeController extends Controller
     return view('waiting.dashboard',  compact('wts','sites', 'chart', 'chart1','chart2','chart3'));
 }
 
+    public function siteTracker(Request $request){
+        $sites = Site::whereHas('hourlySub')->get();
+        $users = User::whereHas('hourlySub')->get();
+        $date = $request->has('date') ? Carbon::parse($request->date)->format('d-m-Y') : Carbon::today()->format('d-m-Y');
 
+        $created_at = WaitingTime::where('created_at', [Carbon::parse($date)->startOfDay(), Carbon::parse($date)->endOfDay()])->get()->groupBy(function($date) {
+            return Carbon::parse($date->created_at)->format('h');
+        })->toArray();
+        $wt = WaitingTime::where('created_at', [Carbon::parse($date)->startOfDay(), Carbon::parse($date)->endOfDay()])->pluck('t3')->toArray();
+
+        $chart1 =  (new LarapexChart)->lineChart()
+        ->setTitle('Waiting Time & Checklist')
+        ->addData('Waiting Time 1',$wt)
+        ->setXAxis($created_at)
+        ->setColors(['#ffc63b', '#008080'])
+        ->setHeight(300);
+
+        $data=[];
+
+        // dd($data, [Carbon::parse('8:00')->subMinutes(15), Carbon::parse('8:00')->addMinutes(15)]);
+        $chart =  (new LarapexChart)->horizontalBarChart();
+        // ->setTitle('Waiting Time & Checklist');
+
+        $array = [' 08:00', ' 14:00', ' 00:00'];
+// dd($date.$array[1]);
+        foreach ($array as $key) {
+            $tempData = [];
+            foreach ($sites as $site) {
+                array_push($tempData, WaitingTime::where('site_id', $site->_id)->whereBetween('created_at', [Carbon::parse($date.$key)->subMinutes(15), Carbon::parse($date.$key)->addMinutes(15)])->avg('t3'));
+            }
+            $chart =  $chart->addData($key, $tempData);
+        }
+        $chart =  $chart
+        ->setXAxis($sites->pluck('name')->toArray())
+        ->setColors(['#553AFE', '#01C0F6', '#F1963A'])
+        ->setHeight(600);
+
+
+        return view('waiting.siteTracker', compact('sites', 'users', 'chart', 'chart1'));
+    }
 
 }
