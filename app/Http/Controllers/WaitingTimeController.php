@@ -154,11 +154,11 @@ class WaitingTimeController extends Controller
     }
 
     public function check( Request $request, MonthlyUsersChart $chart  )
-{   
-    
+{
+
     $wts =  WaitingTime::all();
     $sites = Site::all();
-    
+
 
 //       if($site){
 
@@ -183,7 +183,7 @@ class WaitingTimeController extends Controller
 
 
 // }
-    
+
 //      else{
 
         $Yes = WaitingTime::where('operatorSupervisorOnSite', 'Yes')->count();
@@ -207,34 +207,34 @@ class WaitingTimeController extends Controller
         $chart1 =  (new LarapexChart)->lineChart()
         ->setTitle('Waiting Time T3 (In Minutes)')
         ->addData('Waiting Time 3', \App\Models\WaitingTime::all()->pluck('t3')->toArray())
-        
+
         ->setXAxis($created_at)
         ->setColors(['#ffc63b', '#008080'])
         ->setHeight(462);
 
         $chart2 =  (new LarapexChart)->donutChart()
-        
+
         ->setTitle('Supervisor On Site')
-        
+
         ->addData([$Yes, $No])
         ->setLabels(['Yes', 'No'])
         ->setHeight(108)
         ->setColors(['#0CA8A3', '#DC251C']);
-        
+
         $chart3 =  (new LarapexChart)->donutChart()
-        
+
         ->setTitle('Home Kits Available On Site')
-        
+
         ->addData([$Yes2, $No2])
         ->setLabels(['Yes', 'No'])
         ->setHeight(108)
         ->setColors(['#553AFE', '#01C0F6']);
 
-         
+
     // }
 
     // return view('waiting.dashboard', ['chart' => $chart->build($request->all())] , compact('wts','sites'));
-    
+
     return view('waiting.dashboard',  compact('wts','sites', 'chart', 'chart1','chart2','chart3'));
 }
 
@@ -249,10 +249,11 @@ class WaitingTimeController extends Controller
         $wt = WaitingTime::whereBetween('created_at', [Carbon::parse($date)->startOfDay(), Carbon::parse($date)->endOfDay()])->pluck('t3')->toArray();
         // dd($created_at, $wt);
         $chart1 =  (new LarapexChart)->lineChart()
-        ->setTitle('Waiting Time & Checklist')
-        ->addData('Waiting Time 1',$wt)
+        // ->setTitle('Waiting Time & Checklist')
+        ->addData('Waiting Time T3',$wt)
         ->setXAxis($created_at)
         ->setColors(['#ffc63b', '#008080'])
+        ->setDataLabels(true)
         ->setHeight(300);
 
         $data=[];
@@ -268,6 +269,7 @@ class WaitingTimeController extends Controller
         $chart =  $chart
         ->setXAxis($sites->pluck('name')->toArray())
         ->setColors(['#553AFE', '#01C0F6', '#F1963A'])
+        ->setDataLabels(true)
         ->setHeight(600);
 
 
