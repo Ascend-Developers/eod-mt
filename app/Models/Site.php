@@ -34,7 +34,7 @@ class Site extends Model
         $day[0] = Carbon::parse($date)->startOfDay();
         $day[1] = Carbon::parse($date)->endOfDay();
         $result = WaitingTime::where('site_id', $this->_id)->whereBetween('created_at', [$day[0], $day[1]])->count();
-        $per  = ($result/8)*100;
+        $per  = ($result/24)*100;
         return ($per > 100 ? 100 : $per);
     }
 

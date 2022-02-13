@@ -189,16 +189,11 @@ class WaitingTimeController extends Controller
         $sites = Site::whereHas('hourlySub')->get();
         $users = User::whereHas('hourlySub')->get();
         $date = $request->has('date') ? Carbon::parse($request->date)->format('d-m-Y') : Carbon::today()->format('d-m-Y');
-// dd($date);
-        // /subMinutes
 
-        $created_at = WaitingTime::all()->groupBy(function($date) {
+        $created_at = WaitingTime::where('created_at', [Carbon::parse($date)->startOfDay(), Carbon::parse($date)->endOfDay()])->get()->groupBy(function($date) {
             return Carbon::parse($date->created_at)->format('h');
         })->toArray();
-        // dd($created_at);
-        $wt = WaitingTime::all()->groupBy(function($date) {
-            return Carbon::parse($date->created_at)->format('h');
-        })->pluck('t3')->toArray();
+        $wt = WaitingTime::where('created_at', [Carbon::parse($date)->startOfDay(), Carbon::parse($date)->endOfDay()])->pluck('t3')->toArray();
 
         $chart1 =  (new LarapexChart)->lineChart()
         ->setTitle('Waiting Time & Checklist')

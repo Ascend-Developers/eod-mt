@@ -60,7 +60,7 @@ class User extends Authenticatable
 
     public function hourlySub()
     {
-        return $this->hasMany(WaitingTime::class, 'site_id');
+        return $this->hasMany(WaitingTime::class, 'user_id');
     }
 
 
