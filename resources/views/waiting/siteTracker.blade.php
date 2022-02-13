@@ -74,6 +74,22 @@
                     </div>
                 </div>
             </div>
+              {{-- Waiting TIme --}}
+            <div class="col-md-12 ">
+                <div class="card" >
+                    <div class="row">
+                        <div class="col-md-12 ">
+                            <div class="card-body">
+                                <h4 class="">Waiting Time</h4>
+                                <div class="row">
+                                    {!! $chart1->container() !!}
+                                </div>
+
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
         </div>
     </div>
      {{-- Submission by PMO --}}
@@ -109,22 +125,7 @@
             </div>
         </div>
     </div>
-    {{-- Waiting TIme --}}
-    <div class="col-md-8 ">
-        <div class="card" >
-            <div class="row">
-                <div class="col-md-12 ">
-                    <div class="card-body">
-                        <h4 class="">Waiting Time</h4>
-                        <div class="row">
-                            {!! $chart1->container() !!}
-                        </div>
 
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
 
 </div>
 </section>
