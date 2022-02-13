@@ -186,8 +186,8 @@ class WaitingTimeController extends Controller
 
 
     public function siteTracker(Request $request){
-        $sites = Site::all();
-        $users = User::all();
+        $sites = Site::whereHas('hourlySub')->get();
+        $users = User::whereHas('hourlySub')->get();
         $date = $request->has('date') ? Carbon::parse($request->date)->format('d-m-Y') : Carbon::today()->format('d-m-Y');
 // dd($date);
         // /subMinutes
