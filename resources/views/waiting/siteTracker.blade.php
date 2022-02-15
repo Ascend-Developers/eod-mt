@@ -43,7 +43,7 @@
                                             $class = $site->getClass($percentage)
                                         @endphp
                                         {{-- --{{$percentage}} --}}
-                                        <div class="progress progress-bar-{{$class}}">
+                                        <div class="progress " style="background-color:{{$class}}">
                                             <div class="progress-bar" role="progressbar" aria-valuenow="25" aria-valuemin="25" aria-valuemax="100" style="width: {{$percentage}}%">
                                                 {{round($percentage)}}%
                                             </div>

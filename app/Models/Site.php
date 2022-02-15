@@ -41,19 +41,19 @@ class Site extends Model
     public function getClass($value){
         // dd($result);
         if($value  >= 75){
-            return 'success';
+            return '#9AD00E';
         }
 
         if($value  < 80 && $value > 70){
-            return 'primary';
+            return '#01C0F6';
         }
 
         if($value  < 70 && $value > 50){
-            return 'warning';
+            return '#EF5DA8';
         }
 
         if($value  < 50){
-            return 'danger';
+            return '#DC251C';
         }
     }
 }

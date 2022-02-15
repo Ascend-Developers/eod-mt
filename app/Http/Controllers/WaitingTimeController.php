@@ -252,7 +252,7 @@ class WaitingTimeController extends Controller
         // ->setTitle('Waiting Time & Checklist')
         ->addData('Waiting Time T3',$wt)
         ->setXAxis($created_at)
-        ->setColors(['#ffc63b', '#008080'])
+        ->setColors(['#443DF6', '#DC251C'])
         ->setDataLabels(true)
         ->setHeight(300);
 
@@ -268,7 +268,7 @@ class WaitingTimeController extends Controller
         }
         $chart =  $chart
         ->setXAxis($sites->pluck('name')->toArray())
-        ->setColors(['#553AFE', '#01C0F6', '#F1963A'])
+        ->setColors(['#443DF6', '#DC251C', '#01C0F6'])
         ->setDataLabels(true)
         ->setHeight(600);
 
