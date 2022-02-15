@@ -156,49 +156,35 @@ class WaitingTimeController extends Controller
     public function check( Request $request, MonthlyUsersChart $chart  )
 {
 
-    $wts =  WaitingTime::all();
     $sites = Site::all();
 
 
-//       if($site){
 
-//         $sites= WaitingTime::where('site_id', $site)->get();
+        $date = $request->has('date') ? Carbon::parse($request->date)->format('d-m-Y') : Carbon::today()->format('d-m-Y');
 
-//         $created_at = WaitingTime::where('site_id', $site['site'])->get()->map(function ($data) {
-//             return Carbon::parse($data->created_at)->format('Y-m-d H:i:s');
-//          })->toArray();
-//          $chart = (new LarapexChart)->lineChart()
-//         ->setTitle('Waiting Time & Checklist')
-//         ->addData('Waiting Time 1', WaitingTime::where('site_id', $site['site'])->get()->pluck('t1')->toArray())
-//         ->addData('Waiting Time 2', WaitingTime::where('site_id', $site['site'])->get()->pluck('t2')->toArray())
-//         ->setXAxis($created_at)
-//         ->setColors(['#ffc63b', '#008080']);
+        $Yes = WaitingTime::where('operatorSupervisorOnSite', 'Yes')->whereBetween('created_at', [Carbon::parse($date)->startOfDay(), Carbon::parse($date)->endOfDay()])->count();
+        $No= WaitingTime::where('operatorSupervisorOnSite', 'No')->whereBetween('created_at', [Carbon::parse($date)->startOfDay(), Carbon::parse($date)->endOfDay()])->count();
+        $Yes2 = WaitingTime::where('homeKitsAvailableOnSite', 'Yes')->whereBetween('created_at', [Carbon::parse($date)->startOfDay(), Carbon::parse($date)->endOfDay()])->count();
+        $No2= WaitingTime::where('homeKitsAvailableOnSite', 'No')->whereBetween('created_at', [Carbon::parse($date)->startOfDay(), Carbon::parse($date)->endOfDay()])->count();
 
-//         $chart1 = (new LarapexChart)->lineChart()
-//         ->setTitle('Waiting Time & Checklist')
-//         ->addData('Waiting Time 1', WaitingTime::where('site_id', $site['site'])->get()->pluck('t3')->toArray())
-//         ->setXAxis($created_at)
-//         ->setColors(['#ffc63b', '#008080']);
+        
+       
+        
+         $created_at = WaitingTime::whereBetween('created_at', [Carbon::parse($date)->startOfDay(), Carbon::parse($date)->endOfDay()])->get()->groupBy(function($date) {
+            return Carbon::parse($date->created_at)->format('h');
+        })->toArray();
+        
+        $wts1 = WaitingTime::whereBetween('created_at', [Carbon::parse($date)->startOfDay(), Carbon::parse($date)->endOfDay()])->pluck('t1')->toArray();
+        $wts2 = WaitingTime::whereBetween('created_at', [Carbon::parse($date)->startOfDay(), Carbon::parse($date)->endOfDay()])->pluck('t2')->toArray();
+        $wts3 = WaitingTime::whereBetween('created_at', [Carbon::parse($date)->startOfDay(), Carbon::parse($date)->endOfDay()])->pluck('t3')->toArray();
+        $wts = WaitingTime::whereBetween('created_at', [Carbon::parse($date)->startOfDay(), Carbon::parse($date)->endOfDay()])->get();
+        $wts = WaitingTime::whereBetween('created_at', [Carbon::parse($date)->startOfDay(), Carbon::parse($date)->endOfDay()])->get();
 
-
-
-// }
-
-//      else{
-
-        $Yes = WaitingTime::where('operatorSupervisorOnSite', 'Yes')->count();
-        $No= WaitingTime::where('operatorSupervisorOnSite', 'No')->count();
-        $Yes2 = WaitingTime::where('homeKitsAvailableOnSite', 'Yes')->count();
-        $No2= WaitingTime::where('homeKitsAvailableOnSite', 'No')->count();
-        // $wts= WaitingTime::first()
-        $created_at = WaitingTime::all()->map(function ($data) {
-            return Carbon::parse($data->created_at)->format('Y-m-d H:i:s');
-         })->toArray();
 
         $chart =  (new LarapexChart)->lineChart()
         ->setTitle('Waiting Time T1 & T2 (In Minutes)')
-        ->addData('Waiting Time 1', \App\Models\WaitingTime::all()->pluck('t1')->toArray())
-        ->addData('Waiting Time 2', \App\Models\WaitingTime::all()->pluck('t2')->toArray())
+        ->addData('Waiting Time 1', $wts1)
+        ->addData('Waiting Time 2', $wts2)
         ->setXAxis($created_at)
         ->setColors(['#ffc63b', '#008080'])
         ->setHeight(462);
@@ -206,7 +192,7 @@ class WaitingTimeController extends Controller
 
         $chart1 =  (new LarapexChart)->lineChart()
         ->setTitle('Waiting Time T3 (In Minutes)')
-        ->addData('Waiting Time 3', \App\Models\WaitingTime::all()->pluck('t3')->toArray())
+        ->addData('Waiting Time 3',$wts3)
 
         ->setXAxis($created_at)
         ->setColors(['#ffc63b', '#008080'])
@@ -231,9 +217,7 @@ class WaitingTimeController extends Controller
         ->setColors(['#553AFE', '#01C0F6']);
 
 
-    // }
-
-    // return view('waiting.dashboard', ['chart' => $chart->build($request->all())] , compact('wts','sites'));
+    
 
     return view('waiting.dashboard',  compact('wts','sites', 'chart', 'chart1','chart2','chart3'));
 }
@@ -247,9 +231,9 @@ class WaitingTimeController extends Controller
             return Carbon::parse($date->created_at)->format('h');
         })->toArray();
         $wt = WaitingTime::whereBetween('created_at', [Carbon::parse($date)->startOfDay(), Carbon::parse($date)->endOfDay()])->pluck('t3')->toArray();
-        // dd($created_at, $wt);
+        
         $chart1 =  (new LarapexChart)->lineChart()
-        // ->setTitle('Waiting Time & Checklist')
+        
         ->addData('Waiting Time T3',$wt)
         ->setXAxis($created_at)
         ->setColors(['#443DF6', '#DC251C'])
