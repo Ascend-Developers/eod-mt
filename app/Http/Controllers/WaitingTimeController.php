@@ -187,7 +187,7 @@ class WaitingTimeController extends Controller
         ->addData('Waiting Time 2', $wts2)
         ->setXAxis($created_at)
         ->setColors(['#ffc63b', '#008080'])
-        ->setHeight(462);
+        ->setHeight(300);
 
 
         $chart1 =  (new LarapexChart)->lineChart()
@@ -196,7 +196,7 @@ class WaitingTimeController extends Controller
 
         ->setXAxis($created_at)
         ->setColors(['#ffc63b', '#008080'])
-        ->setHeight(462);
+        ->setHeight(300);
 
         $chart2 =  (new LarapexChart)->donutChart()
 
@@ -252,30 +252,12 @@ class WaitingTimeController extends Controller
         }
         $chart =  $chart
         ->setXAxis($sites->pluck('name')->toArray())
-        ->setColors(['#443DF6', '#DC251C', '#01C0F6'])
+        ->setColors(['#01C0F6', '#EF5DA8', '#F1963A'])
         ->setDataLabels(true)
         ->setHeight(600);
 
-        $userWaitingData = WaitingTime::whereBetween('created_at', [Carbon::parse($date)->startOfDay(), Carbon::parse($date)->endOfDay()])->select('user_id', 'created_at', 'site_id')->with(['site'=>function($q){
-            $q->select('name');
-        }])->get()->groupBy(function($user){
-            return $user->user->name;
-        })->toArray();
 
-        $userDataWaitingTime = [];
-        foreach ($userWaitingData as $key => $value) {
-            $count = count($value) - 1;
-            // dd();
-            $temp = [
-                'name' => $key,
-                // 'firstSiteName' => ,
-                'firstSiteSubmission' => date('d-m-Y', strtotime($value[0]['created_at'])),
-                // 'lastSiteName' => ,
-                'lastSiteSubmission' => date('d-m-Y', strtotime($value[$count]['created_at'])),
-            ];
-            array_push($userDataWaitingTime, $temp);
-        }
-        return view('waiting.siteTracker', compact('sites', 'users', 'chart', 'chart1', 'userDataWaitingTime'));
+        return view('waiting.siteTracker', compact('sites', 'users', 'chart', 'chart1'));
     }
 
 }

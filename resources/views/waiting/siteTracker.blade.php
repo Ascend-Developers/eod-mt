@@ -21,48 +21,12 @@
 
         </div>
     </div>
-    {{-- Tat During Shifts, Waiting TIme --}}
-    <div class="col-12">
-        <div class="row">
-            {{-- Waiting TIme --}}
-            <div class="col-lg-6 col-md-6 col-sm-12">
-                <div class="card" >
-                    <div class="row">
-                        <div class="col-lg-12 col-md-12 col-sm-12">
-                            <div class="card-body">
-                                <h4 class="">Waiting Time</h4>
-                                <div class="row">
-                                    {!! $chart1->container() !!}
-                                </div>
-
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            {{-- Tat During Shifts --}}
-            <div class="col-lg-6 col-md-6 col-sm-12">
-                <div class="card" >
-                    <div class="row">
-                        <div class="col-lg-12 col-md-12 col-sm-12">
-                            <div class="card-body">
-                                <h4 class="">TAT during shift change</h4>
-                                <div class="row">
-                                    {!! $chart->container() !!}
-                                </div>
-
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-    {{-- submission by Site, submission by User --}}
-    <div class="col-12">
+    {{-- Tat During Shifts --}}
+     {{-- submission by Site --}}
+    <div class="col-8">
         <div class="row">
             {{-- submission by Site --}}
-            <div class="col-lg-6 col-md-6 col-sm-12">
+            <div class="col-md-4 ">
                 <div class="card" >
                     <div class="row">
                         <div class="col-md-12 ">
@@ -79,76 +43,90 @@
                                             $class = $site->getClass($percentage)
                                         @endphp
                                         {{-- --{{$percentage}} --}}
-                                        <div class="progress " style="background-color:{{$class}}">
-                                            <div class="progress-bar" role="progressbar" aria-valuenow="25" aria-valuemin="25" aria-valuemax="100" style="width: {{$percentage}}%">
-                                                {{round($percentage)}}%
-                                            </div>
-                                        </div>
-                                    </div>
-                                    @endforeach
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            {{-- Submission by PMO --}}
-            <div class="col-lg-6 col-md-6 col-sm-12">
-                <div class="card" >
-                    <div class="row">
-                        <div class="col-md-12 ">
-                            <div class="card-body">
-                                <h4 class="">Submission per PM0</h4>
-                                <div class="row">
-                                    @foreach ($users as $user)
-                                    <div class="col-12 mt-1">
-                                        {{$user->name}}
-                                        {{-- {{$site->hourlySub->count()}} --}}
-                                        @php
-                                            $date = request()->has('date') ? request()->date: Carbon\Carbon::today();
-                                            $percentage = $user->getDateSubmissionProgress($date);
-                                            $class = $user->getClass($percentage)
-                                        @endphp
-                                        {{-- --{{$percentage}} --}}
                                         <div class="progress progress-bar-{{$class}}">
                                             <div class="progress-bar" role="progressbar" aria-valuenow="25" aria-valuemin="25" aria-valuemax="100" style="width: {{$percentage}}%">
                                                 {{round($percentage)}}%
                                             </div>
                                         </div>
                                     </div>
+
                                     @endforeach
                                 </div>
+
                             </div>
                         </div>
                     </div>
                 </div>
             </div>
-        </div>
-    </div>
-    {{-- User submition info --}}
-    <div class="col-12">
-        <div class="row">
-            @foreach ($userDataWaitingTime as $us)
-            <div class="col-lg-2 col-md-2 col-sm-6">
+            {{-- Tat During Shifts --}}
+            <div class="col-md-8">
                 <div class="card" >
                     <div class="row">
-                        <div class="col-lg-12 col-md-12 col-sm-12">
+                        <div class="col-md-12 ">
                             <div class="card-body">
-                                <h4 class="">{{$us['name']}}</h4>
+                                <h4 class="">TAT during shift change</h4>
                                 <div class="row">
-                                    <strong>First Upload :</strong> {{$us['firstSiteSubmission']}}
+                                    {!! $chart->container() !!}
                                 </div>
-                                <div class="row">
-                                    <strong>Last Upload :</strong> {{$us['lastSiteSubmission']}}
-                                </div>
+
                             </div>
                         </div>
                     </div>
                 </div>
             </div>
-            @endforeach
+              {{-- Waiting TIme --}}
+            <div class="col-md-12 ">
+                <div class="card" >
+                    <div class="row">
+                        <div class="col-md-12 ">
+                            <div class="card-body">
+                                <h4 class="">Waiting Time</h4>
+                                <div class="row">
+                                    {!! $chart1->container() !!}
+                                </div>
+
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
         </div>
     </div>
+     {{-- Submission by PMO --}}
+     <div class="col-md-4 ">
+        <div class="card" >
+            <div class="row">
+                <div class="col-md-12 ">
+                    <div class="card-body">
+                        <h4 class="">Submission per PM0</h4>
+                        <div class="row">
+                            @foreach ($users as $user)
+                            <div class="col-12 mt-1">
+                                {{$user->name}}
+                                {{-- {{$site->hourlySub->count()}} --}}
+                                @php
+                                    $date = request()->has('date') ? request()->date: Carbon\Carbon::today();
+                                    $percentage = $user->getDateSubmissionProgress($date);
+                                    $class = $user->getClass($percentage)
+                                @endphp
+                                {{-- --{{$percentage}} --}}
+                                <div class="progress progress-bar-{{$class}}">
+                                    <div class="progress-bar" role="progressbar" aria-valuenow="25" aria-valuemin="25" aria-valuemax="100" style="width: {{$percentage}}%">
+                                        {{round($percentage)}}%
+                                    </div>
+                                </div>
+                            </div>
+
+                            @endforeach
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
 </div>
 </section>
 
