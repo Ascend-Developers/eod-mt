@@ -250,7 +250,7 @@ class WaitingTimeController extends Controller
 
         $data=[];
         $chart =  (new LarapexChart)->horizontalBarChart();
-        $array = ['08:00', '14:20', '00:00'];
+        $array = ['08:00', '14:00', '00:00'];
         foreach ($array as $key) {
             $tempData = [];
             foreach ($sites as $site) {
