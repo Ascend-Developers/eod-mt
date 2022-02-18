@@ -240,9 +240,17 @@ class WaitingTimeController extends Controller
         ->setDataLabels(true)
         ->setHeight(300);
 
+        $chart2 =  (new LarapexChart)->radialChart()
+        ->setTitle('Attendence')
+        // ->setSubtitle('Barcelona city vs Madrid sports.')
+        ->addData([75, 60])
+        ->setLabels(['Barcelona city', 'Madrid sports'])
+        ->setHeight(250)
+        ->setColors(['#553AFE', '#01C0F6']);
+
         $data=[];
         $chart =  (new LarapexChart)->horizontalBarChart();
-        $array = [' 08:00', ' 14:00', ' 00:00'];
+        $array = ['08:00', '14:20', '00:00'];
         foreach ($array as $key) {
             $tempData = [];
             foreach ($sites as $site) {
@@ -252,12 +260,32 @@ class WaitingTimeController extends Controller
         }
         $chart =  $chart
         ->setXAxis($sites->pluck('name')->toArray())
+        // ->addData($key, $tempData)
         ->setColors(['#01C0F6', '#EF5DA8', '#F1963A'])
         ->setDataLabels(true)
-        ->setHeight(600);
+        ->setHeight(300);
 
+        $userWaitingData = WaitingTime::whereBetween('created_at', [Carbon::parse($date)->startOfDay(), Carbon::parse($date)->endOfDay()])->select('user_id', 'created_at', 'site_id')->with(['site'=>function($q){
+            $q->select('name');
+        }])->get()->groupBy(function($user){
+            return $user->user->name;
+        })->toArray();
+        
 
-        return view('waiting.siteTracker', compact('sites', 'users', 'chart', 'chart1'));
+        $userDataWaitingTime = [];
+        foreach ($userWaitingData as $key => $value) {
+            $count = count($value) - 1;
+            // dd();
+            $temp = [
+                'name' => $key,
+                // 'firstSiteName' => ,
+                'firstSiteSubmission' => date('d/m/Y', strtotime($value[0]['created_at'])),
+                // 'lastSiteName' => ,
+                'lastSiteSubmission' => date('d/m/Y', strtotime($value[$count]['created_at'])),
+            ];
+            array_push($userDataWaitingTime, $temp);
+        }
+        return view('waiting.siteTracker', compact('sites', 'users', 'chart', 'chart1','chart2', 'userDataWaitingTime'));
     }
 
 }

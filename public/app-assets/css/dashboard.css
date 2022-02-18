@@ -277,5 +277,27 @@ h2 {
     background: #002e6e;
     border-radius: 4px;
 }
+
+.spr-head {
+    display: flex;
+    justify-content: end;
+    color: #000000;
+    /* font-family: Inter; */
+    font-style: normal;
+    font-weight: normal;
+    font-size: 18px;
+    line-height: 16px;
+}
+.pmo-head {
+    display: flex;
+    justify-content: end;
+    color: #000000;
+    /* font-family: Inter; */
+    font-style: normal;
+    font-weight: normal;
+    font-size: 18px;
+    line-height: 16px;
+}
+
 @media screen and (min-width: 1357px) {
 }
