@@ -167,13 +167,13 @@ class WaitingTimeController extends Controller
         $Yes2 = WaitingTime::where('homeKitsAvailableOnSite', 'Yes')->whereBetween('created_at', [Carbon::parse($date)->startOfDay(), Carbon::parse($date)->endOfDay()])->count();
         $No2= WaitingTime::where('homeKitsAvailableOnSite', 'No')->whereBetween('created_at', [Carbon::parse($date)->startOfDay(), Carbon::parse($date)->endOfDay()])->count();
 
-        
-       
-        
+
+
+
          $created_at = WaitingTime::whereBetween('created_at', [Carbon::parse($date)->startOfDay(), Carbon::parse($date)->endOfDay()])->get()->groupBy(function($date) {
             return Carbon::parse($date->created_at)->format('h');
         })->toArray();
-        
+
         $wts1 = WaitingTime::whereBetween('created_at', [Carbon::parse($date)->startOfDay(), Carbon::parse($date)->endOfDay()])->pluck('t1')->toArray();
         $wts2 = WaitingTime::whereBetween('created_at', [Carbon::parse($date)->startOfDay(), Carbon::parse($date)->endOfDay()])->pluck('t2')->toArray();
         $wts3 = WaitingTime::whereBetween('created_at', [Carbon::parse($date)->startOfDay(), Carbon::parse($date)->endOfDay()])->pluck('t3')->toArray();
@@ -217,7 +217,7 @@ class WaitingTimeController extends Controller
         ->setColors(['#553AFE', '#01C0F6']);
 
 
-    
+
 
     return view('waiting.dashboard',  compact('wts','sites', 'chart', 'chart1','chart2','chart3'));
 }
@@ -231,9 +231,9 @@ class WaitingTimeController extends Controller
             return Carbon::parse($date->created_at)->format('h');
         })->toArray();
         $wt = WaitingTime::whereBetween('created_at', [Carbon::parse($date)->startOfDay(), Carbon::parse($date)->endOfDay()])->pluck('t3')->toArray();
-        
+
         $chart1 =  (new LarapexChart)->lineChart()
-        
+
         ->addData('Waiting Time T3',$wt)
         ->setXAxis($created_at)
         ->setColors(['#443DF6', '#DC251C'])
@@ -250,7 +250,8 @@ class WaitingTimeController extends Controller
 
         $data=[];
         $chart =  (new LarapexChart)->horizontalBarChart();
-        $array = ['08:00', '14:00', '00:00'];
+        $array = ['08:00', '16:00', '00:00'];
+        $array = ['08:00', '14:50', '00:00'];
         foreach ($array as $key) {
             $tempData = [];
             foreach ($sites as $site) {
@@ -263,14 +264,14 @@ class WaitingTimeController extends Controller
         // ->addData($key, $tempData)
         ->setColors(['#01C0F6', '#EF5DA8', '#F1963A'])
         ->setDataLabels(true)
-        ->setHeight(300);
+        ->setHeight(800);
 
         $userWaitingData = WaitingTime::whereBetween('created_at', [Carbon::parse($date)->startOfDay(), Carbon::parse($date)->endOfDay()])->select('user_id', 'created_at', 'site_id')->with(['site'=>function($q){
             $q->select('name');
         }])->get()->groupBy(function($user){
             return $user->user->name;
         })->toArray();
-        
+
 
         $userDataWaitingTime = [];
         foreach ($userWaitingData as $key => $value) {
@@ -279,9 +280,9 @@ class WaitingTimeController extends Controller
             $temp = [
                 'name' => $key,
                 // 'firstSiteName' => ,
-                'firstSiteSubmission' => date('d/m/Y', strtotime($value[0]['created_at'])),
+                'firstSiteSubmission' => date('h:i A', strtotime($value[0]['created_at'])),
                 // 'lastSiteName' => ,
-                'lastSiteSubmission' => date('d/m/Y', strtotime($value[$count]['created_at'])),
+                'lastSiteSubmission' => date('h:i A', strtotime($value[$count]['created_at'])),
             ];
             array_push($userDataWaitingTime, $temp);
         }

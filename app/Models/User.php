@@ -63,6 +63,11 @@ class User extends Authenticatable
         return $this->hasMany(WaitingTime::class, 'user_id');
     }
 
+    public function LasthourlySub()
+    {
+        return $this->hasMany(WaitingTime::class, 'user_id')->latest();
+    }
+
 
     public function getDateSubmissionProgress($date){
         $day[0] = Carbon::parse($date)->startOfDay();
@@ -75,7 +80,7 @@ class User extends Authenticatable
         $day[0] = Carbon::parse($date)->startOfDay();
         $day[1] = Carbon::parse($date)->endOfDay();
         $result = WaitingTime::where('user_id', $this->_id)->whereBetween('created_at', [$day[0], $day[1]])->count();
-       
+
         return ($result);
     }
 
