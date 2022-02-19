@@ -272,12 +272,15 @@ class WaitingTimeController extends Controller
         foreach ($sites as $site) {
             $count = 0;
             for($d = $start ; $d < $end; $d->addHour() ){
-                    $sub = WaitingTime::where('site_id', $site->_id)->whereBetween('created_at', [Carbon::parse($d)->subMinutes(15), Carbon::parse($d)->addMinutes(15)])->first();
-                    if($sub)
-                        $count++;
-                }
-                array_push($data, $count);
-            };
+                $sub = WaitingTime::where('site_id', $site->_id)->whereBetween('created_at', [Carbon::parse($d)->subMinutes(15), Carbon::parse($d)->addMinutes(15)])->first();
+                dump($sub,$site->name,Carbon::parse($d)->subMinutes(15)->toDateTimeString());
+                if($sub)
+                    $count++;
+            }
+            array_push($data, $count);
+        };
+
+        dd($data);
         $chart =  (new LarapexChart)->horizontalBarChart();
         $chart =  $chart->addData('Submissions', $data);
         $chart =  $chart->setXAxis($sites->pluck('name')->toArray())
