@@ -261,7 +261,7 @@ class WaitingTimeController extends Controller
         }
         $chart =  $chart
         ->setXAxis($sites->pluck('name')->toArray())
-        ->setColors(['#01C0F6', '#EF5DA8', '#F1963A'])
+        ->setColors(['#01C0F6', '#EF5DA8', '#4807EA'])
         ->setDataLabels(true)
         ->setHeight(800);
 
