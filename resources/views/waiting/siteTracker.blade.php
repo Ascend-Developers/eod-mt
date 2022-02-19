@@ -111,7 +111,7 @@
                                                 $class = $user->getClass($percentage);
                                             @endphp
                                             <div class="col-6">{{ $user->name }} ({{$user->LasthourlySub ?
-                                            ($user->LasthourlySub->first()->site ? $user->LasthourlySub->first()->site?->name : "" ) : ""}})</div>
+                                            ($user->LasthourlySub->first()->site ? $user->LasthourlySub->first()->site->name : "" ) : ""}})</div>
 
                                             <div class="col-6 pmo-head {{ $class }}">
                                                 {{ $count }}
