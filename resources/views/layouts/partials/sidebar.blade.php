@@ -177,10 +177,10 @@
                                        data-i18n="Details">List</span></a>
                            </li>
                            <li class="{{ Request::is('waiting/siteTracker') ? 'active' : '' }}"><a
-                                   class="d-flex align-items-center" href="{{ route('siteTracker') }}"><i
-                                       data-feather="circle"></i><span class="menu-item"
-                                       data-i18n="Details">List</span></a>
-                           </li>
+                            class="d-flex align-items-center" href="{{ route('siteTracker') }}"><i
+                                data-feather="circle"></i><span class="menu-item" data-i18n="Details">Site
+                                Tracker</span></a>
+                            </li>
                        </ul>
                    </li>
                @elseif (Auth::user()->type == 'admin')
@@ -199,16 +199,16 @@
                                        data-i18n="Details">List</span></a>
                            </li>
 
-                           <li class=" {{ Request::is('check') ? 'active' : '' }}"><a
+                           {{-- <li class=" {{ Request::is('check') ? 'active' : '' }}"><a
                                    class="d-flex align-items-center" href="{{ route('check') }}"><i
                                        data-feather="circle"></i><span class="menu-title text-truncate"
                                        data-i18n="Dashboards">Dashboard</span></a>
 
-                           </li>
+                           </li> --}}
                            <li class="{{ Request::is('waiting/siteTracker') ? 'active' : '' }}"><a
                                    class="d-flex align-items-center" href="{{ route('siteTracker') }}"><i
                                        data-feather="circle"></i><span class="menu-item" data-i18n="Details">Site
-                                       Tracker Dashboard</span></a>
+                                       Tracker</span></a>
                            </li>
                        </ul>
                    </li>
