@@ -38,8 +38,23 @@
 
                             </div>
                         </div>
-                        {{-- <div class="pr-1 m-20 bg-white rounded shadow">
-                        </div> --}}
+
+                    </div>
+                </div>
+                <div class="col-md-12 ">
+                    <div class="container px-0 mx-auto">
+                        <div class="card">
+
+                            <div class="card-body">
+                                <h4 class="">
+                                    <img src="\app-assets\images\ico\tag (1).png">
+                                    On Time Submission By Site
+                                </h4>
+                                {!! $chart_on_time->container() !!}
+
+                            </div>
+                        </div>
+
                     </div>
                 </div>
 
@@ -186,7 +201,7 @@
 
     {{ $chart->script() }}
     {{ $chart1->script() }}
-    {{ $chart2->script() }}
+    {{ $chart_on_time->script() }}
 @endsection
 
 @push('script')

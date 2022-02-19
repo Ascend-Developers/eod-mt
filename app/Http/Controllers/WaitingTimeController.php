@@ -272,19 +272,16 @@ class WaitingTimeController extends Controller
             $end = Carbon::parse($date."23:59");
             $count = 0;
             for($d = $start ; $d < $end; $d->addHour() ){
-                // dump($site->name);
                 $sub = WaitingTime::where('site_id', $site->_id)->whereBetween('created_at', [Carbon::parse($d)->subMinutes(15), Carbon::parse($d)->addMinutes(15)])->first();
-                // dump($sub,$site->name,Carbon::parse($d)->subMinutes(15)->toDateTimeString());
                 if($sub)
                     $count++;
             }
             array_push($data, $count);
         };
 
-        // dd($data);
-        $chart =  (new LarapexChart)->horizontalBarChart();
-        $chart =  $chart->addData('Submissions', $data);
-        $chart =  $chart->setXAxis($sites->pluck('name')->toArray())
+        $chart_on_time =  (new LarapexChart)->horizontalBarChart();
+        $chart_on_time =  $chart_on_time->addData('Submissions', $data);
+        $chart_on_time =  $chart_on_time->setXAxis($sites->pluck('name')->toArray())
         ->setColors(['#01C0F6', '#EF5DA8', '#F1963A'])
         ->setDataLabels(true)
         ->setHeight(800);
@@ -309,7 +306,7 @@ class WaitingTimeController extends Controller
             ];
             array_push($userDataWaitingTime, $temp);
         }
-        return view('waiting.siteTracker', compact('sites', 'users', 'chart', 'chart1','chart2', 'userDataWaitingTime'));
+        return view('waiting.siteTracker', compact('sites', 'users', 'chart', 'chart1','chart2', 'userDataWaitingTime','chart_on_time'));
     }
 
 }
