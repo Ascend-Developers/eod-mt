@@ -282,7 +282,7 @@ class WaitingTimeController extends Controller
         $chart_on_time =  (new LarapexChart)->horizontalBarChart();
         $chart_on_time =  $chart_on_time->addData('Submissions', $data);
         $chart_on_time =  $chart_on_time->setXAxis($sites->pluck('name')->toArray())
-        ->setColors(['#01C0F6', '#EF5DA8', '#F1963A'])
+        ->setColors(['#4807EA', '#EF5DA8', '#F1963A'])
         ->setDataLabels(true)
         ->setHeight(800);
 
