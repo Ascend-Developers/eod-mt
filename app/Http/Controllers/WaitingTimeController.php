@@ -276,8 +276,9 @@ class WaitingTimeController extends Controller
                     if($sub)
                         $count++;
                 }
-            $chart =  $chart->addData('Submissions', $count);
-        };
+                array_push($data, $count);
+            };
+        $chart =  $chart->addData('Submissions', $data);
         $chart =  $chart->setXAxis($sites->pluck('name')->toArray())
         ->setColors(['#01C0F6', '#EF5DA8', '#F1963A'])
         ->setDataLabels(true)
