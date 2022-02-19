@@ -248,10 +248,10 @@ class WaitingTimeController extends Controller
         ->setHeight(250)
         ->setColors(['#553AFE', '#01C0F6']);
 
+        //waiting time during shift times
         $data=[];
         $chart =  (new LarapexChart)->horizontalBarChart();
         $array = ['08:00', '16:00', '00:00'];
-        $array = ['08:00', '14:50', '00:00'];
         foreach ($array as $key) {
             $tempData = [];
             foreach ($sites as $site) {
@@ -261,7 +261,24 @@ class WaitingTimeController extends Controller
         }
         $chart =  $chart
         ->setXAxis($sites->pluck('name')->toArray())
-        // ->addData($key, $tempData)
+        ->setColors(['#01C0F6', '#EF5DA8', '#F1963A'])
+        ->setDataLabels(true)
+        ->setHeight(800);
+
+        //Submissions on time
+        $data=[];
+        $start = Carbon::parse($date."00:00");
+        $end = Carbon::parse($date."23:59");;
+        foreach ($sites as $site) {
+            $count = 0;
+            for($d = $start ; $d < $end; $d->addHour() ){
+                    $sub = WaitingTime::where('site_id', $site->_id)->whereBetween('created_at', [Carbon::parse($d)->subMinutes(15), Carbon::parse($d)->addMinutes(15)])->first();
+                    if($sub)
+                        $count++;
+                }
+            $chart =  $chart->addData('Submissions', $count);
+        };
+        $chart =  $chart->setXAxis($sites->pluck('name')->toArray())
         ->setColors(['#01C0F6', '#EF5DA8', '#F1963A'])
         ->setDataLabels(true)
         ->setHeight(800);
