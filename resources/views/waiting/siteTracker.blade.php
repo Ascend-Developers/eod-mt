@@ -32,7 +32,7 @@
                             <div class="card-body">
                                 <h4 class="">
                                     <img src="\app-assets\images\ico\tag (1).png">
-                                    Waiting time per site during shift hours (minutes)
+                                    Waiting time per site during shift Handovers (minutes)
                                 </h4>
                                 {!! $chart->container() !!}
 
@@ -117,6 +117,9 @@
                             </h4>
                             <div class="row">
                                 @foreach ($users as $user)
+                                    @php
+                                        // dd($users);
+                                    @endphp
                                     <div class="col-12 mt-1">
                                         <div class="row">
                                             @php
@@ -125,8 +128,9 @@
                                                 $count = $user->getUserCount($date);
                                                 $class = $user->getClass($percentage);
                                             @endphp
-                                            <div class="col-6">{{ $user->name }} ({{$user->LasthourlySub ?
-                                            ($user->LasthourlySub->first()->site ? $user->LasthourlySub->first()->site->name : "" ) : ""}})</div>
+                                            <div class="col-6">{{ $user->name }}
+                                                ({{ $user->LasthourlySub? ($user->LasthourlySub->first()->site? $user->LasthourlySub->first()->site->name: ''): '' }})
+                                            </div>
 
                                             <div class="col-6 pmo-head {{ $class }}">
                                                 {{ $count }}

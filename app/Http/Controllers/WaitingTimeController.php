@@ -151,7 +151,13 @@ class WaitingTimeController extends Controller
     public function export()
     {
         return Excel::download(new WaitingTimesExport, 'waitingTime.xlsx');
+        return Excel::download(new TrackingTimesExport, 'trackingTime.xlsx');
     }
+    // public function trackingExport()
+    // {
+        
+    //     return Excel::download(new TrackingTimesExport, 'trackingTime.xlsx');
+    // }
 
     public function check( Request $request, MonthlyUsersChart $chart  )
 {
@@ -224,7 +230,11 @@ class WaitingTimeController extends Controller
 
     public function siteTracker(Request $request){
         $sites = Site::whereHas('hourlySub')->get();
-        $users = User::whereHas('hourlySub')->get();
+        $users = User::
+        where('type', 'agent')
+        ->whereHas('hourlySub')
+        ->get();
+       
         $date = $request->has('date') ? Carbon::parse($request->date)->format('d-m-Y') : Carbon::today()->format('d-m-Y');
 
         $created_at = WaitingTime::whereBetween('created_at', [Carbon::parse($date)->startOfDay(), Carbon::parse($date)->endOfDay()])->get()->groupBy(function($date) {

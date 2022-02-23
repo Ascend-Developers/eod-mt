@@ -2,13 +2,13 @@
 
 namespace App\Exports;
 
-use App\Models\WaitingTime;
+use App\Models\TrackingTime;
 use Maatwebsite\Excel\Concerns\WithHeadings;
 use Maatwebsite\Excel\Concerns\WithMapping;
 use Maatwebsite\Excel\Concerns\FromQuery;
 use Maatwebsite\Excel\Concerns\ShouldAutoSize;
 
-class WaitingTimesExport implements FromQuery, WithMapping, WithHeadings, ShouldAutoSize
+class TrackingTimeExport implements FromQuery, WithMapping, WithHeadings, ShouldAutoSize
 {
     /**
     * @return \Illuminate\Support\Collection
