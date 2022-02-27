@@ -7,6 +7,7 @@ use Maatwebsite\Excel\Concerns\WithHeadings;
 use Maatwebsite\Excel\Concerns\WithMapping;
 use Maatwebsite\Excel\Concerns\FromQuery;
 use Maatwebsite\Excel\Concerns\ShouldAutoSize;
+use Auth;
 
 class RapidAntigenSiteAuditsExport implements FromQuery, WithMapping, WithHeadings, ShouldAutoSize
 {
@@ -20,7 +21,11 @@ class RapidAntigenSiteAuditsExport implements FromQuery, WithMapping, WithHeadin
 
     public function query()
     {
-        $rasa = RapidAntigenSiteAudit::query();
+        if(Auth::user()->type == "agent"){
+            $rasa = RapidAntigenSiteAudit::whereIn('site_id', Auth::user()->getSites()->pluck('id')->toArray());
+        }else{
+            $rasa = RapidAntigenSiteAudit::query();
+        }
         return $rasa;
     }
 

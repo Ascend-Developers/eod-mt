@@ -7,6 +7,7 @@ use Maatwebsite\Excel\Concerns\WithHeadings;
 use Maatwebsite\Excel\Concerns\WithMapping;
 use Maatwebsite\Excel\Concerns\FromQuery;
 use Maatwebsite\Excel\Concerns\ShouldAutoSize;
+use Auth;
 
 class ShipmentsExport implements FromQuery, WithMapping, WithHeadings, ShouldAutoSize
 {
@@ -20,7 +21,11 @@ class ShipmentsExport implements FromQuery, WithMapping, WithHeadings, ShouldAut
 
     public function query()
     {
-        $shipment = Shipment::query();
+        if(Auth::user()->type == "agent"){
+            $shipment = Shipment::whereIn('site_id', Auth::user()->getSites()->pluck('id')->toArray());
+        }else{
+            $shipment = Shipment::query();
+        }
         return $shipment;
     }
 

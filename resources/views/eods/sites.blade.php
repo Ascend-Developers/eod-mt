@@ -15,7 +15,7 @@
                     @php
                         $item_ids = App\Models\Item::pluck('_id');
                     @endphp
-                    <table class="table responsive " id="site-table">
+                    <table class="table table-bordered" id="user-table">
                         <thead>
                             <tr>
                                 <th scope="col">Site Name</th>

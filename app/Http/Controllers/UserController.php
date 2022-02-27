@@ -10,6 +10,9 @@ use Hash;
 use Illuminate\Validation\Rule;
 use App\Exports\UsersExport;
 use Excel;
+use Auth;
+use App\Mail\UserCreate;
+use Mail;
 
 class UserController extends Controller
 {
@@ -31,6 +34,9 @@ class UserController extends Controller
     public function index()
     {
         //
+        if(Auth::user()->type == "agent"){
+            return redirect()->back();
+        }
         $users = User::all();
         return view('users.index', compact('users'));
     }
@@ -43,6 +49,9 @@ class UserController extends Controller
     public function create()
     {
         //
+        if(Auth::user()->type == "agent"){
+            return redirect()->back();
+        }
         $sites = Site::all();
         $modules = Module::all();
         return view('users.create', compact('sites', 'modules'));
@@ -57,6 +66,9 @@ class UserController extends Controller
     public function store(Request $request)
     {
         //
+        if(Auth::user()->type == "agent"){
+            return redirect()->back();
+        }
         $this->validate($request, [
             'name'=> ['required'],
             'email' => ['required', Rule::unique('users','email')->whereNull('deleted_at')],
@@ -64,12 +76,14 @@ class UserController extends Controller
             'type'=> ['required'],
             'phone'=> ['required'],
             'category'=> ['required'],
+            'site_ids'=> ['required'],
         ]);
 
+        $password = $request->input('password');
         $data = [
             'name' => $request->input('name'),
             'email' => strtolower(trim($request->input('email'))),
-            'password' => Hash::make($request->input('password')),
+            'password' => Hash::make($password),
             'type' => $request->input('type'),
             'phone' => $request->input('phone'),
             'category' => $request->input('category'),
@@ -83,6 +97,14 @@ class UserController extends Controller
         if($request->input('module_ids')){
             $user->modules()->sync($request->input('module_ids'));
         }
+
+        try {
+            Mail::to($user->email)->send(new UserCreate($user, $password));
+        } catch (exception $e) {
+            //throw $th;
+            dd($e->error());
+        }
+
         return redirect()->route('user.index')->with('success','User is created successfully');
     }
 
@@ -95,6 +117,9 @@ class UserController extends Controller
     public function show($id)
     {
         //
+        if(Auth::user()->type == "agent"){
+            return redirect()->back();
+        }
         $users = User::find($id);
         return view('users.Show', compact('users'));
     }
@@ -108,6 +133,9 @@ class UserController extends Controller
     public function edit($id)
     {
         //
+        if(Auth::user()->type == "agent"){
+            return redirect()->back();
+        }
         $users = User::find($id);
         $sites = Site::all();
         $modules = Module::all();
@@ -124,12 +152,16 @@ class UserController extends Controller
     public function update(Request $request, $id)
     {
         //
+        if(Auth::user()->type == "agent"){
+            return redirect()->back();
+        }
         $this->validate($request, [
             'name'=> ['required'],
             'email' => ['required'],
             'type'=> ['required'],
             'phone'=> ['required'],
             'category'=> ['required'],
+            'site_ids'=> ['required'],
         ]);
 
         $user = User::find($id);
@@ -167,6 +199,9 @@ class UserController extends Controller
     public function destroy($id)
     {
         //
+        if(Auth::user()->type == "agent"){
+            return redirect()->back();
+        }
         $user = User::find($id);
         $user->delete();
         return redirect()->route('user.index');

@@ -17,8 +17,8 @@
                 <div class="card-header">
                     <h4 class="card-title">{{ __('Lab Per Shift Submissions') }}</h4>
                 </div>
-                <div class="card-body">
-                    <table class="table">
+                <div class="card-body table-responsive w-100">
+                    <table class="table table-bordered" id="user-table">
                         <thead>
                             <tr>
                                 <th scope="col">Site</th>
@@ -53,13 +53,11 @@
                                 <th>{{ $shipment->created_at->format('F j, Y, g:i a') }}</th>
                                 {{-- <td>
                                     <a href="{{route('shipment.edit', $shipment->id)}}"><i data-feather='edit'></i></a>
-                                    |
                                     <form action="{{ route('shipment.destroy', $shipment->id) }}" method="POST" style="display: inline" class="macros-delete" id="delete-macros-{{$shipment->_id}}">
                                         @csrf
                                         @method('delete')
                                         <button class="text-danger selectDelBtn" type="submit" style="background: none; border:none; display:inline"><i data-feather='delete'></i></button>
                                     </form>
-                                    |
                                     <a href="{{ route('shipment.show', $shipment->id) }}"><i data-feather='eye'></i></a>
                                 </td> --}}
                             </tr>

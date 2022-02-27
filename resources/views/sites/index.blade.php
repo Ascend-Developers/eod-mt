@@ -18,13 +18,13 @@
                     <h4 class="card-title">{{ __('Site') }}</h4>
                 </div>
                 <div class="card-body table-responsive w-100">
-                    <table class="table responsive " id="site-table">
+                    <table class="table table-bordered" id="user-table">
                         <thead>
                             <tr>
                                 <th scope="col">Name</th>
-                                <th scope="col">Major Site</th>
-                                <th scope="col">Region</th>
                                 <th scope="col">Site Type</th>
+                                <th scope="col">Region</th>
+                                <th scope="col">Center Type</th>
                                 <th scope="col">Action</th>
                             </tr>
                         </thead>
@@ -32,18 +32,16 @@
                             @foreach ($sites as $site)
                             <tr>
                                 <td>{{$site->name}}</td>
-                                <td>{{$site->type}}</td>
+                                <td>{{ucfirst($site->type)}}</td>
                                 <td>{{$site->region ? $site->region->name : "--"}}</td>
                                 <td>{{$site->siteType}}</td>
                                 <td>
                                     <a href="{{route('site.edit', $site->id)}}"><i data-feather='edit'></i></a>
-                                    |
                                     <form action="{{ route('site.destroy', $site->id) }}" method="POST" style="display: inline" class="macros-delete" id="delete-macros-{{$site->_id}}">
                                         @csrf
                                         @method('delete')
                                         <button class="text-danger selectDelBtn" type="submit" style="background: none; border:none; display:inline"><i data-feather='delete'></i></button>
                                     </form>
-                                    |
                                     <a href="{{ route('site.show', $site->id) }}"><i data-feather='eye'></i></a>
                                 </td>
                             </tr>

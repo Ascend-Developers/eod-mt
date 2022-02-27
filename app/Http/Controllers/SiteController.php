@@ -8,6 +8,7 @@ use Illuminate\Http\Request;
 use Illuminate\Validation\Rule;
 use App\Exports\SitesExport;
 use Excel;
+use Auth;
 
 class SiteController extends Controller
 {
@@ -18,6 +19,9 @@ class SiteController extends Controller
      */
     public function index()
     {
+        if(Auth::user()->type == "agent"){
+            return redirect()->back();
+        }
         $regions = Region::all();
         $sites = Site::all();
         return view('sites.index', compact('regions', 'sites'));
@@ -30,6 +34,9 @@ class SiteController extends Controller
      */
     public function create()
     {
+        if(Auth::user()->type == "agent"){
+            return redirect()->back();
+        }
         $regions = Region::all();
         return view('sites.create', compact('regions'));
 
@@ -43,6 +50,9 @@ class SiteController extends Controller
      */
     public function store(Request $request)
     {
+        if(Auth::user()->type == "agent"){
+            return redirect()->back();
+        }
         $this->validate($request, [
             'name' => ['required', Rule::unique('sites','name')->whereNull('deleted_at')],
             // 'region_id' => ['required'],
@@ -67,6 +77,9 @@ class SiteController extends Controller
     public function show($id)
     {
         //
+        if(Auth::user()->type == "agent"){
+            return redirect()->back();
+        }
         $site = Site::find($id);
         return view('sites.Show', compact('site'));
     }
@@ -80,6 +93,9 @@ class SiteController extends Controller
     public function edit($id)
     {
         //
+        if(Auth::user()->type == "agent"){
+            return redirect()->back();
+        }
         $site = Site::find($id);
         $regions = Region::all();
         return view('sites.edit', compact('regions', 'site'));
@@ -95,6 +111,9 @@ class SiteController extends Controller
     public function update(Request $request, $id)
     {
         //
+        if(Auth::user()->type == "agent"){
+            return redirect()->back();
+        }
         $this->validate($request, [
             'name' => ['required'],
             // 'region_id' => ['required'],
@@ -121,6 +140,9 @@ class SiteController extends Controller
     public function destroy($id)
     {
         //
+        if(Auth::user()->type == "agent"){
+            return redirect()->back();
+        }
         $site = Site::find($id);
         $site->delete();
         return redirect()->route('site.index');

@@ -7,6 +7,7 @@ use Illuminate\Http\Request;
 use Illuminate\Validation\Rule;
 use App\Exports\ModulesExport;
 use Excel;
+use Auth;
 
 class ModuleController extends Controller
 {
@@ -22,6 +23,9 @@ class ModuleController extends Controller
     public function index()
     {
         //
+        if(Auth::user()->type == "agent"){
+            return redirect()->back();
+        }
         $modules = Module::all();
         return view('modules.index', compact('modules'));
     }
@@ -34,6 +38,9 @@ class ModuleController extends Controller
     public function create()
     {
         //
+        if(Auth::user()->type == "agent"){
+            return redirect()->back();
+        }
         return view('modules.create');
     }
 
@@ -46,6 +53,9 @@ class ModuleController extends Controller
     public function store(Request $request)
     {
         //
+        if(Auth::user()->type == "agent"){
+            return redirect()->back();
+        }
         $this->validate($request, [
             'name'=> ['required', Rule::unique('modules','name')->whereNull('deleted_at')],
         ]);
@@ -65,6 +75,9 @@ class ModuleController extends Controller
     public function show($id)
     {
         //
+        if(Auth::user()->type == "agent"){
+            return redirect()->back();
+        }
         $module = Module::find($id);
         return view('modules.details', compact('module'));
     }
@@ -78,6 +91,9 @@ class ModuleController extends Controller
     public function edit($id)
     {
         //
+        if(Auth::user()->type == "agent"){
+            return redirect()->back();
+        }
         $module = Module::find($id);
         return view('modules.edit', compact('module'));
     }
@@ -92,6 +108,9 @@ class ModuleController extends Controller
     public function update(Request $request, $id)
     {
         //
+        if(Auth::user()->type == "agent"){
+            return redirect()->back();
+        }
         $this->validate($request, [
             'name'=> ['required'],
         ]);
@@ -114,6 +133,9 @@ class ModuleController extends Controller
     public function destroy($id)
     {
         //
+        if(Auth::user()->type == "agent"){
+            return redirect()->back();
+        }
         $module = Module::find($id);
         $module->delete();
         return redirect()->route('module.index');
