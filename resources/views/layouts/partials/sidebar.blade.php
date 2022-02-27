@@ -174,7 +174,6 @@
                            </li>
                        </ul>
                    </li>
-               @endif
                {{-- Submission --}}
                @if (Auth::user()->type == 'agent' && in_array('EOD Submission', Auth::user()->modulesNameArr()))
                    <li class=" nav-item"><a class="d-flex align-items-center" href="#"><i
