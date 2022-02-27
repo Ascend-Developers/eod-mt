@@ -18,7 +18,7 @@
                     <h4 class="card-title">{{ __('EOD Submissions') }}</h4>
                 </div>
                 <div class="card-body table-responsive w-100">
-                    <table class="table responsive " id="site-table">
+                    <table class="table table-bordered" id="user-table">
                         <thead>
                             <tr>
                                 <th scope="col">Site Name</th>

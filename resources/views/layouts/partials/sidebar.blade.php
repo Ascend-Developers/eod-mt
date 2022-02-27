@@ -18,9 +18,78 @@
        <div class="shadow-bottom"></div>
        <div class="main-menu-content">
            <ul class="navigation navigation-main" id="main-menu-navigation" data-menu="menu-navigation">
-               @if (Auth::user()->type == 'admin')
-                   {{-- Dashboard --}}
+               @if (Auth::user()->type == "admin")
+                    {{-- Users --}}
+                    <li class=" nav-item"><a class="d-flex align-items-center" href=""><i data-feather="users"></i><span class="menu-title text-truncate" data-i18n="Dashboards">Users</span></a>
+                        <ul class="menu-content">
+                            <li class="{{ Request::is('user/create') ? 'active' : '' }}"><a class="d-flex align-items-center" href="{{route('user.create')}}"><i data-feather="circle"></i><span class="menu-item" data-i18n="Shop">Add</span></a>
+                            </li>
+                            <li class="{{ Request::is('user') ? 'active' : '' }}"><a class="d-flex align-items-center" href="{{route('user.index')}}"><i data-feather="circle"></i><span class="menu-item" data-i18n="Details">List</span></a>
+                            </li>
+                        </ul>
+                    </li>
+                    {{-- Regions --}}
+                    <li class=" nav-item"><a class="d-flex align-items-center" href="#"><i data-feather="circle"></i><span class="menu-title text-truncate" data-i18n="Dashboards">Regions</span></a>
+                        <ul class="menu-content">
+                            <li class="{{ Request::is('region/create') ? 'active' : '' }}"><a class="d-flex align-items-center" href="{{route('region.create')}}"><i data-feather="circle"></i><span class="menu-item" data-i18n="Shop">Add</span></a>
+                            </li>
+                            <li class="{{ Request::is('region') ? 'active' : '' }}"><a class="d-flex align-items-center" href="{{route('region.index')}}"><i data-feather="circle"></i><span class="menu-item" data-i18n="Details">List</span></a>
+                            </li>
+                        </ul>
+                    </li>
+                    {{--  Site --}}
+                    <li class=" nav-item"><a class="d-flex align-items-center" href="#"><i data-feather="thermometer"></i><span class="menu-title text-truncate" data-i18n="Dashboards">Sites</span></a>
+                        <ul class="menu-content">
+                            <li class="{{ Request::is('site/create') ? 'active' : '' }}"><a class="d-flex align-items-center" href="{{route('site.create')}}"><i data-feather="circle"></i><span class="menu-item" data-i18n="Shop">Add</span></a>
+                            </li>
+                            <li class="{{ Request::is('site') ? 'active' : '' }}"><a class="d-flex align-items-center" href="{{route('site.index')}}"><i data-feather="circle"></i><span class="menu-item" data-i18n="Details">List</span></a>
+                            </li>
+                        </ul>
+                    </li>
+                    {{--  Item --}}
+                    <li class=" nav-item"><a class="d-flex align-items-center" href="#"><i data-feather="archive"></i><span class="menu-title text-truncate" data-i18n="Dashboards">Items</span></a>
+                        <ul class="menu-content">
+                            <li class="{{ Request::is('item/create') ? 'active' : '' }}"><a class="d-flex align-items-center" href="{{route('item.create')}}"><i data-feather="circle"></i><span class="menu-item" data-i18n="Shop">Add</span></a>
+                            </li>
+                            <li class="{{ Request::is('item') ? 'active' : '' }}"><a class="d-flex align-items-center" href="{{route('item.index')}}"><i data-feather="circle"></i><span class="menu-item" data-i18n="Details">List</span></a>
+                            </li>
+                        </ul>
+                    </li>
 
+                    {{-- Module --}}
+                    <li class=" nav-item"><a class="d-flex align-items-center" href="#"><i data-feather="x-circle"></i><span class="menu-title text-truncate" data-i18n="Dashboards">Modules</span></a>
+                        <ul class="menu-content">
+                            <li class="{{ Request::is('module/create') ? 'active' : '' }}"><a class="d-flex align-items-center" href="{{route('module.create')}}"><i data-feather="circle"></i><span class="menu-item" data-i18n="Shop">Add</span></a>
+                            </li>
+                            <li class="{{ Request::is('module') ? 'active' : '' }}"><a class="d-flex align-items-center" href="{{route('module.index')}}"><i data-feather="circle"></i><span class="menu-item" data-i18n="Details">List</span></a>
+                            </li>
+                        </ul>
+                    </li>
+                @endif
+                {{--  Submission --}}
+                @if (Auth::user()->type == "agent" && in_array("EOD Submission", Auth::user()->modulesNameArr()))
+                    <li class=" nav-item"><a class="d-flex align-items-center" href="#"><i data-feather="file"></i><span class="menu-title text-truncate" data-i18n="Dashboards">EOD</span></a>
+                        <ul class="menu-content">
+                            <li class="{{ Request::is('eod/create') ? 'active' : '' }}"><a class="d-flex align-items-center" href="{{route('eod.create')}}"><i data-feather="circle"></i><span class="menu-item" data-i18n="Shop">Add</span></a>
+                            </li>
+                            <li class="{{ Request::is('eod/index') ? 'active' : '' }}"><a class="d-flex align-items-center" href="{{route('eod.index')}}"><i data-feather="circle"></i><span class="menu-item" data-i18n="Details">Submissions</span></a>
+                            </li>
+                            <li class="{{ Request::is('eod/site') ? 'active' : '' }}"><a class="d-flex align-items-center" href="{{route('eod.site')}}"><i data-feather="circle"></i><span class="menu-item" data-i18n="Details">Site View</span></a>
+                            </li>
+                        </ul>
+                    </li>
+                @elseif (Auth::user()->type == "admin")
+                    <li class=" nav-item"><a class="d-flex align-items-center" href="#"><i data-feather="file"></i><span class="menu-title text-truncate" data-i18n="Dashboards">EOD</span></a>
+                        <ul class="menu-content">
+                            <li  class="{{ Request::is('eod/create') ? 'active' : '' }}"><a class="d-flex align-items-center" href="{{route('eod.create')}}"><i data-feather="circle"></i><span class="menu-item" data-i18n="Shop">Add</span></a>
+                            </li>
+                            <li class="{{ Request::is('eod/index') ? 'active' : '' }}"><a class="d-flex align-items-center" href="{{route('eod.index')}}"><i data-feather="circle"></i><span class="menu-item" data-i18n="Details">Submissions</span></a>
+                            </li>
+                            <li class="{{ Request::is('eod/site') ? 'active' : '' }}"><a class="d-flex align-items-center" href="{{route('eod.site')}}"><i data-feather="circle"></i><span class="menu-item" data-i18n="Details">Site View</span></a>
+                            </li>
+                        </ul>
+                    </li>
+                @endif
 
                    {{-- Users --}}
                    <li class=" nav-item"><a class="d-flex align-items-center" href=""><i
