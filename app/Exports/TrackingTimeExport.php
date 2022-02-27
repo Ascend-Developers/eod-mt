@@ -2,14 +2,13 @@
 
 namespace App\Exports;
 
-use App\Models\WaitingTime;
+use App\Models\TrackingTime;
 use Maatwebsite\Excel\Concerns\WithHeadings;
 use Maatwebsite\Excel\Concerns\WithMapping;
 use Maatwebsite\Excel\Concerns\FromQuery;
 use Maatwebsite\Excel\Concerns\ShouldAutoSize;
-use Auth;
 
-class WaitingTimesExport implements FromQuery, WithMapping, WithHeadings, ShouldAutoSize
+class TrackingTimeExport implements FromQuery, WithMapping, WithHeadings, ShouldAutoSize
 {
     /**
     * @return \Illuminate\Support\Collection
@@ -21,12 +20,8 @@ class WaitingTimesExport implements FromQuery, WithMapping, WithHeadings, Should
 
     public function query()
     {
-
-        if(Auth::user()->type == "agent"){
-            $wt = WaitingTime::whereIn('site_id', Auth::user()->getSites()->pluck('id')->toArray());
-        }else{
-            $wt = WaitingTime::query();
-        }
+        $wt = WaitingTime::query();
+        // dd($wt);
         return $wt;
     }
 

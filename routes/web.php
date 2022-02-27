@@ -1,5 +1,5 @@
 <?php
-
+use App\Http\Controllers\HomeController;
 use App\Http\Controllers\InventoryController;
 use App\Http\Controllers\ItemController;
 use App\Http\Controllers\RegionController;
@@ -11,8 +11,9 @@ use App\Http\Controllers\HelperController;
 use App\Http\Controllers\LabCheckListController;
 use App\Http\Controllers\RapidAntigenSiteAuditController;
 use App\Http\Controllers\ShipmentController;
-use Illuminate\Support\Facades\Route;
 
+use Illuminate\Support\Facades\Route;
+use ArielMejiaDev\LarapexCharts\LarapexChart;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -30,10 +31,12 @@ Route::get('/', function () {
 
 Auth::routes(['register' => false]);
 
+Route::get('/home', [HomeController::class, 'index'])->name('home');
+
+
+
 Route::get('reg', [HelperController::class, 'registerPage'])->name('register');
 Route::post('reg/data', [HelperController::class, 'register'])->name('registerData');
-
-Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
 
 Route::resource('user', UserController::class)->middleware('auth');
 Route::get('userExport', [UserController::class, 'export'])->name('user.export')->middleware('auth');
@@ -54,9 +57,16 @@ Route::post('eod/store', [InventoryController::class, 'store'])->name('eod.store
 Route::get('eod/index', [InventoryController::class, 'submissions'])->name('eod.index')->middleware('auth');
 Route::get('eod/site', [InventoryController::class, 'site'])->name('eod.site')->middleware('auth');
 Route::get('eodExport', [InventoryController::class, 'export'])->name('eod.export')->middleware('auth');
+Route::get('/eod/dashboard', [InventoryController::class, 'dashboard'])->name('eod.dashboard')->middleware('auth');
 
+
+Route::get('waiting/siteTracker', [WaitingTimeController::class, 'siteTracker'])->name('siteTracker');
 Route::resource('waiting', WaitingTimeController::class)->middleware('auth');
 Route::get('waitingExport', [WaitingTimeController::class, 'export'])->name('waiting.export')->middleware('auth');
+// Route::get('trackingExport', [WaitingTimeController::class, 'trackingExport'])->name('tracking.export')->middleware('auth');
+
+Route::get('check', [WaitingTimeController::class, 'check'])->name('check');
+
 
 Route::resource('module', ModuleController::class)->middleware('auth');
 Route::get('moduleExport', [ModuleController::class, 'export'])->name('module.export')->middleware('auth');

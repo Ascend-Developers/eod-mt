@@ -57,4 +57,50 @@ class User extends Authenticatable
         }
         return Site::whereIn('_id', Auth::user()->site_ids)->get();
     }
+
+    public function hourlySub()
+    {
+        return $this->hasMany(WaitingTime::class, 'user_id');
+    }
+
+    public function LasthourlySub()
+    {
+        return $this->hasMany(WaitingTime::class, 'user_id')->latest();
+    }
+
+
+    public function getDateSubmissionProgress($date){
+        $day[0] = Carbon::parse($date)->startOfDay();
+        $day[1] = Carbon::parse($date)->endOfDay();
+        $result = WaitingTime::where('user_id', $this->_id)->whereBetween('created_at', [$day[0], $day[1]])->count();
+        $per  = ($result/8)*100;
+        return ($per > 100 ? 100 : $per);
+    }
+    public function getUserCount($date){
+        $day[0] = Carbon::parse($date)->startOfDay();
+        $day[1] = Carbon::parse($date)->endOfDay();
+        $result = WaitingTime::where('user_id', $this->_id)->whereBetween('created_at', [$day[0], $day[1]])->count();
+
+        return ($result);
+    }
+
+    public function getClass($value){
+        // dd($result);
+        if($value  >= 75){
+            return 'success';
+        }
+
+        if($value  < 80 && $value > 70){
+            return 'primary';
+        }
+
+        if($value  < 70 && $value > 50){
+            return 'warning';
+        }
+
+        if($value  < 50){
+            return 'danger';
+        }
+    }
+
 }

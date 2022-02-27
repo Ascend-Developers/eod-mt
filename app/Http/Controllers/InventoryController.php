@@ -4,12 +4,15 @@ namespace App\Http\Controllers;
 
 use App\Models\Site;
 use App\Models\Item;
+use App\Models\WaitingTime;
 use App\Models\Inventory;
 use App\Models\InventoryTransaction;
 use Illuminate\Http\Request;
 use Auth;
 use App\Exports\InventoresExport;
 use Excel;
+use App\Charts\MonthlyUsersChart;
+use App\Charts\WaitingTimeChart;
 
 class InventoryController extends Controller
 {
@@ -86,5 +89,11 @@ class InventoryController extends Controller
     public function export()
     {
         return Excel::download(new InventoresExport, 'eod.xlsx');
+    }
+
+    public function dashboard()
+    {
+        $sites = Site::orderBy('name')->whereHas('inventories')->get();
+        return view('eods.dashboard', compact('sites'));
     }
 }

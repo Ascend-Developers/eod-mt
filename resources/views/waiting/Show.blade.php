@@ -48,14 +48,13 @@
                             <h5><strong>Mode Of Operations : </strong>{{$wt->modeOfOperations}}</h5>
                             <h5><strong>Top 3 issues by site <span style="font-size: 70%"> (Staggered with 50% of cabins swapping at any time and no more than 15 mins handover)</span> : </strong>{{$wt->details}}</h5>
                         </div>
+                        <!--end::Example-->
                     </div>
-                    <!--end::Example-->
                 </div>
             </div>
+            <!--end::Dashboard-->
         </div>
-        <!--end::Dashboard-->
+        <!--end::Container-->
     </div>
-    <!--end::Container-->
-</div>
-<!--end::Entry-->
+    <!--end::Entry-->
 @endsection
