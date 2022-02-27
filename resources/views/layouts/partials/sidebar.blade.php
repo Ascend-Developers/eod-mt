@@ -91,59 +91,6 @@
                     </li>
                 @endif
 
-               {{-- Submission --}}
-               @if (Auth::user()->type == 'agent' && in_array('EOD Submission', Auth::user()->modulesNameArr()))
-                   <li class=" nav-item"><a class="d-flex align-items-center" href="#"><i
-                               data-feather="file"></i><span class="menu-title text-truncate" data-i18n="Dashboards">
-                               EOD</span></a>
-                       <ul class="menu-content">
-                           <li class="{{ Request::is('eod/create') ? 'active' : '' }}"><a
-                                   class="d-flex align-items-center" href="{{ route('eod.create') }}"><i
-                                       data-feather="circle"></i><span class="menu-item"
-                                       data-i18n="Shop">Add</span></a>
-                           </li>
-                           <li class="{{ Request::is('eod/index') ? 'active' : '' }}"><a
-                                   class="d-flex align-items-center" href="{{ route('eod.index') }}"><i
-                                       data-feather="circle"></i><span class="menu-item"
-                                       data-i18n="Details">Submissions</span></a>
-                           </li>
-                           <li class="{{ Request::is('eod/site') ? 'active' : '' }}"><a
-                                   class="d-flex align-items-center" href="{{ route('eod.site') }}"><i
-                                       data-feather="circle"></i><span class="menu-item" data-i18n="Details">Site
-                                       View</span></a>
-                           </li>
-                       </ul>
-                   </li>
-               @elseif (Auth::user()->type == 'admin')
-                   <li class=" nav-item"><a class="d-flex align-items-center" href="#"><i
-                               data-feather="file"></i><span class="menu-title text-truncate" data-i18n="Dashboards">
-                               EOD</span></a>
-                       <ul class="menu-content">
-                           <li class="{{ Request::is('eod/create') ? 'active' : '' }}"><a
-                                   class="d-flex align-items-center" href="{{ route('eod.create') }}"><i
-                                       data-feather="circle"></i><span class="menu-item"
-                                       data-i18n="Shop">Add</span></a>
-                           </li>
-                           <li class="{{ Request::is('eod/index') ? 'active' : '' }}"><a
-                                   class="d-flex align-items-center" href="{{ route('eod.index') }}"><i
-                                       data-feather="circle"></i><span class="menu-item"
-                                       data-i18n="Details">Submissions</span></a>
-                           </li>
-                           <li class="{{ Request::is('eod/site') ? 'active' : '' }}"><a
-                                   class="d-flex align-items-center" href="{{ route('eod.site') }}"><i
-                                       data-feather="circle"></i><span class="menu-item" data-i18n="Details">Site
-                                       View</span></a>
-                           </li>
-                           <li class="{{ Request::is('eod/dashboard') ? 'active' : '' }}"><a
-                                   class="d-flex align-items-center" href="{{ route('eod.dashboard') }}"><i
-                                       data-feather="circle"></i><span class="menu-title text-truncate"
-                                       data-i18n="Dashboards">Daashboard</span></a>
-
-                           </li>
-
-                       </ul>
-                   </li>
-               @endif
 
                {{-- Waiting Time --}}
                @if (Auth::user()->type == 'agent' && in_array('Waiting Time', Auth::user()->modulesNameArr()))
