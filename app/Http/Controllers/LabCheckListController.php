@@ -23,8 +23,9 @@ class LabCheckListController extends Controller
      */
     public function index()
     {
+        $checklistsCount = LabCheckList::whereIn('site_id', Auth::user()->getSites()->pluck('id')->toArray())->count();
         $checklists = LabCheckList::whereIn('site_id', Auth::user()->getSites()->pluck('id')->toArray())->orderBy('created_at', 'DESC')->paginate(20);
-        return view('checklists.index', compact('checklists'));
+        return view('checklists.index', compact('checklists', 'checklistsCount'));
     }
 
     /**

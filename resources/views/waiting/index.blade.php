@@ -15,7 +15,7 @@
         <div class="col-md-12">
             <div class="card">
                 <div class="card-header">
-                    <h4 class="card-title">{{ __('MT hourly checklist status') }}</h4>
+                    <h4 class="card-title">MT hourly checklist status ({{$wtsCount}})</h4>
                 </div>
                 <div class="card-body table-responsive w-100">
                     <table class="table table-bordered" id="user-table">

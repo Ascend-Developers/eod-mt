@@ -15,7 +15,7 @@
         <div class="col-md-12">
             <div class="card">
                 <div class="card-header">
-                    <h4 class="card-title">{{ __('EOD Submissions') }}</h4>
+                    <h4 class="card-title">EOD Submissions ({{ $subCount }})</h4>
                 </div>
                 <div class="card-body table-responsive w-100">
                     <table class="table table-bordered" id="user-table">

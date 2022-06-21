@@ -22,8 +22,9 @@ class WaitingTimeController extends Controller
      */
     public function index()
     {
+        $wtsCount = WaitingTime::whereIn('site_id', Auth::user()->getSites()->pluck('id')->toArray())->count();
         $wts = WaitingTime::whereIn('site_id', Auth::user()->getSites()->pluck('id')->toArray())->orderBy('created_at', 'desc')->paginate(20);
-        return view('waiting.index', compact('wts'));
+        return view('waiting.index', compact('wts', 'wtsCount'));
     }
 
     /**
